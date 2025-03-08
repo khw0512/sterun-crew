@@ -1,0 +1,27 @@
+let btn = document.getElementById("menu-button");
+let screen = document.getElementById("screen");
+let menu = document.getElementById("mobile_menu");
+
+function open_close() {
+  if (btn.dataset.menu === "0") myOpen();
+  else myClose();
+}
+
+function myOpen() {
+  menu.style.left = "0px";
+  btn.dataset.menu = "1";
+  btn.src = "/static/img/x-symbol.png"
+  setTimeout((screen.style.backgroundColor = "rgb(200,200,200)"), 300);
+}
+
+function myClose() {
+  menu.style.left = "-100%";
+  btn.dataset.menu = "0";
+  btn.style.backgroundColor = "transparent";
+  screen.style.backgroundColor = "transparent";
+  btn.src = "/static/img/icon-hamburger.png"
+}
+
+window.addEventListener("click", (e) => {
+  if (e.target.className !== "submenu" && e.target !== btn) myClose();
+});
