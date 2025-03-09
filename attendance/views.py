@@ -8,5 +8,5 @@ from django.utils.dateformat import DateFormat
 import math
 
 
-def index(request):
+def attendance(request):
     return render(request,"index.html")

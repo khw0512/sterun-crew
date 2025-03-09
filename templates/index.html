@@ -43,8 +43,18 @@
       </div>
       <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn">
       <div class="login-box">
-        <div class="login-btn">LOGIN</div>
-        <div class="login-btn">SIGN-UP</div>
+        {% if user.is_authenticated %} 
+          <a href="{% url 'users:logout' %}">
+            <div class="login-btn">{{ user.username }} 님 로그아웃</div>
+          </a>
+        {% else %}
+        <a href="{% url 'users:login' %}">
+          <div class="login-btn">LOGIN</div>
+        </a>
+        <a href="{% url 'users:signup' %}">
+          <div class="login-btn">SIGN-UP</div>
+        </a>
+        {% endif %}
       </div>
     </div>
     <div id="screen">
