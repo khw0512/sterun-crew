@@ -10,7 +10,7 @@ function open_close() {
 function myOpen() {
   menu.style.left = "0px";
   btn.dataset.menu = "1";
-  btn.src = "/static/img/x-symbol.png"
+  btn.src = "/static/img/x-symbol_btn.svg"
   setTimeout((screen.style.backgroundColor = "rgb(200,200,200)"), 300);
 }
 
@@ -19,7 +19,7 @@ function myClose() {
   btn.dataset.menu = "0";
   btn.style.backgroundColor = "transparent";
   screen.style.backgroundColor = "transparent";
-  btn.src = "/static/img/icon-hamburger.png"
+  btn.src = "/static/img/hamber_btn.svg"
 }
 
 window.addEventListener("click", (e) => {

@@ -1,4 +1,11 @@
 
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+    --jblue: #00539C;
+    --jlightgreen: #CDFF06;
+}
+
 @font-face {
     font-family: 'yangjin';
     src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
@@ -33,7 +40,7 @@ a {
 
 .mainbg {
     height:100%;
-    background-color:#00539C;
+    background-color:var(--jblue);
     margin: 0;
     padding: 0;
     overflow-y:auto;
@@ -58,13 +65,13 @@ a {
 }
 
 .lan-switch {
-    color:#EEA47F;
+    color:var(--jlightgreen);
     margin: 0 5px 0 5px;
     font-size: 13px;
 }
 
 .info-icon {
-    color:#EEA47F;
+    color:var(--jlightgreen);
     margin:0 10px 0 10px;
 }
 
@@ -92,7 +99,7 @@ a {
 
 .j-nav-items {
     display: flex;
-    color: #EEA47F;
+    color: var(--jlightgreen);
     margin:20px 0 20px 0;
 }
 
@@ -116,7 +123,7 @@ a {
 .j-nav-item a:after {
     display: block;
     content: '';
-    border-bottom: solid 1px #EEA47F;
+    border-bottom: solid 1px var(--jlightgreen);
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
     margin-top:-12px;
@@ -138,14 +145,14 @@ a {
 
 .rights{
     margin: 20px 0 0 0;
-    color:#EEA47F;
+    color:var(--jlightgreen);
     font-size: 13px;;
 }
 
 .about-text {
     margin: 10px 0 0 0;
     width: 450px;
-    color: #EEA47F;
+    color: var(--jlightgreen);
 }
 
 .j-nav-item-active {
@@ -157,9 +164,22 @@ a {
 .j-nav-item-active::after {
     display: block;
     content: '';
-    border-bottom: solid 1px #EEA47F;
+    border-bottom: solid 1px var(--jlightgreen);
     transition: transform 250ms ease-in-out;
     margin-top: -12px;
+}
+.login-box{
+    display: flex;
+    flex-direction: row ;
+}
+.login-btn{
+    font-size: 0.7rem;
+    color: var(--jlightgreen);
+    font-weight: 700;
+    border: var(--jlightgreen) solid 2px;
+    border-radius: 50px;
+    padding: 10px 20px 10px 20px;
+    margin-left: 20px;
 }
 
 @media (max-width: 620px) {
@@ -168,7 +188,7 @@ a {
         width: 100%;
         height: 0px;
         transition: all 0.2s;
-        background-color: #EEA47F;
+        background-color: var(--jlightgreen);
     }
     
     #mobile_menu{
@@ -182,7 +202,7 @@ a {
 
     #menu-bundle{
         width: 100%;
-        background-color: #EEA47F;
+        background-color: var(--jlightgreen);
     }
     
     #menu-button {
@@ -203,6 +223,9 @@ a {
         border-bottom: #f2f2f2 solid 1px;
     }
     .j-nav-items{
+        display: none;
+    }
+    .login-box{
         display: none;
     }
     
