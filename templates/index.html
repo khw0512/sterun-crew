@@ -4,6 +4,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="sterun" />
+    <meta name="keywords" content="sterun" />
     <title>JOOL ART</title>
     <link rel="shortcut icon" href="#" />
     <!-- FONT -->
@@ -12,21 +14,19 @@
       @import url("https://fonts.googleapis.com/css2?family=Tektur:wght@500;600&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap");
     </style>
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css"
+          rel="stylesheet">
     <!-- CSS only -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/joolmag.css' %}"/>
-
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/joolmag.css' %}" />
     <!--google icon-->
-    <script
-      src="https://kit.fontawesome.com/2f3227cf14.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/2f3227cf14.js"
+            crossorigin="anonymous"></script>
     <!--js-->
     <script defer src ="{% static 'js/main.js' %}"></script>
-
   </head>
   <body class="mainbg">
-    
     <div class="info-container">
       <div class="info-icons">
         <div class="info-icon">
@@ -41,19 +41,23 @@
           <i class="fa-brands fa-youtube"></i>
         </div>
       </div>
-      <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn">
+      <img id="menu-button"
+           data-menu="0"
+           onclick="open_close()"
+           src="{% static 'img/hamber_btn.svg' %}"
+           alt="hamb-btn">
       <div class="login-box">
-        {% if user.is_authenticated %} 
+        {% if user.is_authenticated %}
           <a href="{% url 'users:logout' %}">
             <div class="login-btn">{{ user.username }} 님 로그아웃</div>
           </a>
         {% else %}
-        <a href="{% url 'users:login' %}">
-          <div class="login-btn">LOGIN</div>
-        </a>
-        <a href="{% url 'users:signup' %}">
-          <div class="login-btn">SIGN-UP</div>
-        </a>
+          <a href="{% url 'users:login' %}">
+            <div class="login-btn">LOGIN</div>
+          </a>
+          <a href="{% url 'users:signup' %}">
+            <div class="login-btn">SIGN-UP</div>
+          </a>
         {% endif %}
       </div>
     </div>
@@ -70,14 +74,11 @@
       </div>
     </div>
     <div class="j-nav-container">
-      
-      
       <div class="j-navbar-brand">
         <a href="">
           <img src="{% static "img/logo2@.png" %}" alt="logo-top">
         </a>
       </div>
-
       <div class="j-nav-items">
         <div class="j-nav-item">
           <a href="#">STERUN</a>
@@ -95,8 +96,14 @@
           <a href="#">Message</a>
         </div>
       </div>
-      <div><img class="main-img" src="{% static "img/runner-shoes-b.jpg" %}" alt="main-img"></div>
-      <div class="rights"><p>© JOOL CO., LTD. All Rights Reserved.</p></div>
+      <div>
+        <img class="main-img"
+             src="{% static "img/runner-shoes-b.jpg" %}"
+             alt="main-img">
+      </div>
+      <div class="rights">
+        <p>© JOOL CO., LTD. All Rights Reserved.</p>
+      </div>
     </div>
   </body>
 </html>

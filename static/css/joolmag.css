@@ -47,6 +47,22 @@ a {
     overflow-x: auto;
 }
 
+.login-page {
+    display: flex;
+    justify-content: center;
+    height:100%;
+    background-color:var(--jblue);
+    margin: 0;
+    padding: 0;
+    overflow-y:auto;
+    overflow-x: auto;
+}
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .centeritem{
     display:flex;
     align-items: center;

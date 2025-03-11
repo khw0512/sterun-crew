@@ -1,18 +1,49 @@
-{% block content %}
-
-<h1>로그인</h1>
-<form method="post" action="{% url 'users:login' %}">
-  {% csrf_token %}
-  {% include 'users/form_errors.html' %}
-  <div>
-    <label>사용자 ID</label>
-    <input type="text" name="username" id="username">
-  </div>
-  <div>
-    <label>비밀번호</label>
-    <input type="text" name="password" id="password">
-  </div>
-  <button type="submit">로그인</button>
-</form>
-
-{% endblock %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="sterun" />
+    <meta name="keywords" content="sterun" />
+    <title>JOOL ART</title>
+    <link rel="shortcut icon" href="#" />
+    <!-- FONT -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Tektur:wght@500;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap");
+    </style>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css"
+          rel="stylesheet">
+    <!-- CSS only -->
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/joolmag.css' %}" />
+    <!--google icon-->
+    <script src="https://kit.fontawesome.com/2f3227cf14.js"
+            crossorigin="anonymous"></script>
+    <!--js-->
+    <script defer src ="{% static 'js/main.js' %}"></script>
+  </head>
+  <body class="login-page">
+    <div class="login-container">
+      <div>로그인</div>
+      <div>
+        <form method="post" action="{% url 'users:login' %}">
+          {% csrf_token %}
+          {% include "users/form_errors.html" %}
+          <div>
+            <label>사용자 ID</label>
+            <input type="text" name="username" id="username">
+          </div>
+          <div>
+            <label>비밀번호</label>
+            <input type="text" name="password" id="password">
+          </div>
+          <button type="submit">로그인</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
