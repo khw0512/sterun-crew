@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="sterun" />
-    <meta name="keywords" content="sterun" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="sterun"/>
+    <meta name="keywords" content="sterun"/>
     <title>JOOL ART</title>
-    <link rel="shortcut icon" href="#" />
+    <link rel="shortcut icon" href="#"/>
     <!-- FONT -->
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Tektur:wght@500;600&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap");
     </style>
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css"
-          rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
     <!-- CSS only -->
-    <link rel="stylesheet"
-          type="text/css"
-          href="{% static 'css/joolmag.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/joolmag.css' %}"/>
     <!--google icon-->
-    <script src="https://kit.fontawesome.com/2f3227cf14.js"
-            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2f3227cf14.js" crossorigin="anonymous"></script>
     <!--js-->
-    <script defer src ="{% static 'js/main.js' %}"></script>
+    <script defer="defer" src="{% static 'js/main.js' %}"></script>
   </head>
+
   <body class="login-page">
     <div class="login-container">
-      <div>로그인</div>
+      <div class="login-page-top-margin"></div>
+      <div class="j-navbar-brand">
+        <a href="{% url 'index' %}">
+          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="auto," width="auto">
+        </a>
+      </div>
       <div>
         <form method="post" action="{% url 'users:login' %}">
           {% csrf_token %}
           {% include "users/form_errors.html" %}
           <div>
-            <label>사용자 ID</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" class="id" placeholder="아이디">
           </div>
           <div>
-            <label>비밀번호</label>
-            <input type="text" name="password" id="password">
+            <input type="text" name="password" id="password" class="pw" placeholder="비밀번호">
           </div>
-          <button type="submit">로그인</button>
+          <button type="submit" class="login-submit">로그인</button>
+          <a href="{% url 'users:signup' %}">
+            <span class="signup-btn">회원가입</span></a>
         </form>
       </div>
     </div>
   </body>
+
 </html>

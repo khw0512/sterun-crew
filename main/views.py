@@ -6,3 +6,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from datetime import datetime
 from django.utils.dateformat import DateFormat
 import math
+
+
+def index(request):
+    return render(request,"index.html")

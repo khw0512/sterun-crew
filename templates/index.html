@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="sterun" />
-    <meta name="keywords" content="sterun" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="sterun"/>
+    <meta name="keywords" content="sterun"/>
     <title>JOOL ART</title>
-    <link rel="shortcut icon" href="#" />
+    <link rel="shortcut icon" href="#"/>
     <!-- FONT -->
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Tektur:wght@500;600&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap");
     </style>
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css"
-          rel="stylesheet">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
     <!-- CSS only -->
-    <link rel="stylesheet"
-          type="text/css"
-          href="{% static 'css/joolmag.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/joolmag.css' %}"/>
     <!--google icon-->
-    <script src="https://kit.fontawesome.com/2f3227cf14.js"
-            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2f3227cf14.js" crossorigin="anonymous"></script>
     <!--js-->
-    <script defer src ="{% static 'js/main.js' %}"></script>
+    <script defer="defer" src="{% static 'js/main.js' %}"></script>
   </head>
+
   <body class="mainbg">
     <div class="info-container">
       <div class="info-icons">
@@ -41,15 +39,12 @@
           <i class="fa-brands fa-youtube"></i>
         </div>
       </div>
-      <img id="menu-button"
-           data-menu="0"
-           onclick="open_close()"
-           src="{% static 'img/hamber_btn.svg' %}"
-           alt="hamb-btn">
+      <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto">
       <div class="login-box">
         {% if user.is_authenticated %}
           <a href="{% url 'users:logout' %}">
-            <div class="login-btn">{{ user.username }} 님 로그아웃</div>
+            <div class="login-btn">{{ user.username }}
+              님 로그아웃</div>
           </a>
         {% else %}
           <a href="{% url 'users:login' %}">
@@ -76,7 +71,7 @@
     <div class="j-nav-container">
       <div class="j-navbar-brand">
         <a href="">
-          <img src="{% static "img/logo2@.png" %}" alt="logo-top">
+          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="auto," width="auto">
         </a>
       </div>
       <div class="j-nav-items">
@@ -97,13 +92,12 @@
         </div>
       </div>
       <div>
-        <img class="main-img"
-             src="{% static "img/runner-shoes-b.jpg" %}"
-             alt="main-img">
+        <img class="main-img" src="{% static "img/runner-shoes-b.jpg" %}" alt="main-img" height="auto," width="auto">
       </div>
       <div class="rights">
         <p>© JOOL CO., LTD. All Rights Reserved.</p>
       </div>
     </div>
   </body>
+
 </html>
