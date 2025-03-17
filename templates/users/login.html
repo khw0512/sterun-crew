@@ -33,19 +33,23 @@
         </a>
       </div>
       <div>
-        <form method="post" action="{% url 'users:login' %}">
-          {% csrf_token %}
-          {% include "users/form_errors.html" %}
-          <div>
-            <input type="text" name="username" id="username" class="id" placeholder="아이디">
-          </div>
-          <div>
-            <input type="text" name="password" id="password" class="pw" placeholder="비밀번호">
-          </div>
-          <button type="submit" class="login-submit">로그인</button>
-          <a href="{% url 'users:signup' %}">
-            <span class="signup-btn">회원가입</span></a>
-        </form>
+        <div class="login-container">
+          <form method="post" action="{% url 'users:login' %}" class="form-container">
+            {% csrf_token %}
+            {% include "users/form_errors.html" %}
+            <div>
+              <input type="text" name="username" id="username" class="id" placeholder="아이디">
+            </div>
+            <div>
+              <input type="text" name="password" id="password" class="pw" placeholder="비밀번호">
+            </div>
+            <div>
+              <button type="submit" class="login-submit">로그인</button>
+            </div>
+            <a href="{% url 'users:signup' %}">
+              <span class="signup-btn">회원가입</span></a>
+          </form>
+        </div>
       </div>
     </div>
   </body>

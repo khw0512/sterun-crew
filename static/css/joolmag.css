@@ -88,6 +88,7 @@ a {
 }
 
 .login-submit{
+    cursor: pointer;
     background-color: var(--jlightgreen);
     font-size: 1.2rem;
     font-weight: 700;
@@ -102,8 +103,9 @@ a {
 }
 
 .signup-btn{
-    font-size: 0.9rem;
-    color:var(--jlightgreen);
+    cursor: pointer;
+    font-size: 0.8rem;
+    color:var(--white);
 }
 
 .centeritem{
@@ -286,6 +288,35 @@ a {
     }
     .login-box{
         display: none;
+    }
+    .login-container{
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-items: center;
+    }
+    .id{
+        width: 100%;
+    }
+    .pw{
+        width: 100%;
+    }
+    .login-submit{
+        width: 100%;
+    }
+    .form-container{
+        width: 70%;
+    }
+    .login-btn{
+        color:var(--jblue);
+        margin-left: 0px;
+        text-align: center;
+        border: 0px;
+        padding:20px;
+    }
+    .mobile-login-box{
+        display: flex;
+        flex-flow: row-reverse;
     }
     
 }
