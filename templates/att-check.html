@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="sterun"/>
+  <meta name="keywords" content="sterun"/>
+
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
     <title>JOOL ART</title>
-    <link rel="shortcut icon" href="#" />
+    <link rel="shortcut icon" href="#"/>
     <!-- FONT -->
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
@@ -17,19 +20,17 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/joolmag.css' %}"/>
 
     <!--google icon-->
-    <script
-      src="https://kit.fontawesome.com/2f3227cf14.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/2f3227cf14.js" crossorigin="anonymous"></script>
     <!--js-->
-    <script defer src ="{% static 'js/main.js' %}"></script>
+    <script defer="defer" src="{% static 'js/main.js' %}"></script>
 
   </head>
+
   <body class="mainbg">
-    
+
     <div class="info-container">
       <div>login</div>
-      <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/icon-hamburger.png' %}" alt="hamb-btn">
+      <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/icon-hamburger.png' %}" alt="hamb-btn" height="auto" width="auto">
       <div class="info-icons">
         <div class="info-icon">
           <i class="fa-regular fa-envelope"></i>
@@ -57,11 +58,10 @@
       </div>
     </div>
     <div class="j-nav-container">
-      
-      
+
       <div class="j-navbar-brand">
         <a href="">
-          <img src="{% static "img/logo2@.png" %}" alt="logo-top">
+          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="auto" width="auto">
         </a>
       </div>
 
@@ -82,8 +82,11 @@
           <a href="#">메시지</a>
         </div>
       </div>
-      <div><img class="main-img" src="{% static "img/runner-shoes-b.jpg" %}" alt="main-img"></div>
-      <div class="rights"><p>© JOOL CO., LTD. All Rights Reserved.</p></div>
+      <div><img class="main-img" src="{% static "img/runner-shoes-b.jpg" %}" alt="main-img" height="auto" width="auto"></div>
+      <div class="rights">
+        <p>© JOOL CO., LTD. All Rights Reserved.</p>
+      </div>
     </div>
   </body>
+
 </html>

@@ -8,6 +8,7 @@ urlpatterns = [
     path("", include("main.urls")),
     path('users/', include('users.urls')),
     path("attendance/", include("attendance.urls")),
+    path("runres/", include("record.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -40,6 +40,11 @@
         </div>
       </div>
       <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto">
+      <div class="sterun-logo-m">
+        <a href={% url "index" %}>
+          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="50px" ,="," width="auto">
+        </a>
+      </div>
       <div class="login-box">
         {% if user.is_authenticated %}
           <a href="{% url 'users:logout' %}">
@@ -56,6 +61,7 @@
         {% endif %}
       </div>
     </div>
+
     <div id="screen">
       <div id="mobile_menu">
         <div id="menu-bundle">
@@ -83,36 +89,51 @@
         </div>
       </div>
     </div>
-    <div class="j-nav-container">
-      <div class="j-navbar-brand">
-        <a href="">
-          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="auto," width="auto">
-        </a>
-      </div>
-      <div class="j-nav-items">
-        <div class="j-nav-item">
-          <a href="#">STERUN</a>
+    <div class="record-top-space"></div>
+    <div class="btn-container">
+      <a href="{% url 'runres:runres' %}">
+        <div class="upload-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" viewbox="0 0 24 24" width="24">
+            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+              <path d="m4.75 14.75v1.5c0 1.6569 1.34315 3 3 3h8.5c1.6569 0 3-1.3431 3-3v-1.5"/>
+              <path d="m12 14.25v-9.25"/>
+              <path d="m8.75 8.25 3.25-3.5 3.25 3.5"/>
+            </g>
+          </svg>
+          <div class="upload-txt">Record Upload</div>
         </div>
-        <div class="j-nav-item">
-          <a href="#">Attendance</a>
-        </div>
-        <div class="j-nav-item">
-          <a href="#">Article</a>
-        </div>
-        <div class="j-nav-item">
-          <a href="{% url 'runres:recordview' user.pk %}">Record</a>
-        </div>
-        <div class="j-nav-item">
-          <a href="#">Message</a>
-        </div>
-      </div>
-      <div>
-        <img class="main-img" src="{% static "img/runner-shoes-b.jpg" %}" alt="main-img" height="auto," width="auto">
-      </div>
-      <div class="rights">
-        <p>© JOOL CO., LTD. All Rights Reserved.</p>
-      </div>
+      </a>
     </div>
+
+    {% for data in context %}
+      <div class="record-list-container">
+        <div class="record-img">
+          <img src="/media/{{ data.image }}" alt="logo-top" height="100px" width="100px">
+        </div>
+        <div class="title-date">
+          <div class="record-date">{{ data.record_date | date:"Y-m-d" }}</div>
+          <div class="record-title">{{ data.title }}</div>
+          <div class="record-3">
+            <div class="record-distance">{{ data.distance }}
+              km</div>
+            {% if data.pace_s < 10 %}
+              <div class="record-pace">{{ data.pace_m }}' 0{{ data.pace_s }}''</div>
+            {% else %}
+              <div class="record-pace">{{ data.pace_m }}'
+                {{ data.pace_s }}''</div>
+            {% endif %}
+
+            {% if data.time_s < 10 %}
+              <div class="record-time">{{ data.time_m }}:0{{ data.time_s }}</div>
+            {% else %}
+              <div class="record-time">{{ data.time_m }}:{{ data.time_s }}</div>
+            {% endif %}
+
+          </div>
+          <div class="record-desc">{{ data.desc }}</div>
+        </div>
+      </div>
+    {% endfor %}
   </body>
 
 </html>

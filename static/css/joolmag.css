@@ -29,11 +29,17 @@ a {
     color: var(--text-color);
 }
 
+g {
+    stroke:var(--blue);
+}
+
 #menu-button{
+    display: none;
     visibility: hidden;
     width:40px;
     height:40px;
 }
+
 #screen{
     display: none;
 }
@@ -45,6 +51,11 @@ a {
     padding: 0;
     overflow-y:auto;
     overflow-x: auto;
+}
+
+.sterun-logo-m{
+    text-align: center;
+    padding: 20px 0 0 0;
 }
 
 .login-page {
@@ -242,6 +253,139 @@ a {
     padding: 10px 20px 10px 20px;
     margin-left: 20px;
 }
+.run-submit-title{
+    font-family: yangjin;
+    text-align: center;
+    margin: 30px 0 10px 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color:var(--jlightgreen);
+}
+.run-form-container{
+    width: 400px;
+    margin: auto;
+}
+.run-sm-form{
+    display: flex;
+    flex-direction: column;
+}
+.form-control{
+    margin:20px 0 20px 0;
+}
+.form-label{
+    width: 200px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    margin:0 0 5px 0;
+    color:var(--jlightgreen);
+}
+.run-input{
+    width: 100%;
+    height: 2rem;
+    border-radius: 5px;
+}
+.run-input-t{
+    width: 40px;
+    height: 2rem;
+    border-radius: 5px;
+}
+.ms-row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.ms-txt{
+    color:var(--jlightgreen);
+    margin:10px 10px 0 5px;
+    width: 20px;
+}
+#inputMessage{
+    height: 5rem;
+}
+.btn-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:20px 0 20px 0;
+}
+.submit-btn{
+    width: 150px;
+    height: 50px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:var(--blue);
+    font-size: 2rem;
+    font-weight: 300;
+    background-color: var(--jlightgreen);
+    border-radius: 5rem;
+    border: var(--white) 2px solid;
+}
+
+.record-top-space{
+    height: 50px;
+}
+
+.record-list-container{
+    display: flex;
+    width: 500px;
+    margin:auto;
+    border-bottom: var(--jlightgreen) solid 1px;
+    padding: 20px 0 20px 0;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.upload-btn{
+    display: flex;
+    background-color: var(--jlightgreen);
+    color:var(--blue);
+    font-weight: 700;
+    margin:auto;
+    padding:15px 20px 15px 20px;
+    border-radius: 5rem;
+    border: var(--jlightgreen) solid 2px;
+}
+.upload-txt{
+    font-family:'yangjin';
+    font-size: 1.2rem;
+    margin: auto;
+    margin-left: 5px;
+    font-weight: 300;
+}
+.record-img{
+    object-fit: contain;
+}
+.title-date{
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+.record-3{
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    padding-top:2rem;
+}
+.record-date{
+    font-size:0.7rem;
+    margin: 0 0 5px 0;
+}
+.record-title{
+    font-weight: 700;
+}
+.record-distance{
+    margin-right: 30px;
+}
+.record-pace{
+    margin-right: 30px;
+}
+.record-time{
+    margin-right: 30px;
+}
+.record-desc{
+    margin-top: 30px;
+}
 
 @media (max-width: 620px) {
     #screen{
@@ -267,11 +411,24 @@ a {
     }
     
     #menu-button {
+        display: block;
         visibility: visible;
         width:40px;
         height:40px;
         background-color: transparent;
         border: #00539C solid 1px;
+    }
+    
+    .info-icons{
+        display: none;
+    }
+
+    .sterun-logo-m{
+        display: none;
+    }
+
+    .run-form-container{
+        width:80%;
     }
     .submenu{
         height: 10vh;
