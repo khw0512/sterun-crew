@@ -367,6 +367,15 @@ g {
     flex-direction: row;
     padding-top:2rem;
 }
+.record-part-box{
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+}
+.distance-txt{
+    font-size:0.6rem;
+    margin-bottom: 5px;
+}
 .record-date{
     font-size:0.7rem;
     margin: 0 0 5px 0;
@@ -376,15 +385,40 @@ g {
 }
 .record-distance{
     margin-right: 30px;
+    font-weight: 700;
 }
 .record-pace{
     margin-right: 30px;
+    font-weight: 700;
 }
 .record-time{
     margin-right: 30px;
+    font-weight: 700;
 }
 .record-desc{
     margin-top: 30px;
+}
+
+.search-sum{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    margin: auto;
+    padding-bottom: 10px;
+    border-bottom: solid 2px var(--jlightgreen);
+}
+.distance-sum{
+    font-family: Yangjin;
+    font-size: 1.5rem;
+    color: var(--jlightgreen);
+}
+.month-filter{
+    border-radius: 0.5rem;
+    width: 100px;
+    color: var(--jlightgreen);
+    font-weight: 700;
+    background-color: transparent;
+    border: var(--jlightgreen) 2px dotted;
 }
 
 @media (max-width: 620px) {

@@ -100,7 +100,11 @@
           <a href="#">Article</a>
         </div>
         <div class="j-nav-item">
-          <a href="{% url 'runres:recordview' user.pk %}">Record</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'runres:recordview' user.pk %}">Record</a>
+          {% else %}
+            <a href="{% url 'users:login' %}">Record</a>
+          {% endif %}
         </div>
         <div class="j-nav-item">
           <a href="#">Message</a>

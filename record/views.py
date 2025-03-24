@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.db.models import Sum
 
 from record.models import Record
 
@@ -28,4 +29,7 @@ def recordres(request):
 
 def recordview(request,pk):
     record_list = Record.objects.filter(confirmed=True).filter(user=pk)
-    return render(request,"run_record.html", {"context":record_list})
+    distance_sum = Record.objects.filter(confirmed=True).filter(user=pk).aggregate(Sum('distance'))
+    print(distance_sum)
+
+    return render(request,"run_record.html", {"context":record_list, "distance_sum":distance_sum})
