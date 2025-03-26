@@ -33,6 +33,14 @@ g {
     stroke:var(--blue);
 }
 
+img{
+    object-fit: cover;
+}
+
+option{
+    color:black;
+}
+
 #menu-button{
     display: none;
     visibility: hidden;
@@ -353,7 +361,7 @@ g {
     font-weight: 300;
 }
 .record-img{
-    object-fit: contain;
+    object-fit: cover;
 }
 .title-date{
     color: var(--white);
@@ -414,11 +422,19 @@ g {
 }
 .month-filter{
     border-radius: 0.5rem;
-    width: 100px;
+    width: 50px;
     color: var(--jlightgreen);
     font-weight: 700;
     background-color: transparent;
     border: var(--jlightgreen) 2px dotted;
+}
+.filter-line{
+    display: flex;
+}
+.month-filter-txt{
+    padding-left: 5px;
+    font-size: 0.8rem;
+    color:var(--jlightgreen);
 }
 
 @media (max-width: 620px) {

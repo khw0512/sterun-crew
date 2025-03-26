@@ -28,8 +28,20 @@ def recordres(request):
         return render(request, "index.html")
 
 def recordview(request,pk):
-    record_list = Record.objects.filter(confirmed=True).filter(user=pk)
-    distance_sum = Record.objects.filter(confirmed=True).filter(user=pk).aggregate(Sum('distance'))
+
+    month = request.GET.get('month')
+
+    print(month)
+
+    if month =="0" or month == None:
+        month = "0"
+        record_list = Record.objects.filter(confirmed=True).filter(user=pk)
+        distance_sum = Record.objects.filter(confirmed=True).filter(user=pk).aggregate(Sum('distance'))
+        
+    else:
+        record_list = Record.objects.filter(confirmed=True).filter(user=pk).filter(record_date__month=month)
+        distance_sum = Record.objects.filter(confirmed=True).filter(user=pk).filter(record_date__month=month).aggregate(Sum('distance'))
+    
     print(distance_sum)
 
-    return render(request,"run_record.html", {"context":record_list, "distance_sum":distance_sum})
+    return render(request,"run_record.html", {"context":record_list, "distance_sum":distance_sum, "month": month})
