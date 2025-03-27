@@ -330,9 +330,13 @@ option{
 .record-top-space{
     height: 50px;
 }
+.main-info-1{
+    display: flex;
+}
 
 .record-list-container{
     display: flex;
+    flex-direction: column;
     width: 500px;
     margin:auto;
     border-bottom: var(--jlightgreen) solid 1px;
@@ -405,6 +409,7 @@ option{
 }
 .record-desc{
     margin-top: 30px;
+    color: var(--white);
 }
 
 .search-sum{
@@ -525,7 +530,29 @@ option{
         display: flex;
         flex-flow: row-reverse;
     }
-    
+
+    .search-sum{
+        width: 100%;
+        padding: 0 20px 10px 20px;
+    }
+
+    .record-list-container{
+        width: 90%;
+    }
+    .title-date{
+        padding-left: 10px;
+    }
+    .record-3{
+        display: flex;
+    }
+    .record-part-box{
+        width: auto;
+        font-size: 0.8rem;
+    }
+    .record-desc{
+        font-size: 0.7rem;
+        margin-top: 10px;
+    }
 }
 
 @media (max-width: 405px) {
@@ -537,5 +564,9 @@ option{
     .main-img{
         width: 100%;
     } 
+
+    .search-sum{
+        width: 80%;
+    }
     
 }

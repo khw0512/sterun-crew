@@ -135,39 +135,45 @@
     </div>
     {% for data in context %}
       <div class="record-list-container">
+        <div class="main-info-1">
         <div class="record-img">
           <img src="/media/{{ data.image }}" alt="logo-top" height="100px" width="100px">
         </div>
-        <div class="title-date">
-          <div class="record-date">{{ data.record_date | date:"Y-m-d" }}</div>
-          <div class="record-title">{{ data.title }}</div>
-          <div class="record-3">
-            <div class="record-part-box">
-              <div class="distance-txt">Distance</div>
-              <div class="record-distance">{{ data.distance }}
-                km</div>
+        
+          <div class="title-date">
+            <div class="record-date">{{ data.record_date | date:"Y-m-d" }}</div>
+            <div class="record-title">{{ data.title }}</div>
+            <div class="record-3">
+              <div class="record-part-box">
+                <div class="distance-txt">Distance</div>
+                <div class="record-distance">{{ data.distance }}
+                  km</div>
+              </div>
+              <div class="record-part-box">
+                <div class="distance-txt">Avg.pace</div>
+                {% if data.pace_s < 10 %}
+                  <div class="record-pace">{{ data.pace_m }}' 0{{ data.pace_s }}''</div>
+                {% else %}
+                  <div class="record-pace">{{ data.pace_m }}'
+                    {{ data.pace_s }}''</div>
+                {% endif %}
+              </div>
+              <div class="record-part-box">
+                <div class="distance-txt">Time</div>
+                {% if data.time_s < 10 %}
+                  <div class="record-time">{{ data.time_m }}:0{{ data.time_s }}</div>
+                {% else %}
+                  <div class="record-time">{{ data.time_m }}:{{ data.time_s }}</div>
+                {% endif %}
+              </div>
             </div>
-            <div class="record-part-box">
-              <div class="distance-txt">Avg.pace</div>
-              {% if data.pace_s < 10 %}
-                <div class="record-pace">{{ data.pace_m }}' 0{{ data.pace_s }}''</div>
-              {% else %}
-                <div class="record-pace">{{ data.pace_m }}'
-                  {{ data.pace_s }}''</div>
-              {% endif %}
-            </div>
-            <div class="record-part-box">
-              <div class="distance-txt">Time</div>
-              {% if data.time_s < 10 %}
-                <div class="record-time">{{ data.time_m }}:0{{ data.time_s }}</div>
-              {% else %}
-                <div class="record-time">{{ data.time_m }}:{{ data.time_s }}</div>
-              {% endif %}
-            </div>
+            
           </div>
-          <div class="record-desc">{{ data.desc }}</div>
+          
         </div>
+        <div class="record-desc">{{ data.desc }}</div>
       </div>
+      
     {% endfor %}
 
     <script>
