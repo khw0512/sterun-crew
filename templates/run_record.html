@@ -67,7 +67,11 @@
     <div id="screen">
       <div id="mobile_menu">
         <div id="menu-bundle">
-          <div class="submenu">운동화</div>
+          {% if user.is_authenticated %}
+            <a href="{% url 'runres:recordview' user.pk %}">
+              <div class="submenu">Record</div>
+            </a>
+          {% endif %}
           <div class="submenu">menu2</div>
           <div class="submenu">menu3</div>
           <div class="submenu">menu4</div>
@@ -136,10 +140,10 @@
     {% for data in context %}
       <div class="record-list-container">
         <div class="main-info-1">
-        <div class="record-img">
-          <img src="/media/{{ data.image }}" alt="logo-top" height="100px" width="100px">
-        </div>
-        
+          <div class="record-img">
+            <img src="/media/{{ data.image }}" alt="logo-top" height="100px" width="100px">
+          </div>
+
           <div class="title-date">
             <div class="record-date">{{ data.record_date | date:"Y-m-d" }}</div>
             <div class="record-title">{{ data.title }}</div>
@@ -167,13 +171,13 @@
                 {% endif %}
               </div>
             </div>
-            
+
           </div>
-          
+
         </div>
         <div class="record-desc">{{ data.desc }}</div>
       </div>
-      
+
     {% endfor %}
 
     <script>

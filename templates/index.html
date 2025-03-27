@@ -59,7 +59,11 @@
     <div id="screen">
       <div id="mobile_menu">
         <div id="menu-bundle">
-          <div class="submenu">운동화</div>
+          {% if user.is_authenticated %}
+            <a href="{% url 'runres:recordview' user.pk %}">
+              <div class="submenu">Record</div>
+            </a>
+          {% endif %}
           <div class="submenu">menu2</div>
           <div class="submenu">menu3</div>
           <div class="submenu">menu4</div>
