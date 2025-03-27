@@ -1,194 +1,90 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %}
-<html lang="en">
+{% block content %}
 
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="sterun"/>
-    <meta name="keywords" content="sterun"/>
-    <title>STERUN</title>
-    <link rel="shortcut icon" href="#"/>
-    <!-- FONT -->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Tektur:wght@500;600&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap");
-    </style>
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
-    <!-- CSS only -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/joolmag.css' %}"/>
-    <!--google icon-->
-    <script src="https://kit.fontawesome.com/2f3227cf14.js" crossorigin="anonymous"></script>
-    <!--js-->
-    <script defer="defer" src="{% static 'js/main.js' %}"></script>
-    <!--jquery-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  </head>
+  <div class="record-top-space"></div>
+  <div class="btn-container">
+    <a href="{% url 'runres:runres' %}">
+      <div class="upload-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" viewbox="0 0 24 24" width="24">
+          <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <path d="m4.75 14.75v1.5c0 1.6569 1.34315 3 3 3h8.5c1.6569 0 3-1.3431 3-3v-1.5"/>
+            <path d="m12 14.25v-9.25"/>
+            <path d="m8.75 8.25 3.25-3.5 3.25 3.5"/>
+          </g>
+        </svg>
+        <div class="upload-txt">Record Upload</div>
+      </div>
+    </a>
+  </div>
+  <div class="search-sum">
+    <div class="filter-line">
+      <div>
+        <form action="{% url 'runres:recordview' user.pk %}" method="get" id="month-filter">
+          <select name="month" class="month-filter">
+            <option value="0">all</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </form>
+      </div>
+      <div class="month-filter-txt">월</div>
+    </div>
+    <div class="distance-sum">합계
+      {{ distance_sum.distance__sum | floatformat:2 }}
+      km</div>
+  </div>
+  {% for data in context %}
+    <div class="record-list-container">
+      <div class="main-info-1">
+        <div class="record-img">
+          <img src="/media/{{ data.image }}" alt="logo-top" height="100px" width="100px">
+        </div>
 
-  <body class="mainbg">
-    <div class="info-container">
-      <div class="info-icons">
-        <div class="info-icon">
-          <i class="fa-regular fa-envelope"></i>
-        </div>
-        <div class="info-icon">
-          <a href="https://www.instagram.com/hyunwoo_05/" target="_blank">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-        </div>
-        <div class="info-icon">
-          <i class="fa-brands fa-youtube"></i>
-        </div>
-      </div>
-      <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto">
-      <div class="sterun-logo-m">
-        <a href={% url "index" %}>
-          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="50px" ,="," width="auto">
-        </a>
-      </div>
-      <div class="login-box">
-        {% if user.is_authenticated %}
-          <a href="{% url 'users:logout' %}">
-            <div class="login-btn">{{ user.username }}
-              님 로그아웃</div>
-          </a>
-        {% else %}
-          <a href="{% url 'users:login' %}">
-            <div class="login-btn">LOGIN</div>
-          </a>
-          <a href="{% url 'users:signup' %}">
-            <div class="login-btn">SIGN-UP</div>
-          </a>
-        {% endif %}
-      </div>
-    </div>
-
-    <div id="screen">
-      <div id="mobile_menu">
-        <div id="menu-bundle">
-          {% if user.is_authenticated %}
-            <a href="{% url 'runres:recordview' user.pk %}">
-              <div class="submenu">Record</div>
-            </a>
-          {% endif %}
-          <div class="submenu">menu2</div>
-          <div class="submenu">menu3</div>
-          <div class="submenu">menu4</div>
-          <div class="submenu">menu5</div>
-          <div class="submenu">menu6</div>
-          <div class="mobile-login-box">
-            {% if user.is_authenticated %}
-              <a href="{% url 'users:logout' %}">
-                <div class="login-btn">{{ user.username }}
-                  님 로그아웃</div>
-              </a>
-            {% else %}
-              <a href="{% url 'users:login' %}">
-                <div class="login-btn">LOGIN</div>
-              </a>
-              <a href="{% url 'users:signup' %}">
-                <div class="login-btn">SIGN-UP</div>
-              </a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="record-top-space"></div>
-    <div class="btn-container">
-      <a href="{% url 'runres:runres' %}">
-        <div class="upload-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" viewbox="0 0 24 24" width="24">
-            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-              <path d="m4.75 14.75v1.5c0 1.6569 1.34315 3 3 3h8.5c1.6569 0 3-1.3431 3-3v-1.5"/>
-              <path d="m12 14.25v-9.25"/>
-              <path d="m8.75 8.25 3.25-3.5 3.25 3.5"/>
-            </g>
-          </svg>
-          <div class="upload-txt">Record Upload</div>
-        </div>
-      </a>
-    </div>
-    <div class="search-sum">
-      <div class="filter-line">
-        <div>
-          <form action="{% url 'runres:recordview' user.pk %}" method="get" id="month-filter">
-            <select name="month" class="month-filter">
-              <option value="0">all</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-          </form>
-        </div>
-        <div class="month-filter-txt">월</div>
-      </div>
-      <div class="distance-sum">합계
-        {{ distance_sum.distance__sum | floatformat:2 }}
-        km</div>
-    </div>
-    {% for data in context %}
-      <div class="record-list-container">
-        <div class="main-info-1">
-          <div class="record-img">
-            <img src="/media/{{ data.image }}" alt="logo-top" height="100px" width="100px">
-          </div>
-
-          <div class="title-date">
-            <div class="record-date">{{ data.record_date | date:"Y-m-d" }}</div>
-            <div class="record-title">{{ data.title }}</div>
-            <div class="record-3">
-              <div class="record-part-box">
-                <div class="distance-txt">Distance</div>
-                <div class="record-distance">{{ data.distance }}
-                  km</div>
-              </div>
-              <div class="record-part-box">
-                <div class="distance-txt">Avg.pace</div>
-                {% if data.pace_s < 10 %}
-                  <div class="record-pace">{{ data.pace_m }}' 0{{ data.pace_s }}''</div>
-                {% else %}
-                  <div class="record-pace">{{ data.pace_m }}'
-                    {{ data.pace_s }}''</div>
-                {% endif %}
-              </div>
-              <div class="record-part-box">
-                <div class="distance-txt">Time</div>
-                {% if data.time_s < 10 %}
-                  <div class="record-time">{{ data.time_m }}:0{{ data.time_s }}</div>
-                {% else %}
-                  <div class="record-time">{{ data.time_m }}:{{ data.time_s }}</div>
-                {% endif %}
-              </div>
+        <div class="title-date">
+          <div class="record-date">{{ data.record_date | date:"Y-m-d" }}</div>
+          <div class="record-title">{{ data.title }}</div>
+          <div class="record-3">
+            <div class="record-part-box">
+              <div class="distance-txt">Distance</div>
+              <div class="record-distance">{{ data.distance }}
+                km</div>
             </div>
-
+            <div class="record-part-box">
+              <div class="distance-txt">Avg.pace</div>
+              {% if data.pace_s < 10 %}
+                <div class="record-pace">{{ data.pace_m }}' 0{{ data.pace_s }}''</div>
+              {% else %}
+                <div class="record-pace">{{ data.pace_m }}'
+                  {{ data.pace_s }}''</div>
+              {% endif %}
+            </div>
+            <div class="record-part-box">
+              <div class="distance-txt">Time</div>
+              {% if data.time_s < 10 %}
+                <div class="record-time">{{ data.time_m }}:0{{ data.time_s }}</div>
+              {% else %}
+                <div class="record-time">{{ data.time_m }}:{{ data.time_s }}</div>
+              {% endif %}
+            </div>
           </div>
 
         </div>
-        <div class="record-desc">{{ data.desc }}</div>
+
       </div>
+      <div class="record-desc">{{ data.desc }}</div>
+    </div>
 
-    {% endfor %}
+  {% endfor %}
 
-    <script>
-      $(document).ready(function () {
-        $("select[name=month]").val("{{ month }}");
-        $("select[name=month]").change(function () {
-          $("#month-filter").submit();
-        });
-      });
-    </script>
-
-  </body>
-
-</html>
+{% endblock content %}
