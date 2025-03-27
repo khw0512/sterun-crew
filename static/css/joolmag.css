@@ -53,12 +53,15 @@ option{
 }
 
 .mainbg {
-    height:100%;
     background-color:var(--jblue);
     margin: 0;
     padding: 0;
     overflow-y:auto;
     overflow-x: auto;
+}
+
+.main-view{
+    min-height: 90vh;
 }
 
 .sterun-logo-m{

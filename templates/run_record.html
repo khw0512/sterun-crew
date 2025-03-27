@@ -1,90 +1,90 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
-  <div class="record-top-space"></div>
-  <div class="btn-container">
-    <a href="{% url 'runres:runres' %}">
-      <div class="upload-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" viewbox="0 0 24 24" width="24">
-          <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-            <path d="m4.75 14.75v1.5c0 1.6569 1.34315 3 3 3h8.5c1.6569 0 3-1.3431 3-3v-1.5"/>
-            <path d="m12 14.25v-9.25"/>
-            <path d="m8.75 8.25 3.25-3.5 3.25 3.5"/>
-          </g>
-        </svg>
-        <div class="upload-txt">Record Upload</div>
-      </div>
-    </a>
-  </div>
-  <div class="search-sum">
-    <div class="filter-line">
-      <div>
-        <form action="{% url 'runres:recordview' user.pk %}" method="get" id="month-filter">
-          <select name="month" class="month-filter">
-            <option value="0">all</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-        </form>
-      </div>
-      <div class="month-filter-txt">월</div>
-    </div>
-    <div class="distance-sum">합계
-      {{ distance_sum.distance__sum | floatformat:2 }}
-      km</div>
-  </div>
-  {% for data in context %}
-    <div class="record-list-container">
-      <div class="main-info-1">
-        <div class="record-img">
-          <img src="/media/{{ data.image }}" alt="logo-top" height="100px" width="100px">
+  <div class="main-view">
+    <div class="record-top-space"></div>
+    <div class="btn-container">
+      <a href="{% url 'runres:runres' %}">
+        <div class="upload-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" viewbox="0 0 24 24" width="24">
+            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+              <path d="m4.75 14.75v1.5c0 1.6569 1.34315 3 3 3h8.5c1.6569 0 3-1.3431 3-3v-1.5"/>
+              <path d="m12 14.25v-9.25"/>
+              <path d="m8.75 8.25 3.25-3.5 3.25 3.5"/>
+            </g>
+          </svg>
+          <div class="upload-txt">Record Upload</div>
         </div>
+      </a>
+    </div>
+    <div class="search-sum">
+      <div class="filter-line">
+        <div>
+          <form action="{% url 'runres:recordview' user.pk %}" method="get" id="month-filter">
+            <select name="month" class="month-filter">
+              <option value="0">all</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </form>
+        </div>
+        <div class="month-filter-txt">월</div>
+      </div>
+      <div class="distance-sum">합계
+        {{ distance_sum.distance__sum | floatformat:2 }}
+        km</div>
+    </div>
+    {% for data in context %}
+      <div class="record-list-container">
+        <div class="main-info-1">
+          <div class="record-img">
+            <img src="/media/{{ data.image }}" alt="logo-top" height="100px" width="100px">
+          </div>
 
-        <div class="title-date">
-          <div class="record-date">{{ data.record_date | date:"Y-m-d" }}</div>
-          <div class="record-title">{{ data.title }}</div>
-          <div class="record-3">
-            <div class="record-part-box">
-              <div class="distance-txt">Distance</div>
-              <div class="record-distance">{{ data.distance }}
-                km</div>
+          <div class="title-date">
+            <div class="record-date">{{ data.record_date | date:"Y-m-d" }}</div>
+            <div class="record-title">{{ data.title }}</div>
+            <div class="record-3">
+              <div class="record-part-box">
+                <div class="distance-txt">Distance</div>
+                <div class="record-distance">{{ data.distance }}
+                  km</div>
+              </div>
+              <div class="record-part-box">
+                <div class="distance-txt">Avg.pace</div>
+                {% if data.pace_s < 10 %}
+                  <div class="record-pace">{{ data.pace_m }}' 0{{ data.pace_s }}''</div>
+                {% else %}
+                  <div class="record-pace">{{ data.pace_m }}'
+                    {{ data.pace_s }}''</div>
+                {% endif %}
+              </div>
+              <div class="record-part-box">
+                <div class="distance-txt">Time</div>
+                {% if data.time_s < 10 %}
+                  <div class="record-time">{{ data.time_m }}:0{{ data.time_s }}</div>
+                {% else %}
+                  <div class="record-time">{{ data.time_m }}:{{ data.time_s }}</div>
+                {% endif %}
+              </div>
             </div>
-            <div class="record-part-box">
-              <div class="distance-txt">Avg.pace</div>
-              {% if data.pace_s < 10 %}
-                <div class="record-pace">{{ data.pace_m }}' 0{{ data.pace_s }}''</div>
-              {% else %}
-                <div class="record-pace">{{ data.pace_m }}'
-                  {{ data.pace_s }}''</div>
-              {% endif %}
-            </div>
-            <div class="record-part-box">
-              <div class="distance-txt">Time</div>
-              {% if data.time_s < 10 %}
-                <div class="record-time">{{ data.time_m }}:0{{ data.time_s }}</div>
-              {% else %}
-                <div class="record-time">{{ data.time_m }}:{{ data.time_s }}</div>
-              {% endif %}
-            </div>
+
           </div>
 
         </div>
-
+        <div class="record-desc">{{ data.desc }}</div>
       </div>
-      <div class="record-desc">{{ data.desc }}</div>
-    </div>
 
-  {% endfor %}
-
+    {% endfor %}
+  </div>
 {% endblock content %}

@@ -98,12 +98,6 @@
 
     {% block content %}{% endblock content %}
 
-    <footer>
-      <div class="rights">
-        <p>© JOOL CO., LTD. All Rights Reserved.</p>
-      </div>
-    </footer>
-
     <script>
       $(document).ready(function () {
         $("select[name=month]").val("{{ month }}");
@@ -112,7 +106,11 @@
         });
       });
     </script>
-
+    <footer>
+      <div class="rights">
+        <p>© JOOL CO., LTD. All Rights Reserved.</p>
+      </div>
+    </footer>
   </body>
 
 </html>
