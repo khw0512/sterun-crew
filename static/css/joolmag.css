@@ -533,6 +533,10 @@ footer{
         display: none;
     }
 
+    .pagenation-container{
+        width: auto;
+    }
+
     .sterun-logo-m{
         height: 40px;
         padding:0;
@@ -593,7 +597,7 @@ footer{
     }
 
     .search-sum{
-        width: 100%;
+        width: 80%;
         padding: 0 20px 10px 20px;
     }
 
@@ -629,5 +633,7 @@ footer{
     .search-sum{
         width: 80%;
     }
-    
+    .pagenation-container{
+        width: 100px;
+    }
 }
