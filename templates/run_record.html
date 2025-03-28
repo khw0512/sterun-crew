@@ -48,6 +48,11 @@
       <div class="record-list-container">
         <div class="main-info-1">
           <div class="record-img">
+            {% if data.confirmed %}
+              <div class="cf-check">
+                <img src="{% static "img/check_circle_icon.png" %}" alt="logo" height="20px" width="auto">
+              </div>
+            {% endif %}
             <img src="/media/{{ data.image }}" alt="logo-top" height="100px" width="100px">
           </div>
 
@@ -86,5 +91,29 @@
       </div>
 
     {% endfor %}
+    <div class="pagenation-container">
+      {% if context.has_previous %}
+        <div class="page-item">
+          <a class="page-link" href="?p={{ context.previous_page_number }}">PRE</a>
+        </div>
+      {% else %}
+        <div class="page-item disabled">
+          <a class="page-link" href="#">PRE</a>
+        </div>
+      {% endif %}
+      <div class="page-num">
+        {{ context.number }}/{{ context.paginator.num_pages }}
+      </div>
+      {% if context.has_next %}
+        <div class="page-item">
+          <a class="page-link" href="?p={{ context.next_page_number }}">NEXT</a>
+        </div>
+      {% else %}
+        <div class="page-item disabled">
+          <a class="page-link" href="#">NEXT</a>
+        </div>
+      {% endif %}
+
+    </div>
   </div>
 {% endblock content %}

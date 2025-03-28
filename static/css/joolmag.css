@@ -2,6 +2,7 @@
 :root {
     --blue: #1e90ff;
     --white: #ffffff;
+    --black: black;
     --jblue: #00539C;
     --jlightgreen: #CDFF06;
 }
@@ -39,6 +40,39 @@ img{
 
 option{
     color:black;
+    text-align: center;
+}
+
+.pagenation-container{
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    text-align: center;
+    margin:auto;
+    padding-top:10px;
+}
+
+.page-item{
+    display:flex;
+    color:var(--jlightgreen);
+    padding: 0 10px 0 10px;
+    font-weight: 500;
+    font-size:0.9rem;
+    border: var(--jlightgreen) solid 1px;
+    border-radius: 5px;
+}
+
+.page-num{
+    color:var(--white);
+    font-size: 0.8rem;
+    padding: 0 10px 0 10px;
+}
+
+.disabled{
+    pointer-events: none;
+    color: grey;
+    opacity: 1;
+    border: var(--jlightgreen) solid 0px;
 }
 
 #menu-button{
@@ -62,6 +96,12 @@ option{
 
 .main-view{
     min-height: 90vh;
+}
+
+footer{
+    padding: 10px 0 10px 10px;
+    margin: 10px 0 10px 0;
+    border-top: grey solid 1px;
 }
 
 .sterun-logo-m{
@@ -140,7 +180,7 @@ option{
     display: flex;
     align-items: center;
     justify-content:space-between;
-    margin:20px 40px 0 20px;
+    margin:10px 40px 0 20px;
 }
 .info-icons{
     display: flex;
@@ -445,6 +485,14 @@ option{
     color:var(--jlightgreen);
 }
 
+.cf-check{
+    display: block;
+    position: absolute;
+    background-color: var(--jlightgreen);
+    padding:3px 3px 0 3px;
+
+}
+
 @media (max-width: 620px) {
     #screen{
         display: flex;
@@ -476,13 +524,23 @@ option{
         background-color: transparent;
         border: #00539C solid 1px;
     }
+
+    .info-container{
+        flex-direction: row-reverse;
+    }
     
     .info-icons{
         display: none;
     }
 
     .sterun-logo-m{
-        display: none;
+        height: 40px;
+        padding:0;
+    }
+    
+    .sterun-logo-m > a > img{
+        height: 40px;
+        padding:0;
     }
 
     .run-form-container{
