@@ -32,8 +32,6 @@ def recordview(request,pk):
 
     month = request.GET.get('month')
 
-    print(month)
-
     if month =="0" or month == None:
         month = "0"
         record_list = Record.objects.filter(user=pk)
@@ -46,7 +44,5 @@ def recordview(request,pk):
     page = int(request.GET.get('p', 1)) #없으면 1로 지정
     paginator = Paginator(record_list, 3) #한 페이지 당 몇개 씩 보여줄 지 지정
     record_list = paginator.get_page(page)
-
-    print(distance_sum)
 
     return render(request,"run_record.html", {"context":record_list, "distance_sum":distance_sum, "month": month})

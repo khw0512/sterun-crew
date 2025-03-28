@@ -43,6 +43,11 @@ option{
     text-align: center;
 }
 
+.err-msg{
+    color:pink;
+    margin: 5px 0 5px 0;
+}
+
 .pagenation-container{
     display: flex;
     justify-content: center;
@@ -151,6 +156,7 @@ footer{
 
 .login-submit{
     cursor: pointer;
+    color: var(--jblue);
     background-color: var(--jlightgreen);
     font-size: 1.2rem;
     font-weight: 700;

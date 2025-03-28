@@ -93,25 +93,25 @@
     {% endfor %}
     <div class="pagenation-container">
       {% if context.has_previous %}
-        <div class="page-item">
-          <a class="page-link" href="?p={{ context.previous_page_number }}">PRE</a>
-        </div>
+        <a class="page-link" href="?p={{ context.previous_page_number }}">
+          <div class="page-item">< </div>
+        </a>
       {% else %}
-        <div class="page-item disabled">
-          <a class="page-link" href="#">PRE</a>
-        </div>
+        <a class="page-link" href="#">
+          <div class="page-item disabled">< </div>
+        </a>
       {% endif %}
       <div class="page-num">
         {{ context.number }}/{{ context.paginator.num_pages }}
       </div>
       {% if context.has_next %}
-        <div class="page-item">
-          <a class="page-link" href="?p={{ context.next_page_number }}">NEXT</a>
-        </div>
+        <a class="page-link" href="?p={{ context.next_page_number }}">
+          <div class="page-item">></div>
+        </a>
       {% else %}
-        <div class="page-item disabled">
-          <a class="page-link" href="#">NEXT</a>
-        </div>
+        <a class="page-link" href="#">
+          <div class="page-item disabled">></div>
+        </a>
       {% endif %}
 
     </div>
