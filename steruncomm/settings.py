@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'users',
     'main',
     'record',
+    'bingo',
     'attendance',
     'shoes',
     'django.contrib.admin',
