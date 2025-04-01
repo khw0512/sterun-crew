@@ -17,7 +17,7 @@ def bingo(request, pk):
 def create_bingo(request, pk):
     i = 1
     while i <= 25:
-        bingoitem = BingoItem.objects.filter(item_id = i)
+        bingoitem = BingoItem.objects.filter(item_id = i    )
         existing = BingoCheck.objects.filter(bingo_item = bingoitem[0]).exists()
         print(bingoitem)
         if not existing:
