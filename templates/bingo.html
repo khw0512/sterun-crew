@@ -5,45 +5,45 @@
   <div class="bingo-board">
     <div class="bingo-row">
       {% for item in bingo_item_1r %}
-        <div class="bingo-col" id="item{{ item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.item_id }}">
-          <label for="{{ item.item_id }}">{{ item.content }}
+        <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
+          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}">
+          <label for="{{ item.bingo_item.item_id }}">
             {{ item.bingo_item.content }}</label>
         </div>
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_2r %}
-        <div class="bingo-col" id="item{{ item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.item_id }}">
-          <label for="{{ item.item_id }}">{{ item.content }}
+        <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
+          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}">
+          <label for="{{ item.bingo_item.item_id }}">
             {{ item.bingo_item.content }}</label>
         </div>
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_3r %}
-        <div class="bingo-col" id="item{{ item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.item_id }}">
-          <label for="{{ item.item_id }}">{{ item.content }}
+        <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
+          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}">
+          <label for="{{ item.bingo_item.item_id }}">
             {{ item.bingo_item.content }}</label>
         </div>
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_4r %}
-        <div class="bingo-col" id="item{{ item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.item_id }}">
-          <label for="{{ item.item_id }}">{{ item.content }}
+        <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
+          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}">
+          <label for="{{ item.bingo_item.item_id }}">
             {{ item.bingo_item.content }}</label>
         </div>
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_5r %}
-        <div class="bingo-col" id="item{{ item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.item_id }}">
-          <label for="{{ item.item_id }}">{{ item.content }}
+        <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
+          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}">
+          <label for="{{ item.bingo_item.item_id }}">
             {{ item.bingo_item.content }}</label>
         </div>
       {% endfor %}
