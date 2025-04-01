@@ -101,7 +101,11 @@
           <a href="#">Attendance</a>
         </div>
         <div class="j-nav-item">
-          <a href="#">Article</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'bingo:bingo' user.pk %}">Bingo</a>
+          {% else %}
+            <a href="{% url 'users:login' %}">Bingo</a>
+          {% endif %}
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}
