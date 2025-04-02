@@ -517,6 +517,15 @@ footer{
     align-items: center;
     border: solid var(--white) 1px;
 }
+.bingo-img{
+    display: block;
+    position:absolute;
+    z-index: -1;
+}
+.bingo-stamp{
+    width: 100px;
+    height: 100px;
+}
 
 @media (max-width: 620px) {
     #screen{

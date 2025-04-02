@@ -2,49 +2,67 @@
 {% load static %}
 {% block content %}
 
+  {% csrf_token %}
+
   <div class="bingo-board">
     <div class="bingo-row">
       {% for item in bingo_item_1r %}
         <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}">
+          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
           <label for="{{ item.bingo_item.item_id }}">
             {{ item.bingo_item.content }}</label>
+          <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
+            <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+          </div>
         </div>
+
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_2r %}
         <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}">
+          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
           <label for="{{ item.bingo_item.item_id }}">
             {{ item.bingo_item.content }}</label>
+          <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
+            <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+          </div>
         </div>
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_3r %}
         <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}">
+          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
           <label for="{{ item.bingo_item.item_id }}">
             {{ item.bingo_item.content }}</label>
+          <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
+            <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+          </div>
         </div>
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_4r %}
         <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}">
+          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
           <label for="{{ item.bingo_item.item_id }}">
             {{ item.bingo_item.content }}</label>
+          <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
+            <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+          </div>
         </div>
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_5r %}
         <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}">
+          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
           <label for="{{ item.bingo_item.item_id }}">
             {{ item.bingo_item.content }}</label>
+          <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
+            <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+          </div>
         </div>
       {% endfor %}
     </div>
@@ -53,4 +71,50 @@
   <div>
     <a href="{% url 'bingo:create_bingo' user.pk %}">Create Bingo</a>
   </div>
+
+  {% csrf_token %}
+  <input type="hidden" id="csrf-token" value="{{ csrf_token }}">
+
+  <script>
+    for (let i = 1; i < 26; i++) {
+      const checkbox = document.getElementById(i);
+      const bingo_img = document.getElementById('bingo-img' + i)
+
+      if (checkbox.checked) {
+        bingo_img.style.display = 'block';
+      } else {
+        bingo_img.style.display = 'none';
+      }
+
+      const csrfToken = document
+        .getElementById('csrf-token')
+        .value;
+
+      checkbox.addEventListener('change', function () {
+        const bingoId = this.dataset.postId;
+        const isChecked = this.checked;
+
+        if (isChecked == false) {
+          bingo_img.style.display = 'none';
+        } else {
+          bingo_img.style.display = 'block';
+        }
+
+        fetch("/bingo/update-public-status/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrfToken
+          },
+          body: JSON.stringify({bingo_id: bingoId, is_checked: isChecked})
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log("업데이트 결과:", data);
+          })
+          .catch(err => console.error("에러:", err));
+      });
+    }
+  </script>
+
 {% endblock content %}
