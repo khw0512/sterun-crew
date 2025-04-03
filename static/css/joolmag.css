@@ -526,6 +526,16 @@ footer{
     width: 100px;
     height: 100px;
 }
+.create-bingo-btn{
+    color: var(--white);
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px 0 10px 0;
+    border: solid var(--white) 1px;
+    border-radius: 10px;
+    width: 150px;
+}
 
 @media (max-width: 620px) {
     #screen{
