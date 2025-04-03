@@ -4,6 +4,8 @@
 
   {% csrf_token %}
 
+  <div class="bingo-title">{{ user.username }}님의 빙고 :)</div>
+
   <div class="bingo-board">
     <div class="bingo-row">
       {% for item in bingo_item_1r %}
@@ -67,10 +69,11 @@
       {% endfor %}
     </div>
   </div>
-
-  <div class="create-bingo-btn">
-    <a href="{% url 'bingo:create_bingo' user.pk %}">Create Bingo</a>
-  </div>
+  {% if len != 5 %}
+    <a href="{% url 'bingo:create_bingo' user.pk %}">
+      <div class="create-bingo-btn">빙고 만들기</div>
+    </a>
+  {% endif %}
 
   {% csrf_token %}
   <input type="hidden" id="csrf-token" value="{{ csrf_token }}">
@@ -100,7 +103,7 @@
           bingo_img.style.display = 'block';
         }
 
-        fetch("/bingo/update-public-status/"+"{{ user_id }}", {
+        fetch("/bingo/update-public-status/" + "{{ user_id }}", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

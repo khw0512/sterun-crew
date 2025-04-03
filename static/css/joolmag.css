@@ -43,6 +43,23 @@ option{
     text-align: center;
 }
 
+input[type="checkbox" i] {
+    display: none;
+}
+
+.text-border {
+  z-index: 0;
+  position: relative;
+}
+.text-border::before {
+  z-index: -1;
+  content: attr(data-content);
+  position: absolute;
+  left: 0;
+  /* 글자 바깥쪽으로 나갔으면 하는 테두리 크기의 두 배 */
+  -webkit-text-stroke: var(--jlightgreen);
+}
+
 .err-msg{
     color:pink;
     margin: 5px 0 5px 0;
@@ -498,11 +515,19 @@ footer{
     padding:3px 3px 0 3px;
 
 }
-
+.bingo-title{
+    color: var(--white);
+    font-family: leeseoyun;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin:auto;
+    margin-top:50px;
+}
 .bingo-board{
     display: flex;
     flex-direction: column;
-    margin-top:100px;
+    margin: 30px 0 30px 0;
 }
 .bingo-row{
     display: flex;
@@ -517,6 +542,7 @@ footer{
     align-items: center;
     border: solid var(--white) 1px;
     color: var(--black);
+    font-weight: 700;
 }
 
 .bingo-img{
@@ -529,6 +555,8 @@ footer{
     height: 100px;
 }
 .create-bingo-btn{
+    font-family: LeeSeoyun;
+    font-size: 1.2rem;
     color: var(--white);
     text-align: center;
     margin: auto;
@@ -536,8 +564,9 @@ footer{
     padding: 10px 0 10px 0;
     border: solid var(--white) 1px;
     border-radius: 10px;
-    width: 150px;
+    width: 130px;
 }
+
 
 @media (max-width: 620px) {
     #screen{

@@ -14,8 +14,8 @@ def bingo(request, pk):
     bingo_item_3r = BingoCheck.objects.select_related("bingo_item").filter(user=pk).filter(bingo_item__row=3)
     bingo_item_4r = BingoCheck.objects.select_related("bingo_item").filter(user=pk).filter(bingo_item__row=4)
     bingo_item_5r = BingoCheck.objects.select_related("bingo_item").filter(user=pk).filter(bingo_item__row=5)
-    print(bingo_item_1r)
-    return render(request,"bingo.html",{"bingo_item_1r":bingo_item_1r, "bingo_item_2r":bingo_item_2r, "bingo_item_3r":bingo_item_3r, "bingo_item_4r":bingo_item_4r, "bingo_item_5r":bingo_item_5r, "user_id":pk})
+    lenof5l = len(bingo_item_5r)
+    return render(request,"bingo.html",{"bingo_item_1r":bingo_item_1r, "bingo_item_2r":bingo_item_2r, "bingo_item_3r":bingo_item_3r, "bingo_item_4r":bingo_item_4r, "bingo_item_5r":bingo_item_5r, "user_id":pk, "len":lenof5l})
 
 def create_bingo(request, pk):
     i = 1
