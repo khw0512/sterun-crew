@@ -100,7 +100,7 @@
           bingo_img.style.display = 'block';
         }
 
-        fetch("/bingo/update-public-status/", {
+        fetch("/bingo/update-public-status/"+"{{ user_id }}", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
