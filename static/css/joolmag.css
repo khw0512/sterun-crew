@@ -516,7 +516,9 @@ footer{
     justify-content: center;
     align-items: center;
     border: solid var(--white) 1px;
+    color: var(--black);
 }
+
 .bingo-img{
     display: block;
     position:absolute;
@@ -666,6 +668,7 @@ footer{
         width: 60px;
         height: 60px;
         font-size: 0.6rem;
+        color:var(--white);
     }
     .bingo-img{
         width: 60px;
