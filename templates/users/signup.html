@@ -1,52 +1,65 @@
-{% block content %}
-  <div>
-    <div class="tfre_login-form">
-      <h2>Sign Up:</h2>
-      <div class="error_message tfre_message"></div>
-      <form class="tfre_login"
-            method="post"
-            enctype="multipart/form-data"
-            id="tfre_custom-login-form"
-            action="{% url "users:signup" %}">
-        {% csrf_token %}
-        {% include "users/form_errors.html" %}
-        <div class="container">
-          <div class="form-group">
-            <label for="username">User Name:</label>
-            <input type="text"
-                   name="username"
-                   id="username"
-                   placeholder="user name"
-                   value="{{ form.username.value|default_if_none:'' }}">
-          </div>
-          <div class="form-group">
-            <label for="username">E-Mail:</label>
-            <input type="text"
-                   name="email"
-                   id="email"
-                   placeholder="Email"
-                   value="{{ form.email.value|default_if_none:'' }}">
-          </div>
-          <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password"
-                   name="password1"
-                   id="password"
-                   placeholder="Your password"
-                   value="{{ form.password.value|default_if_none:'' }}">
-          </div>
-          <div class="form-group">
-            <label for="password">Password Check:</label>
-            <input type="password"
-                   name="password2"
-                   id="password2"
-                   placeholder="Your password"
-                   value="{{ form.password2.value|default_if_none:'' }}">
-          </div>
-          <input type="hidden" name="action" value="tfre_login_ajax">
-          <button type="submit">Sign Up</button>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="description" content="sterun"/>
+    <meta name="keywords" content="sterun"/>
+    <title>JOOL ART</title>
+    <link rel="shortcut icon" href="#"/>
+    <!-- FONT -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Tektur:wght@500;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap");
+    </style>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <!-- CSS only -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/joolmag.css' %}"/>
+    <!--google icon-->
+    <script src="https://kit.fontawesome.com/2f3227cf14.js" crossorigin="anonymous"></script>
+    <!--js-->
+    <script defer="defer" src="{% static 'js/main.js' %}"></script>
+  </head>
+
+  <body class="login-page">
+    <div class="login-container">
+      <div class="login-page-top-margin"></div>
+      <div class="j-navbar-brand">
+        <a href="{% url 'index' %}">
+          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="auto," width="auto">
+        </a>
+      </div>
+      <div>
+        <div class="login-container">
+          <form method="post" action="{% url 'users:signup' %}" class="form-container">
+            {% csrf_token %}
+            {% include "users/form_errors.html" %}
+            <div class="container">
+              <div>
+                <input type="text" name="username" id="username" class="id" placeholder="사용자 아이디디" value="{{ form.username.value|default_if_none:'' }}">
+              </div>
+              <div>
+                <input type="text" name="email" id="email" class="id" placeholder="사용자 이메일" value="{{ form.email.value|default_if_none:'' }}">
+              </div>
+              <div>
+                <input type="password" name="password1" id="password" class="pw" placeholder="비밀번호" value="{{ form.password.value|default_if_none:'' }}">
+              </div>
+              <div>
+                <input type="password" name="password2" id="password2" class="pw" placeholder="비밀번호 재확인" value="{{ form.password2.value|default_if_none:'' }}">
+              </div>
+              <div>
+                <button type="submit" class="login-submit">로그인</button>
+              </div>
+            </div>
+            <a href="{% url 'users:signup' %}">
+              <span class="signup-btn">회원가입</span></a>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
-  </div>
-{% endblock content %}
+  </body>
+
+</html>
