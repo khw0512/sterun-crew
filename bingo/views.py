@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.db.models import Sum
 from django.core.paginator import Paginator
 from django.http import JsonResponse
@@ -56,3 +56,22 @@ def update_public_status(request,pk):
             return JsonResponse({"status": "error", "message": "Post not found"}, status=404)
 
     return JsonResponse({"error": "Invalid request"}, status=400)
+
+def bingoupdate(request,pk):
+
+    bingoitem = BingoItem.objects.all()
+    
+    return render(request, "bingo_res.html", {"bingoitem":bingoitem})
+
+def bingores(request, pk):
+
+    if request.method == "POST":
+        items = BingoItem.objects.all()
+
+        i=1
+        while i < 26:
+            BingoItem.objects.filter(item_id=i).update(content=request.POST.get("content"+str(i)))
+            i+=1
+        return render(request, "index.html")
+    else:
+        return render(request, "index.html")

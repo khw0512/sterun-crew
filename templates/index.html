@@ -69,7 +69,11 @@
               <div class="submenu">Bingo</div>
             </a>
           {% endif %}
-          <div class="submenu">menu3</div>
+          {% if user.is_staff %}
+            <a href="{% url 'bingo:bingoupdate' user.pk %}">
+              <div class="submenu">Admin</div>
+            </a>
+          {% endif %}
           <div class="submenu">menu4</div>
           <div class="submenu">menu5</div>
           <div class="submenu">menu6</div>
@@ -118,9 +122,11 @@
             <a href="{% url 'users:login' %}">Record</a>
           {% endif %}
         </div>
-        <div class="j-nav-item">
-          <a href="#">Message</a>
-        </div>
+        {% if user.is_staff %}
+          <div class="j-nav-item">
+            <a href="{% url 'bingo:bingoupdate' user.pk %}">Admin</a>
+          </div>
+        {% endif %}
       </div>
       <div>
         <img class="main-img" src="{% static "img/runner-shoes-b.jpg" %}" alt="main-img" height="auto," width="auto">

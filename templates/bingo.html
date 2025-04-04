@@ -9,63 +9,68 @@
   <div class="bingo-board">
     <div class="bingo-row">
       {% for item in bingo_item_1r %}
-        <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
-          <label for="{{ item.bingo_item.item_id }}">
-            {{ item.bingo_item.content }}</label>
-          <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
-            <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+        <label for="{{ item.bingo_item.item_id }}">
+          <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
+            <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
+            {{ item.bingo_item.content }}
+            <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
+              <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+            </div>
           </div>
-        </div>
+        </label>
 
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_2r %}
-        <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
-          <label for="{{ item.bingo_item.item_id }}">
-            {{ item.bingo_item.content }}</label>
-          <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
-            <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+        <label for="{{ item.bingo_item.item_id }}">
+          <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
+            <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
+            {{ item.bingo_item.content }}
+            <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
+              <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+            </div>
           </div>
-        </div>
+        </label>
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_3r %}
-        <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
-          <label for="{{ item.bingo_item.item_id }}">
-            {{ item.bingo_item.content }}</label>
-          <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
-            <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+        <label for="{{ item.bingo_item.item_id }}">
+          <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
+            <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
+            {{ item.bingo_item.content }}
+            <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
+              <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+            </div>
           </div>
-        </div>
+        </label>
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_4r %}
-        <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
-          <label for="{{ item.bingo_item.item_id }}">
-            {{ item.bingo_item.content }}</label>
-          <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
-            <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+        <label for="{{ item.bingo_item.item_id }}">
+          <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
+            <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
+            {{ item.bingo_item.content }}
+            <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
+              <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+            </div>
           </div>
-        </div>
+        </label>
       {% endfor %}
     </div>
     <div class="bingo-row">
       {% for item in bingo_item_5r %}
-        <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
-          <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
-          <label for="{{ item.bingo_item.item_id }}">
-            {{ item.bingo_item.content }}</label>
-          <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
-            <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+        <label for="{{ item.bingo_item.item_id }}">
+          <div class="bingo-col" id="item{{ item.bingo_item.item_id }}">
+            <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
+            {{ item.bingo_item.content }}
+            <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
+              <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+            </div>
           </div>
-        </div>
+        </label>
       {% endfor %}
     </div>
   </div>
