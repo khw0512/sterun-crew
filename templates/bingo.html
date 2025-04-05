@@ -91,20 +91,20 @@
           .sendDefault({
             objectType: 'feed',
             content: {
-              title: "test",
-              description: "test",
+              title: "Running-Bingo",
+              description: "{{ user.username }}님의 빙고를 확인해 보세요:)",
               imageUrl: "https://sterun.kr/static/img/logo2%40.png",
               link: {
-                mobileWebUrl: "https://sterun.kr/bingo/1",
-                webUrl: "https://sterun.kr/bingo/1"
+                mobileWebUrl: "{% url 'bingo:bingoupdate' user.pk %}",
+                webUrl: "{% url 'bingo:bingoupdate' user.pk %}"
               }
             },
             buttons: [
               {
                 title: '보러가기',
                 link: {
-                  mobileWebUrl: "https://sterun.kr/bingo/1",
-                  webUrl: "https://sterun.kr/bingo/1"
+                  mobileWebUrl: "{% url 'bingo:bingoupdate' user.pk %}",
+                  webUrl: "{% url 'bingo:bingoupdate' user.pk %}"
                 }
               }
             ]
