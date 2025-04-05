@@ -42,6 +42,8 @@
       </div>
       <div class="distance-sum">합계
         {{ distance_sum.distance__sum | floatformat:2 }}
+        |
+        {{ distance_sum_not.distance__sum | floatformat:2 }}
         km</div>
     </div>
     {% for data in context %}

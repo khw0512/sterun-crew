@@ -34,15 +34,17 @@ def recordview(request,pk):
 
     if month =="0" or month == None:
         month = "0"
-        record_list = Record.objects.filter(user=pk)
+        record_list = Record.objects.filter(user=pk).order_by('-record_date')
         distance_sum = Record.objects.filter(confirmed=True).filter(user=pk).aggregate(Sum('distance'))
+        distance_sum_not = Record.objects.filter(user=pk).aggregate(Sum('distance'))
         
     else:
         record_list = Record.objects.filter(user=pk).filter(record_date__month=month)
         distance_sum = Record.objects.filter(confirmed=True).filter(user=pk).filter(record_date__month=month).aggregate(Sum('distance'))
+        distance_sum_not = Record.objects.filter(user=pk).filter(record_date__month=month).aggregate(Sum('distance'))
     
     page = int(request.GET.get('p', 1)) #없으면 1로 지정
     paginator = Paginator(record_list, 3) #한 페이지 당 몇개 씩 보여줄 지 지정
     record_list = paginator.get_page(page)
 
-    return render(request,"run_record.html", {"context":record_list, "distance_sum":distance_sum, "month": month})
+    return render(request,"run_record.html", {"context":record_list, "distance_sum":distance_sum, "month": month, "distance_sum_not":distance_sum_not})
