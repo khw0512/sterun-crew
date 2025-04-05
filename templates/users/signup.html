@@ -38,24 +38,34 @@
             {% csrf_token %}
             {% include "users/form_errors.html" %}
             <div class="container">
-              <div>
-                <input type="text" name="username" id="username" class="id" placeholder="사용자 아이디디" value="{{ form.username.value|default_if_none:'' }}">
+              <div class="signup-row">
+                <div class="signup-box">아이디</div>
+                <div class="w100">
+                  <input type="text" name="username" id="username" class="signup-input" placeholder="사용자 아이디디">
+                </div>
+              </div>
+              <div class="signup-row">
+                <div class="signup-box">이메일</div>
+                <div class="w100">
+                  <input type="text" name="email" id="email" class="signup-input" placeholder="사용자 이메일">
+                </div>
+              </div>
+              <div class="signup-row">
+                <div class="signup-box">비밀번호</div>
+                <div class="w100">
+                  <input type="password" name="password1" id="password" class="signup-input" placeholder="비밀번호">
+                </div>
+              </div>
+              <div class="signup-row">
+                <div class="signup-box">비밀번호 확인</div>
+                <div class="w100">
+                  <input type="password" name="password2" id="password2" class="signup-input" placeholder="비밀번호 재확인">
+                </div>
               </div>
               <div>
-                <input type="text" name="email" id="email" class="id" placeholder="사용자 이메일" value="{{ form.email.value|default_if_none:'' }}">
-              </div>
-              <div>
-                <input type="password" name="password1" id="password" class="pw" placeholder="비밀번호" value="{{ form.password.value|default_if_none:'' }}">
-              </div>
-              <div>
-                <input type="password" name="password2" id="password2" class="pw" placeholder="비밀번호 재확인" value="{{ form.password2.value|default_if_none:'' }}">
-              </div>
-              <div>
-                <button type="submit" class="login-submit">로그인</button>
+                <button type="submit" class="login-submit">회원가입</button>
               </div>
             </div>
-            <a href="{% url 'users:signup' %}">
-              <span class="signup-btn">회원가입</span></a>
           </form>
         </div>
       </div>
