@@ -4,7 +4,7 @@
 
   {% csrf_token %}
 
-  <div class="bingo-title">{{ user.username }}님의 빙고 :)</div>
+  <div class="bingo-title">{{ user_name }}님의 빙고 :)</div>
 
   <div class="bingo-board">
     <div class="bingo-row">
@@ -95,16 +95,16 @@
               description: "{{ user.username }}님의 빙고를 확인해 보세요:)",
               imageUrl: "https://sterun.kr/static/img/logo2%40.png",
               link: {
-                mobileWebUrl: "https://sterun.kr/bingo/" + "user.pk",
-                webUrl: "https://sterun.kr/bingo/" + "user.pk"
+                mobileWebUrl: "https://sterun.kr/bingo/" + "{{ user.pk }}",
+                webUrl: "https://sterun.kr/bingo/" + "{{ user.pk }}"
               }
             },
             buttons: [
               {
                 title: '보러가기',
                 link: {
-                  mobileWebUrl: "https://sterun.kr/bingo/" + "user.pk",
-                  webUrl: "https://sterun.kr/bingo/" + "user.pk"
+                  mobileWebUrl: "https://sterun.kr/bingo/" + "{{ user.pk }}",
+                  webUrl: "https://sterun.kr/bingo/" + "{{ user.pk }}"
                 }
               }
             ]

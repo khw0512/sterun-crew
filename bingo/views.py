@@ -9,13 +9,15 @@ from bingo.models import *
 from record.models import Record
 
 def bingo(request, pk):
+    user = get_object_or_404(user, pk=pk)
+    user_name = user.username  # 또는 user.id, user.email 등 원하는 필드
     bingo_item_1r = BingoCheck.objects.select_related("bingo_item").filter(user=pk).filter(bingo_item__row=1)
     bingo_item_2r = BingoCheck.objects.select_related("bingo_item").filter(user=pk).filter(bingo_item__row=2)
     bingo_item_3r = BingoCheck.objects.select_related("bingo_item").filter(user=pk).filter(bingo_item__row=3)
     bingo_item_4r = BingoCheck.objects.select_related("bingo_item").filter(user=pk).filter(bingo_item__row=4)
     bingo_item_5r = BingoCheck.objects.select_related("bingo_item").filter(user=pk).filter(bingo_item__row=5)
     lenof5l = len(bingo_item_5r)
-    return render(request,"bingo.html",{"bingo_item_1r":bingo_item_1r, "bingo_item_2r":bingo_item_2r, "bingo_item_3r":bingo_item_3r, "bingo_item_4r":bingo_item_4r, "bingo_item_5r":bingo_item_5r, "user_id":pk, "len":lenof5l})
+    return render(request,"bingo.html",{"bingo_item_1r":bingo_item_1r, "bingo_item_2r":bingo_item_2r, "bingo_item_3r":bingo_item_3r, "bingo_item_4r":bingo_item_4r, "bingo_item_5r":bingo_item_5r, "user_id":pk, "len":lenof5l,"user_name":user_name })
 
 def create_bingo(request, pk):
     i = 1
