@@ -24,6 +24,10 @@
     <script defer="defer" src="{% static 'js/main.js' %}"></script>
     <!--jquery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.5.0/kakao.min.js" crossorigin="anonymous"></script>
+    <script>
+      Kakao.init('b1937e5c9e32d1c6b3aae0983529600b');
+    </script>
   </head>
 
   <body class="mainbg">
@@ -77,10 +81,14 @@
               <div class="submenu">Bingo</div>
             </a>
           {% endif %}
-          <div class="submenu">menu3</div>
-          <div class="submenu">menu4</div>
-          <div class="submenu">menu5</div>
-          <div class="submenu">menu6</div>
+          {% if user.is_authenticated %}
+            <a href="{% url 'bingo:bingoupdate' user.pk %}">
+              <div class="submenu">Admin</div>
+            </a>
+          {% endif %}
+          <div class="submenu">menu</div>
+          <div class="submenu">menu</div>
+          <div class="submenu">menu</div>
           <div class="mobile-login-box">
             {% if user.is_authenticated %}
               <a href="{% url 'users:logout' %}">

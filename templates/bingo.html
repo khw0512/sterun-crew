@@ -80,6 +80,38 @@
     </a>
   {% endif %}
 
+  <button id="kakao-share-btn">카카오톡으로 공유</button>
+
+  <script>
+    document
+      .getElementById('kakao-share-btn')
+      .addEventListener('click', function () {
+        Kakao
+          .Share
+          .sendDefault({
+            objectType: 'feed',
+            content: {
+              title: "test",
+              description: "test",
+              imageUrl: "https://sterun.kr/static/img/logo2%40.png",
+              link: {
+                mobileWebUrl: "https://sterun.kr/bingo/1",
+                webUrl: "https://sterun.kr/bingo/1"
+              }
+            },
+            buttons: [
+              {
+                title: '보러가기',
+                link: {
+                  mobileWebUrl: "https://sterun.kr/bingo/1",
+                  webUrl: "https://sterun.kr/bingo/1"
+                }
+              }
+            ]
+          });
+      });
+  </script>
+
   {% csrf_token %}
   <input type="hidden" id="csrf-token" value="{{ csrf_token }}">
 
