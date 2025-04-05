@@ -67,7 +67,7 @@
             <input type="checkbox" name="item" id="{{ item.bingo_item.item_id }}" data-post-id="{{ item.bingo_item.item_id }}" {% if item.completed %} checked="checked" {% endif %}>
             {{ item.bingo_item.content }}
             <div id="bingo-img{{ item.bingo_item.item_id }}" class="bingo-img">
-              <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto," width="auto">
+              <img class="bingo-stamp" src="{% static "img/x-symbol_btn.svg" %}" alt="main-img" height="auto" width="auto">
             </div>
           </div>
         </label>
@@ -81,11 +81,16 @@
   {% endif %}
   {% if user_matched == 1 %}
     <div class="go-center">
-      <button id="kakao-share-btn">카카오톡 공유</button>
+      <button id="kakao-share-btn" class="kakao-btn">
+        <img src="{% static "img/KakaoTalk_logo.png" %}" alt="" height="30px" width="30px">
+        <div>카카오톡 공유</div>
+      </button>
     </div>
   {% else %}
     <div class="hidden">
-      <button id="kakao-share-btn">카카오톡 공유</button>
+      <button id="kakao-share-btn">
+        <div>카카오톡 공유</div>
+      </button>
     </div>
   {% endif %}
 
