@@ -50,6 +50,9 @@ input[type="checkbox" i] {
 .w100{
     width: 100%;
 }
+.hidden{
+    display: none;
+}
 .text-border {
   z-index: 0;
   position: relative;
@@ -597,6 +600,24 @@ footer{
     border: solid var(--white) 1px;
     border-radius: 10px;
     width: 130px;
+}
+.go-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#kakao-share-btn{
+    background-color: var(--jlightgreen);
+    font-family: LeeSeoyun;
+    font-size: 1.2rem;
+    color: var(--black);
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px 0 10px 0;
+    border: solid var(--white) 1px;
+    border-radius: 10px;
+    width: 160px;
 }
 
 
