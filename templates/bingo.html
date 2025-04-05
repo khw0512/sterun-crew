@@ -95,16 +95,16 @@
               description: "{{ user.username }}님의 빙고를 확인해 보세요:)",
               imageUrl: "https://sterun.kr/static/img/logo2%40.png",
               link: {
-                mobileWebUrl: "{% url 'bingo:bingo' user.pk %}",
-                webUrl: "{% url 'bingo:bingo' user.pk %}"
+                mobileWebUrl: "https://sterun.kr/bingo/" + "user.pk",
+                webUrl: "https://sterun.kr/bingo/" + "user.pk"
               }
             },
             buttons: [
               {
                 title: '보러가기',
                 link: {
-                  mobileWebUrl: "{% url 'bingo:bingo' user.pk %}",
-                  webUrl: "{% url 'bingo:bingo' user.pk %}"
+                  mobileWebUrl: "https://sterun.kr/bingo/" + "user.pk",
+                  webUrl: "https://sterun.kr/bingo/" + "user.pk"
                 }
               }
             ]
