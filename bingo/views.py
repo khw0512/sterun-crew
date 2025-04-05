@@ -4,12 +4,13 @@ from django.core.paginator import Paginator
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
 
 from bingo.models import *
 from record.models import Record
 
 def bingo(request, pk):
-    user = get_object_or_404(user, pk=pk)
+    user = get_object_or_404(User, pk=pk)
     user_name = user.username  # 또는 user.id, user.email 등 원하는 필드
     bingo_item_1r = BingoCheck.objects.select_related("bingo_item").filter(user=pk).filter(bingo_item__row=1)
     bingo_item_2r = BingoCheck.objects.select_related("bingo_item").filter(user=pk).filter(bingo_item__row=2)
