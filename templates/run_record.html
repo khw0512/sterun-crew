@@ -95,7 +95,7 @@
     {% endfor %}
     <div class="pagenation-container">
       {% if context.has_previous %}
-        <a class="page-link" href="?p={{ context.previous_page_number }}">
+        <a class="page-link" href="?month={{ month }}&p={{ context.previous_page_number }}">
           <div class="page-item">< </div>
         </a>
       {% else %}
@@ -107,7 +107,7 @@
         {{ context.number }}/{{ context.paginator.num_pages }}
       </div>
       {% if context.has_next %}
-        <a class="page-link" href="?p={{ context.next_page_number }}">
+        <a class="page-link" href="?month={{ month }}&p={{ context.next_page_number }}">
           <div class="page-item">></div>
         </a>
       {% else %}
