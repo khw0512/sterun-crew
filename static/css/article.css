@@ -253,6 +253,7 @@ a {
 }
 
 .card-main-img {
+    object-fit:cover;
     width: 300px;
     height: 300px;
 }
@@ -431,4 +432,83 @@ a {
     width:50px;
     text-align: center;
     color: grey;
+}
+
+@media (max-width: 620px) {
+    .card{
+        flex-direction: row;
+        width: 90%;
+        height: auto;
+    }
+    .card-main-img{
+        object-fit:cover;
+        width: 100%;
+        height: auto;
+    }
+    .today_article_img{
+        width: 40%;
+    }
+    .todaytag{
+        padding: 5px;
+        font-size: 0.7rem;
+    }
+    .card-textsection{
+        width: 60%;
+    }
+    .card-content > p{
+        font-size: 0.7rem;
+        height: auto;
+        padding: 0 0 0 10px;
+    }
+    .article-box{
+        width: 90%;
+    }
+    .card-title{
+        font-size: 1rem;
+        margin: 5px 0 0 10px;
+    }
+    .card-img-artist{
+        font-size: 0.8rem;
+        margin: 5px 0 0 10px;
+    }
+    .card-music-artist{
+        font-size: 0.8rem;
+        margin: 0 0 0 10px;
+    }
+    .opt_src{
+        justify-content: space-around;
+        width: 100%;
+    }
+    .search{
+        width:200px;
+    }
+    .search-bar{
+        width: 100px;
+    }
+    .old-card-container{
+        width: auto;
+        margin: auto;
+        justify-content: center;
+    }
+    .old-card-art{
+        font-size: 0.7rem;
+        margin:0;
+    }
+    .old-card-music{
+        font-size: 0.7rem;
+        margin:0 0 5px 0;
+    }
+    .old-card-title{
+        font-size: 0.8rem;
+        margin:5px 0 5px 0;
+    }
+    .divider{
+        width: 95%;
+    }
+}
+
+@media (max-width: 300px) {
+    .today_article_img{
+        width: 50%;
+    }
 }
