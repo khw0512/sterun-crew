@@ -1,37 +1,10 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %}
-<html lang="ko">
-
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <meta name="description" content="sterun"/>
-    <meta name="keywords" content="sterun"/>
-    <title>STERUN</title>
-    <link rel="shortcut icon" href="#"/>
-    <!-- FONT -->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Tektur:wght@500;600&display=swap");
-      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap");
-    </style>
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
-    <!-- CSS only -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/joolmag.css' %}"/>
-    <!--google icon-->
-    <script src="https://kit.fontawesome.com/2f3227cf14.js" crossorigin="anonymous"></script>
-    <!--js-->
-    <script defer="defer" src="{% static 'js/main.js' %}"></script>
-  </head>
+{% block content %}
 
   {% if user.is_authenticated %}
 
     <body class="mainbg">
-      <div class="sterun-logo-m">
-        <a href={% url "index" %}>
-          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="50px" ,="," width="auto">
-        </a>
-      </div>
       <div class="run-submit-title">
         빙고 아이템 변경
       </div>
@@ -88,4 +61,4 @@
     </body>
   {% endif %}
 
-</html>
+{% endblock content %}
