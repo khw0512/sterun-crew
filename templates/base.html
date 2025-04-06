@@ -71,6 +71,12 @@
     <div id="screen">
       <div id="mobile_menu">
         <div id="menu-bundle">
+          <a href="{% url 'index' %}">
+            <div class="submenu">STERUN</div>
+          </a>
+          <a href="{% url 'article:index' %}">
+            <div class="submenu">Article</div>
+          </a>
           {% if user.is_authenticated %}
             <a href="{% url 'runres:recordview' user.pk %}">
               <div class="submenu">Record</div>
@@ -86,9 +92,7 @@
               <div class="submenu">Admin</div>
             </a>
           {% endif %}
-          <div class="submenu">menu</div>
-          <div class="submenu">menu</div>
-          <div class="submenu">menu</div>
+
           <div class="mobile-login-box">
             {% if user.is_authenticated %}
               <a href="{% url 'users:logout' %}">

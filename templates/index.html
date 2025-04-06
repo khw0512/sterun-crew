@@ -59,6 +59,9 @@
     <div id="screen">
       <div id="mobile_menu">
         <div id="menu-bundle">
+          <a href="{% url 'index' %}">
+            <div class="submenu">STERUN</div>
+          </a>
           {% if user.is_authenticated %}
             <a href="{% url 'runres:recordview' user.pk %}">
               <div class="submenu">Record</div>
@@ -69,16 +72,14 @@
               <div class="submenu">Bingo</div>
             </a>
           {% endif %}
+          <a href="{% url 'article:index' %}">
+            <div class="submenu">Article</div>
+          </a>
           {% if user.is_staff %}
             <a href="{% url 'bingo:bingoupdate' user.pk %}">
               <div class="submenu">Admin</div>
             </a>
           {% endif %}
-          <a href="{% url 'article:index' %}">
-            <div class="submenu">Article</div>
-          </a>
-          <div class="submenu">menu5</div>
-          <div class="submenu">menu6</div>
           <div class="mobile-login-box">
             {% if user.is_authenticated %}
               <a href="{% url 'users:logout' %}">
@@ -105,7 +106,7 @@
       </div>
       <div class="j-nav-items">
         <div class="j-nav-item">
-          <a href="#">STERUN</a>
+          <a href="{% url 'index' %}">STERUN</a>
         </div>
         <div class="j-nav-item">
           <a href="{% url 'article:index' %}">Article</a>
