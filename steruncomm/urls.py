@@ -10,6 +10,8 @@ urlpatterns = [
     path("attendance/", include("attendance.urls")),
     path("runres/", include("record.urls")),
     path("bingo/", include("bingo.urls")),
+    path("article/", include("article.urls")),
+    path('summernote/', include('django_summernote.urls')),  # summernote URL 추가
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

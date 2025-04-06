@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'bingo',
     'attendance',
     'shoes',
+    'article',
+    'django_summernote',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,6 +128,11 @@ LOGOUT_REDIRECT_URL = "/"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# CKEditor 업로드 경로
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_IMAGE_BACKEND = "pillow"
 
 # E-MAIL
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
