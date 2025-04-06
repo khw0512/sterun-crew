@@ -511,6 +511,10 @@ a {
     .article-main{
         width:100%;
     }
+    .article-main-img{
+        padding:20px;
+        object-fit: cover;
+    }
     .article_history{
         width:90%;
     }
