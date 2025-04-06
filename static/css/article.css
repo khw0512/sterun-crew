@@ -505,6 +505,24 @@ a {
     .divider{
         width: 95%;
     }
+    .article-box{
+        width: 100%;
+    }
+    .article-main{
+        width:100%;
+    }
+    .article_history{
+        width:90%;
+    }
+    .title{
+        padding:0 0 0 10px;
+    }
+    .article-meta{
+        padding:0 0 0 10px;
+    }
+    .j-nav-items{
+        display: block;
+    }
 }
 
 @media (max-width: 300px) {
