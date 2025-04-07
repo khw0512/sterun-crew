@@ -25,3 +25,11 @@ function myClose() {
 window.addEventListener("click", (e) => {
   if (e.target.className !== "submenu" && e.target !== btn) myClose();
 });
+
+window.onload = function(){
+  setTimeout(function(){
+  document.querySelector('.loading').style.visibility = 'hidden'
+  document.querySelector('.loading').style.opacity = 0
+  },300);
+};
+
