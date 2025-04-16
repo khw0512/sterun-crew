@@ -81,7 +81,7 @@
     </div>
 
     <div class="articles-box">
-      <a class="card" href={% url "article:article" recentatc.id %}>
+      <a class="card fade-in-up-3" href={% url "article:article" recentatc.id %}>
         <div class="todaytag">LATEST</div>
         <div class="today_article_img"><img class="card-main-img" src="/media/{{ recentatc.main_img }}" alt="" height="auto" width="auto"/>
         </div>
@@ -121,7 +121,7 @@
         </div>
       </div>
       <div class="divider"></div>
-      <div class="old-card-container" id="old-card-container">
+      <div class="old-card-container fade-in-up-5" id="old-card-container">
         {% block content %}
           {% for article in oldatc %}
             <div class="old-card-section">

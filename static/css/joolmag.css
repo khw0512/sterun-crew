@@ -673,6 +673,48 @@ footer{
     padding-left: 5px;
 }
 
+.fade-in-up-short {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.3s; 
+}
+
+.fade-in-up-short2 {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.5s; 
+}
+
+.fade-in-up-3 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.fade-in-up-5 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+.fade-in-up-7 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.7s;
+}
+
+@keyframes fadeInUp {
+    to {
+    opacity: 1;
+    transform: translateY(0);
+    }
+}
+
 
 @media (max-width: 620px) {
     #screen{

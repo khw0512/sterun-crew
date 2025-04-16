@@ -48,7 +48,7 @@
     </div>
     {% for data in context %}
       <div class="record-list-container">
-        <div class="main-info-1">
+        <div class="main-info-1 fade-in-up-short">
           <div class="record-img">
             {% if data.confirmed %}
               <div class="cf-check">
@@ -89,7 +89,7 @@
           </div>
 
         </div>
-        <div class="record-desc">{{ data.desc }}</div>
+        <div class="record-desc fade-in-up-short2">{{ data.desc }}</div>
       </div>
 
     {% endfor %}
