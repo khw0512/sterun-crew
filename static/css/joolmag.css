@@ -63,9 +63,9 @@ input[type="checkbox" i] {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.75);
-  }
+}
   
-  .spinner {
+.spinner {
     position: relative;
     top: 50%;
     margin: auto;
@@ -75,15 +75,17 @@ input[type="checkbox" i] {
     border: 3px solid rgba(0, 0, 0, 0.1);
     border-top-color: #03114E;
     animation: spin 0.6s infinite linear;
-  }
+}
   
-  @keyframes spin {
+@keyframes spin {
     to {
       transform: rotate(360deg);
     }
-  }
+}
 
-  .loading{
+
+
+.loading{
     position: absolute;
     top: 0;
     left: 0;
@@ -98,6 +100,37 @@ input[type="checkbox" i] {
     transition: all 0.3s;
 }
 
+.spinner-login {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--jblue);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.loading-login .spinner-login {
+    display: inline-block;
+}
+
+.btn-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: leeseoyun;
+}
+
+.loading-login .btn-text {
+    visibility: hidden;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
 
 .text-border {
@@ -226,6 +259,7 @@ footer{
 
 .login-submit{
     cursor: pointer;
+    position: relative;
     color: var(--jblue);
     background-color: var(--jlightgreen);
     font-size: 1.2rem;
