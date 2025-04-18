@@ -68,6 +68,6 @@ def recordUpdate(request,pk,record_id):
         record.time_s = request.POST["time_s"]
         record.desc = request.POST["desc"]
         record.save()
-        return render(request, "index.html")
+        return redirect("runres:recordview",pk=pk)
     else:
-        return render(request, "index.html")
+        return redirect("runres:recordview",pk=pk)

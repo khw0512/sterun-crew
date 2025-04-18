@@ -47,6 +47,11 @@ input[type="checkbox" i] {
     display: none;
 }
 
+button{
+    cursor: pointer;
+    position: relative;
+}
+
 .w100{
     width: 100%;
 }
@@ -119,9 +124,10 @@ input[type="checkbox" i] {
 }
 
 .btn-text {
-    font-size: 1.3rem;
-    font-weight: 700;
-    font-family: leeseoyun;
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin:auto;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .loading-login .btn-text {
