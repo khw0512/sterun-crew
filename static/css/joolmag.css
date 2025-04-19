@@ -826,10 +826,16 @@ footer{
     
     #menu-button {
         display: block;
+        margin-left: 20px;
         visibility: visible;
         width:40px;
         height:40px;
         background-color: transparent;
+    }
+
+    .info-container{
+        margin:0px;
+        margin: 20px 20px 0 0;
     }
 
     .login-sns-box{
@@ -845,13 +851,18 @@ footer{
     }
 
     .sterun-logo-m{
-        height: 40px;
-        padding:0;
+        padding:0 0 0 20px;
+    }
+    .run-submit-title{
+        width: 90%;
+    }
+    .run-submit-prev{
+        width: 80%;
     }
     
     .sterun-logo-m > a > img{
         height: 40px;
-        padding:0;
+        padding:10px 0 0 0;
     }
 
     .run-form-container{
