@@ -10,3 +10,9 @@ import math
 
 def index(request):
     return render(request,"index.html")
+
+def go_back_view(request):
+    # 이전 페이지 URL을 가져오되, 없을 경우 홈('/')으로 리디렉트
+    previous_url = request.META.get('HTTP_REFERER', '/')
+    print(previous_url)
+    return redirect(previous_url)

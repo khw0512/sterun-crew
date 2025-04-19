@@ -18,6 +18,7 @@
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
     <!-- CSS only -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/joolmag.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/article.css' %}"/>
     <!--google icon-->
     <script src="https://kit.fontawesome.com/2f3227cf14.js" crossorigin="anonymous"></script>
     <!--js-->
@@ -29,47 +30,75 @@
       Kakao.init('b1937e5c9e32d1c6b3aae0983529600b');
     </script>
   </head>
-<!-- 로딩 화면 -->
-<!--div class="loading">
-  <img src="{% static 'img/Blocks@1x-1.0s-200px-200px.gif' %}" alt="">
-</div-->
-<!-- 로딩화면 끝 -->
+  <!-- 로딩 화면 -->
+  <!--div class="loading"> <img src="{% static 'img/Blocks@1x-1.0s-200px-200px.gif' %}" alt=""> </div-->
+  <!-- 로딩화면 끝 -->
 
   <body class="mainbg">
     <div class="info-container">
-      <div class="info-icons">
-        <div class="info-icon">
-          <i class="fa-regular fa-envelope"></i>
-        </div>
-        <div class="info-icon">
-          <a href="https://www.instagram.com/hyunwoo_05/" target="_blank">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-        </div>
-        <div class="info-icon">
-          <i class="fa-brands fa-youtube"></i>
-        </div>
-      </div>
-      <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto">
       <div class="sterun-logo-m">
         <a href={% url "index" %}>
           <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="50px" ,="," width="auto">
         </a>
       </div>
-      <div class="login-box">
-        {% if user.is_authenticated %}
-          <a href="{% url 'users:logout' %}">
-            <div class="login-btn">{{ user.username }}
-              님 로그아웃</div>
-          </a>
-        {% else %}
-          <a href="{% url 'users:login' %}">
-            <div class="login-btn">LOGIN</div>
-          </a>
-          <a href="{% url 'users:signup' %}">
-            <div class="login-btn">SIGN-UP</div>
-          </a>
+      <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto">
+      <div class="j-nav-items fade-in-up-short">
+        <div class="j-nav-item">
+          <a href="{% url 'index' %}">STERUN</a>
+        </div>
+        <div class="j-nav-item">
+          <a href="{% url 'article:index' %}">Article</a>
+        </div>
+        <div class="j-nav-item">
+          {% if user.is_authenticated %}
+            <a href="{% url 'bingo:bingo' user.pk %}">Bingo</a>
+          {% else %}
+            <a href="{% url 'users:login' %}">Bingo</a>
+          {% endif %}
+        </div>
+        <div class="j-nav-item">
+          {% if user.is_authenticated %}
+            <a href="{% url 'runres:recordview' user.pk %}">Record</a>
+          {% else %}
+            <a href="{% url 'users:login' %}">Record</a>
+          {% endif %}
+        </div>
+        {% if user.is_staff %}
+          <div class="j-nav-item">
+            <a href="{% url 'bingo:bingoupdate' user.pk %}">Admin</a>
+          </div>
         {% endif %}
+      </div>
+      <div class="login-sns-box">
+
+        <div class="info-icons">
+          <div class="info-icon">
+            <i class="fa-regular fa-envelope"></i>
+          </div>
+          <div class="info-icon">
+            <a href="https://www.instagram.com/hyunwoo_05/" target="_blank">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+          <div class="info-icon">
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+        </div>
+        <div class="login-box">
+          {% if user.is_authenticated %}
+            <a href="{% url 'users:logout' %}">
+              <div class="login-btn">{{ user.username }}
+                님 로그아웃</div>
+            </a>
+          {% else %}
+            <a href="{% url 'users:login' %}">
+              <div class="login-btn">LOGIN</div>
+            </a>
+            <a href="{% url 'users:signup' %}">
+              <div class="login-btn">SIGN-UP</div>
+            </a>
+          {% endif %}
+        </div>
       </div>
     </div>
 
@@ -126,8 +155,6 @@
           $("#month-filter").submit();
         });
       });
-
- 
     </script>
     <footer>
       <div class="rights">

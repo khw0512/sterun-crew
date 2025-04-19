@@ -33,7 +33,13 @@
         </a>
       </div>
       <div class="run-submit-title">
-        기록 업로드하기
+        <div class="sub-title">기록 업로드하기</div>
+      </div>
+      <div class="run-submit-prev">
+        <div class="previous-btn">
+          <a href="{{ request.META.HTTP_REFERER }}">
+            <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
+        </div>
       </div>
       <div class="run-form-container">
         <form method="post" id="contactForm" class="run-sm-form" name="contactForm" action="{% url 'runres:recordres' %}" enctype="multipart/form-data">
@@ -51,7 +57,7 @@
             </div><input class="run-input" type="file" name="image" required="" id="image">
           </div>
           <div class="form-control">
-            <div class="form-label">Distance
+            <div class="form-label">Distance (Km)
             </div><input class="run-input" type="text" name="distance" required="" id="distance">
           </div>
           <div class="form-control">
