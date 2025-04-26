@@ -39,7 +39,7 @@ def recordview(request,pk):
         distance_sum_not = Record.objects.filter(user=pk).aggregate(Sum('distance'))
         
     else:
-        record_list = Record.objects.filter(user=pk).filter(record_date__month=month)
+        record_list = Record.objects.filter(user=pk).filter(record_date__month=month).order_by('-record_date')
         distance_sum = Record.objects.filter(confirmed=True).filter(user=pk).filter(record_date__month=month).aggregate(Sum('distance'))
         distance_sum_not = Record.objects.filter(user=pk).filter(record_date__month=month).aggregate(Sum('distance'))
     
