@@ -6,7 +6,12 @@
   <div class="article-top-space"></div>
   <div class="article-box">
     <div class="article-main">
-      <div class="top-line"></div>
+      <div class="article-submit-prev">
+        <div class="article-previous-btn">
+          <a href="{% url "article:index" %}">
+            <img src="{% static "img/circle-arrow-down-b.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
+        </div>
+      </div>
       <div class="title">
         {{ article.title }}
       </div>

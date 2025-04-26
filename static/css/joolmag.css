@@ -480,6 +480,12 @@ footer{
     margin:auto;
     color:var(--jlightgreen);
 }
+.article-submit-prev{
+        width: 100%;
+}
+.article-previous-btn{
+    margin-top: 1rem;
+}
 .sub-title{
     font-family: yangjin;
     font-size: 1.5rem;
@@ -858,6 +864,12 @@ footer{
     }
     .run-submit-prev{
         width: 80%;
+    }
+    .article-submit-prev{
+        width: 100%;
+    }
+    .article-previous-btn{
+        margin-top: 1rem;
     }
     
     .sterun-logo-m > a > img{
