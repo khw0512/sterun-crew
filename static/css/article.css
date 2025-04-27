@@ -236,14 +236,17 @@
 
 .old-card-text {
     padding: 0 10px 0 10px;
+    word-wrap: break-word;
 }
 
 .old-card-art {
     margin: 5px 0 0 0;
+    font-size: 0.9rem;
 }
 
 .old-card-music {
-    margin: 5px 0 0 0;
+    margin: 5px 0 10px 0;
+    font-size: 0.9rem;
 }
 
 .old-card-title {
