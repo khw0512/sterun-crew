@@ -10,4 +10,6 @@ urlpatterns = [
     path('recordview/<str:pk>/', views.recordview, name='recordview'),
     path('recordUpdateView/<str:pk>/<str:record_id>', views.recordUpdateView, name='recordUpdateView'),
     path('recordUpdate/<str:pk>/<str:record_id>', views.recordUpdate, name='recordUpdate'),
+    path('recordrank/', views.recordRank, name="recordRank"),
+    path('recordCheck/', views.recordCheck, name="recordCheck"),
 ]

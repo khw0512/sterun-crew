@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <table border="1" class="record-check-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Title</th>
+        <th>Date</th>
+        <th>image</th>
+        <th>Distance</th>
+        <th>Pace</th>
+        <th>Time</th>
+        <th>Memo</th>
+        <th>Confirmed</th>
+        <th>OK!!</th>
+      </tr>
+    </thead>
+
+    {% for data in record %}
+      <tbody>
+        <tr>
+          <td>{{ data.record_id }}</td>
+          <td>{{ data.user }}</td>
+          <td>{{ data.title }}</td>
+          <td>{{ data.record_date }}</td>
+          <td>
+            <a href="{{ data.image.url }}" target="_blank">
+              <img src="/media/{{ data.image }}" alt="logo-top" height="100px" width="100px">
+            </a>
+          </td>
+          <td>{{ data.distance }}</td>
+          <td>{{ data.pace_m }}분
+            {{ data.pace_s }}초</td>
+          <td>{{ data.time_m }}분
+            {{ data.time_s }}초</td>
+          <td>{{ data.desc }}</td>
+          <td>{{ data.confirmed }}</td>
+          <td>
+            {% if data.confirmed == False %}
+              <button>OK</button>
+            {% else %}
+              <div>-</div>
+
+            {% endif %}
+
+          </td>
+        </tr>
+      </tbody>
+
+    {% endfor %}
+  </table>
+
+{% endblock content %}

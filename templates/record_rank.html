@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+  {% csrf_token %}
+  <div class="mainbg">
+    {% if month == "0" or month == None %}
+      <div class="run-submit-title">Distance Rank</div>
+    {% else %}
+      <div class="run-submit-title">{{ month }}월 달리기 거리 랭킹</div>
+    {% endif %}
+
+    <div class="rank-container">
+      <div class="filter-line">
+        <div>
+          <form action="{% url 'runres:recordRank' %}" method="get" id="month-filter">
+            <select name="month" class="month-filter">
+              <option value="0">all</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </form>
+        </div>
+        <div class="month-filter-txt">월</div>
+      </div>
+      <div class="space-h30"></div>
+      {% for record in record_rank %}
+        <div class="record-row">
+          {{ forloop.counter }}.
+          {{ record.user__username }}
+          :
+          {{ record.record_sum | floatformat:2 }}
+          km
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

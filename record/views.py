@@ -71,3 +71,16 @@ def recordUpdate(request,pk,record_id):
         return redirect("runres:recordview",pk=pk)
     else:
         return redirect("runres:recordview",pk=pk)
+    
+
+def recordRank(request):
+    month = request.GET.get('month')
+    if month =="0" or month == None:
+        record = Record.objects.filter(confirmed=True).values('user__username').annotate(record_sum=Sum('distance')).order_by('-record_sum')
+    else:
+        record = Record.objects.filter(confirmed=True).filter(record_date__month=month).values('user__username').annotate(record_sum=Sum('distance')).order_by('-record_sum')
+    return render(request, "record_rank.html", {"record_rank":record, "month":month})
+
+def recordCheck(request):
+    record = Record.objects.order_by('-record_date')
+    return render(request,"record_check.html", {"record":record})

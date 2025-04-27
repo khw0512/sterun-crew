@@ -70,6 +70,9 @@ button{
 .w100{
     width: 100%;
 }
+.space-h30{
+    height: 30px;
+}
 .hidden{
     display: none;
 }
@@ -561,6 +564,17 @@ footer{
     border-radius: 5rem;
     border: var(--white) 2px solid;
 }
+.check-submit-btn{
+    width: 200px;
+    height: 50px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:var(--blue);
+    font-size: 1.3rem;
+    font-weight: 300;
+    background-color: var(--jlightgreen);
+    border-radius: 5rem;
+    border: var(--white) 2px solid;
+}
 
 .record-top-space{
     height: 50px;
@@ -797,6 +811,27 @@ footer{
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out forwards;
     animation-delay: 0.7s;
+}
+
+.rank-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 500px;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.record-row{
+    color:var(--jlightgreen);
+    margin:5px 0 0 0;
+}
+
+.record-check-table{
+    color:var(--white);
+    font-size: 0.9rem;
+    width: 100%;
 }
 
 @keyframes fadeInUp {
