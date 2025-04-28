@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-  <table border="1" class="record-check-table">
+  <table class="record-check-table">
     <thead>
       <tr>
         <th>ID</th>
@@ -15,6 +15,7 @@
         <th>Memo</th>
         <th>Confirmed</th>
         <th>OK!!</th>
+        <th>Delete</th>
       </tr>
     </thead>
 
@@ -39,12 +40,22 @@
           <td>{{ data.confirmed }}</td>
           <td>
             {% if data.confirmed == False %}
-              <button>OK</button>
+              <form action="{% url 'runres:recordConfirm' data.record_id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="yes-btn">OK</button>
+              </form>
             {% else %}
-              <div>-</div>
-
+              <form action="{% url 'runres:recordReject' data.record_id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="no-btn">NO</button>
+              </form>
             {% endif %}
-
+          </td>
+          <td>
+            <form action="{% url 'runres:recordDelete' data.record_id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="yes-btn">Delete</button>
+            </form>
           </td>
         </tr>
       </tbody>

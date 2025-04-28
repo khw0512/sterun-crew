@@ -12,4 +12,7 @@ urlpatterns = [
     path('recordUpdate/<str:pk>/<str:record_id>', views.recordUpdate, name='recordUpdate'),
     path('recordrank/', views.recordRank, name="recordRank"),
     path('recordCheck/', views.recordCheck, name="recordCheck"),
+    path('recordConfirm/<str:id>', views.recordConfirm, name="recordConfirm"),
+    path('recordReject/<str:id>', views.recordReject, name="recordReject"),
+    path('recordDelete/<str:id>', views.recordDelete, name="recordDelete"),
 ]

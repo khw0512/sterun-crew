@@ -73,6 +73,11 @@ button{
 .space-h30{
     height: 30px;
 }
+.divider-line{
+    width: 100%;
+    border-top:var(--jlightgreen) 1px dotted;
+    margin: 10px 0 10px 0;
+}
 .hidden{
     display: none;
 }
@@ -822,8 +827,13 @@ footer{
     margin-top: 2rem;
     margin-bottom: 3rem;
 }
-
+.record-col{
+    display: flex;
+    flex-direction: column;
+}
 .record-row{
+    display: flex;
+    align-items: center;
     color:var(--jlightgreen);
     margin:5px 0 0 0;
 }
@@ -832,6 +842,26 @@ footer{
     color:var(--white);
     font-size: 0.9rem;
     width: 100%;
+    border: 1px solid var(--jlightgreen);
+    border-collapse: collapse;
+}
+th, td{
+    border: 1px solid var(--jlightgreen);
+    border-collapse: collapse;
+    padding-left: 5px;
+}
+
+.yes-btn{
+    color:var(--jblue);
+    background-color: var(--jlightgreen);
+    font-weight: 700;
+    padding: 10px 10px 10px 10px;
+}
+.no-btn{
+    color:var(--j-pink);
+    background-color: var(--white);
+    font-weight: 700;
+    padding: 10px 10px 10px 10px;
 }
 
 @keyframes fadeInUp {

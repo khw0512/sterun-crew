@@ -84,3 +84,24 @@ def recordRank(request):
 def recordCheck(request):
     record = Record.objects.order_by('-record_date')
     return render(request,"record_check.html", {"record":record})
+
+def recordConfirm(request,id):
+    if request.method == "POST":
+        record = Record.objects.get(record_id=id)
+        record.confirmed = True
+        record.save()
+    return redirect("runres:recordCheck")
+
+def recordReject(request,id):
+    if request.method == "POST":
+        record = Record.objects.get(record_id=id)
+        record.confirmed = False
+        record.save()
+    return redirect("runres:recordCheck")
+
+def recordDelete(request,id):
+    if request.method == "POST":
+        record = Record.objects.get(record_id=id)
+        record.confirmed = False
+        record.delete()
+    return redirect("runres:recordCheck")
