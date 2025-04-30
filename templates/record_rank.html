@@ -5,7 +5,7 @@
   {% csrf_token %}
 
   {% if month == "0" or month == None %}
-    <div class="run-submit-title">달리기 거리 랭킹킹</div>
+    <div class="run-submit-title">달리기 거리 랭킹</div>
   {% else %}
     <div class="run-submit-title">{{ month }}월 달리기 거리 랭킹</div>
   {% endif %}
@@ -61,8 +61,17 @@
             {{ record.record_sum | floatformat:2 }}
             km
           </div>
+        {% elif forloop.counter == 4 %}
+          <div class="space-h30"></div>
+          <div class="mg-left-10">
+            {{ forloop.counter }}.
+            {{ record.user__username }}
+            :
+            {{ record.record_sum | floatformat:2 }}
+            km
+          </div>
         {% else %}
-          <div class="record-row">
+          <div class="mg-left-10">
             {{ forloop.counter }}.
             {{ record.user__username }}
             :
