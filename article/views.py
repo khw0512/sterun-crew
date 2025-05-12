@@ -3,6 +3,7 @@ from django.http.response import HttpResponse, JsonResponse
 from django.core import serializers
 from django.db.models import Q
 from django.db.models import Max
+from datetime import datetime
 
 from article.models import *
 
@@ -82,3 +83,21 @@ def searchTitle(request):
 
     #dict = {'test': keyword}
     # return HttpResponse(json.dumps(dict), content_type='application/json')
+
+def articleRes(request):
+    return render(request, "collabo_article_res.html")
+
+def articleResFunc(request):
+    if request.method == "POST":
+        article = Article()
+        article.title = request.POST["title"]
+        article.title = request.POST["brand"]
+        article.title = request.POST["model"]
+        article.author = request.user
+        article.content = request.POST["content"]
+        article.main_img = request.FILES["image"]
+        article.pub_date = datetime.now()
+        article.save()
+        return render(request, "index.html")
+    else:
+        return render(request, "index.html")

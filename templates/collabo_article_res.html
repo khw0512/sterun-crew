@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="description" content="sterun"/>
+    <meta name="keywords" content="sterun"/>
+    <title>STERUN</title>
+    <link rel="shortcut icon" href="#"/>
+    <!-- FONT -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Tektur:wght@500;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap");
+    </style>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <!-- CSS only -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/joolmag.css' %}"/>
+    <!--google icon-->
+    <script src="https://kit.fontawesome.com/2f3227cf14.js" crossorigin="anonymous"></script>
+    <!--js-->
+    <script defer="defer" src="{% static 'js/main.js' %}"></script>
+    <!-- base.html 혹은 해당 페이지 상단 -->
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+
+  </head>
+
+  {% if user.is_authenticated %}
+
+    <body class="mainbg">
+      <div class="sterun-logo-m">
+        <a href={% url "index" %}>
+          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="50px" ,="," width="auto">
+        </a>
+      </div>
+      <div class="article-submit-title">
+        <div class="sub-title">글 쓰기기</div>
+      </div>
+      <div class="article-submit-prev">
+        <div class="previous-btn">
+          <a href="{{ request.META.HTTP_REFERER }}">
+            <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
+        </div>
+      </div>
+      <div class="article-form-container">
+        <form method="post" id="contactForm" class="run-sm-form" name="contactForm" action="{% url 'article:articleresfunc' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-control">
+            <div class="form-label">Title
+            </div><input class="run-input" id="title" name="title" type="text" required=""/>
+          </div>
+          <div class="form-control">
+            <div class="form-label">Brand
+            </div><input class="run-input" id="brand" name="brand" type="text" required=""/>
+          </div>
+          <div class="form-control">
+            <div class="form-label">Model
+            </div><input class="run-input" id="model" name="model" type="text" required=""/>
+          </div>
+          <div class="form-control">
+            <div class="form-label">Image
+            </div>
+            <input class="run-input" type="file" name="image" id="image">
+          </div>
+
+          <div class="form-control">
+            <div class="form-label">Description
+            </div>
+            <textarea id="summernote" name="content"></textarea>
+          </div>
+          <div class="btn-control">
+            <button type="submit" name="submit" id="loginBtn" class="submit-btn">
+              <p class="btn-text">Upload</p>
+              <span class="spinner-login"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <script>
+        $(document).ready(function () {
+          $('#summernote').summernote({height: 700, placeholder: '내용을 입력하세요'});
+        });
+        const btn = document.getElementById('loginBtn');
+        btn.addEventListener('click', () => {
+          btn
+            .classList
+            .add('loading-login');
+
+          // 로그인 처리 시뮬레이션 (예: 2초 후 완료)
+          setTimeout(() => {
+            btn
+              .classList
+              .remove('loading-login');
+          }, 20000);
+        });
+      </script>
+    </body>
+  {% else %}
+
+    <body class="login-page">
+      <div class="login-container">
+        <div class="login-page-top-margin"></div>
+        <div class="j-navbar-brand">
+          <a href="{% url 'index' %}">
+            <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="auto," width="auto">
+          </a>
+        </div>
+        <div>
+          <div class="login-container">
+            <form method="post" action="{% url 'users:login' %}" class="form-container">
+              {% csrf_token %}
+              {% include "users/form_errors.html" %}
+              <div>
+                <input type="text" name="username" id="username" class="id" placeholder="아이디">
+              </div>
+              <div>
+                <input type="text" name="password" id="password" class="pw" placeholder="비밀번호">
+              </div>
+              <div>
+                <button type="submit" class="login-submit" id="loginBtn">
+                  <p class="btn-text">LOGIN</p>
+                  <span class="spinner-login"></span>
+                </button>
+              </div>
+              <a href="{% url 'users:signup' %}">
+                <span class="signup-btn">회원가입</span></a>
+            </form>
+          </div>
+        </div>
+      </div>
+      <script>
+        const btn = document.getElementById('loginBtn');
+        btn.addEventListener('click', () => {
+          btn
+            .classList
+            .add('loading-login');
+
+          // 로그인 처리 시뮬레이션 (예: 2초 후 완료)
+          setTimeout(() => {
+            btn
+              .classList
+              .remove('loading-login');
+          }, 20000);
+        });
+      </script>
+    </body>
+  {% endif %}
+
+</html>

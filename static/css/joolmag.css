@@ -67,6 +67,11 @@ button{
     position: relative;
 }
 
+.note-editor.note-airframe .note-editing-area, .note-editor.note-frame .note-editing-area {
+    overflow: hidden;
+    background-color: var(--white) !important;
+}
+
 .w100{
     width: 100%;
 }
@@ -512,6 +517,24 @@ footer{
     font-size: 1rem;
     margin-top: 20px;
     margin-bottom: 10px;
+}
+.article-submit-title{
+    font-family: yangjin;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    width: 800px;
+    margin:auto;
+    margin-top: 20px;
+    color:var(--jlightgreen);
+}
+.article-submit-prev{
+    width: 800px;
+    margin: auto;
+}
+.article-form-container{
+    width: 800px;
+    margin: auto;
 }
 .run-form-container{
     width: 400px;
