@@ -37,4 +37,15 @@
       .innerHTML = "<p>" + date.getFullYear() + "년 " + (
     date.getMonth() + 1) + "월 " + date.getDate() + "일" + "</p>";
   </script>
+  <script>
+    // 페이지가 모두 로드되면 호출
+    window.addEventListener('load', function () {
+      const loader = document.getElementById('loader');
+      const content = document.getElementById('content');
+      // 로딩 화면 숨기기
+      loader.style.display = 'none';
+      // 콘텐츠 보여주기
+      content.style.display = 'block';
+    });
+  </script>
 {% endblock content %}
