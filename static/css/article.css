@@ -7,6 +7,11 @@
     --jlightgreen: #CDFF06;
 }
 
+html {
+    overflow-y: scroll;
+}
+
+
 .centeritem {
     display: flex;
     align-items: center;

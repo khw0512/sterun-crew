@@ -30,13 +30,13 @@
       Kakao.init('b1937e5c9e32d1c6b3aae0983529600b');
     </script>
   </head>
-  <!-- 로딩 화면 -->
-  <div class="mask">
-    <img class="loadingImg" src="{% static 'img/Blocks@1x-1.0s-200px-200px.gif' %}" alt="" height="100px;" width="100px;">
-  </div>
-  <!-- 로딩화면 끝 -->
 
   <body id="content" class="mainbg">
+    <!-- 로딩 화면 -->
+    <div class="mask">
+      <img class="loadingImg" src="{% static 'img/Blocks@1x-1.0s-200px-200px.gif' %}" alt="" height="100px;" width="100px;">
+    </div>
+    <!-- 로딩화면 끝 -->
     <div class="info-container">
       <div class="sterun-logo-m">
         <a href={% url "index" %}>
