@@ -401,6 +401,13 @@ html {
 }
 
 @media (max-width: 620px) {
+    .loadingImg {
+        position: relative;
+        margin-left: 38%;
+        display: block;
+        top: 50vh;
+        transform: translateY(-50%);
+    }
     .card{
         flex-direction: row;
         width: 90%;
@@ -493,6 +500,13 @@ html {
 }
 
 @media (max-width: 300px) {
+    .loadingImg {
+        position: relative;
+        margin-left: 38%;
+        display: block;
+        top: 50vh;
+        transform: translateY(-50%);
+    }
     .today_article_img{
         width: 50%;
     }
