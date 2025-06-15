@@ -35,8 +35,9 @@ a {
     background-color: var(--jblue);
     z-index: 9999;
     opacity: 1;
-    transition: 1s ease;
-    animation : fadeout 2s;
+    transition: 3s ease;
+    animation : fadeout 3s;
+    animation-delay: 1s;
 }
 
 @keyframes fadeout { 
