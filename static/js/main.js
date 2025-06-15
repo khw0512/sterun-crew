@@ -43,21 +43,6 @@ window.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     html.style.overflow = 'auto'; //스크롤 방지 해제
     mask.style.display = 'none';
-  }, 1000);
+  }, 2000);
 })
 
-//preloader
-var preloader = function () {
-  setTimeout(function () {
-    $(".preload-container").fadeOut("slow", function () {
-      $(this).remove();
-    });
-  }, 1000);
-}; //preloader
-
-$(function () {
-  if (matchMedia("only screen and (min-width: 991px)").matches) {
-    headerFixed();
-  }
-  preloader();
-});
