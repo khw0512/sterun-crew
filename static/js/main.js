@@ -37,12 +37,24 @@ window.onload = function(){
 const mask = document.querySelector('.mask');
 const html = document.querySelector('html');
 
-html.style.overflow = 'auto'; //로딩 중 스크롤 방지
-window.addEventListener('DOMContentLoaded', function () {
-  //아래 setTimeout은 로딩되는 과정을 임의로 생성하기 위해 사용. 실제 적용 시에는 삭제 후 적용해야함.
-  setTimeout(function () {
-    html.style.overflow = 'auto'; //스크롤 방지 해제
-    mask.style.display = 'none';
-  }, 2000);
-})
+html.style.overflow = 'auto';
+
+const user = navigator.userAgent;
+
+if ( user.indexOf("iPhone") > -1 || user.indexOf("Android") > -1 ) {
+  console.log("mobile버젼");
+  console.log(user);    
+}else{
+  console.log("pc버젼");
+  console.log(user);
+  window.addEventListener('DOMContentLoaded', function () {
+    //아래 setTimeout은 로딩되는 과정을 임의로 생성하기 위해 사용. 실제 적용 시에는 삭제 후 적용해야함.
+    setTimeout(function () {
+      html.style.overflow = 'auto'; //스크롤 방지 해제
+      mask.style.display = 'none';
+    }, 2000);
+  })
+}
+
+
 
