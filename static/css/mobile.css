@@ -35,8 +35,8 @@ a {
     background-color: var(--jblue);
     z-index: 9999;
     opacity: 1;
-    transition: 3s ease;
-    animation : fadeout 3s;
+    transition: 2s ease;
+    animation : fadeout 2s;
     animation-delay: 1s;
 }
 
