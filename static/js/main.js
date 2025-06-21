@@ -45,6 +45,6 @@ window.addEventListener('DOMContentLoaded', function () {
   setTimeout(function () {
     html.style.overflow = 'auto'; //스크롤 방지 해제
     mask.style.display = 'none';
-  }, 4000);
+  }, 2000);
 })
 
