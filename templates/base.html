@@ -40,7 +40,7 @@
     <div class="info-container">
       <div class="sterun-logo-m">
         <a href={% url "index" %}>
-          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="50px" ,="," width="auto">
+          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="50px" width="auto">
         </a>
       </div>
       <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto">
@@ -164,6 +164,76 @@
         <p>© JOOL CO., LTD. All Rights Reserved.</p>
       </div>
     </footer>
+    <div class="nav-mobile">
+      <a class="flex-gw1" href="{% url 'index' %}">
+        <div class="nav-item-mobile">
+          <div class="menu-icon-mobile">
+            {% if request.resolver_match.url_name == 'article' %}
+              <img src="{% static 'img/Order_fill@2x.png' %}" alt="" height="25px" width="25px">
+            {% else %}
+              <img src="{% static 'img/Order@2x.png' %}" alt="" height="25px" width="25px">
+            {% endif %}
+          </div>
+          <div class="menu-title-mobile">HOME</div>
+        </div>
+      </a>
+      <a class="flex-gw1" href="{% url 'article:index' %}">
+        <div class="nav-item-mobile">
+          <div class="menu-icon-mobile">
+            {% if request.resolver_match.url_name == 'index' %}
+              <img src="{% static 'img/Order_fill@2x.png' %}" alt="" height="25px" width="25px">
+            {% else %}
+              <img src="{% static 'img/Order@2x.png' %}" alt="" height="25px" width="25px">
+            {% endif %}
+          </div>
+          <div class="menu-title-mobile">ARTICLE</div>
+        </div>
+      </a>
+      {% if user.is_authenticated %}
+        <a class="flex-gw1" href="{% url 'bingo:bingo' user.pk %}">
+          <div class="nav-item-mobile">
+            <div class="menu-icon-mobile">
+              {% if request.resolver_match.url_name == 'bingo' %}
+                <img src="{% static 'img/Book_check_fill@2x.png' %}" alt="" height="25px" width="25px">
+              {% else %}
+                <img src="{% static 'img/Book_check@2x.png' %}" alt="" height="25px" width="25px">
+              {% endif %}
+            </div>
+            <div class="menu-title-mobile">Bingo</div>
+          </div>
+        </a>
+      {% else %}
+        <a class="flex-gw1" href="{% url 'users:login' %}">
+          <div class="nav-item-mobile">
+            <div class="menu-icon-mobile">
+              {% if request.resolver_match.url_name == 'bingo' %}
+                <img src="{% static 'img/Book_check_fill@2x.png' %}" alt="" height="25px" width="25px">
+              {% else %}
+                <img src="{% static 'img/Book_check@2x.png' %}" alt="" height="25px" width="25px">
+              {% endif %}
+            </div>
+            <div class="menu-title-mobile">Bingo</div>
+          </div>
+        </a>
+      {% endif %}
+
+      <a class="flex-gw1" href="{% url 'article:index' %}">
+        <div class="nav-item-mobile">
+          <div class="menu-icon-mobile">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <div class="menu-title-mobile">HOME</div>
+        </div>
+      </a>
+      <a class="flex-gw1" href="{% url 'article:index' %}">
+        <div class="nav-item-mobile">
+          <div class="menu-icon-mobile">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <div class="menu-title-mobile">HOME</div>
+        </div>
+      </a>
+    </div>
   </body>
 
 </html>

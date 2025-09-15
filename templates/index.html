@@ -39,7 +39,6 @@
           <i class="fa-brands fa-youtube"></i>
         </div>
       </div>
-      <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto">
       <div class="login-box">
         {% if user.is_authenticated %}
           <a href="{% url 'users:logout' %}">
@@ -56,52 +55,10 @@
         {% endif %}
       </div>
     </div>
-    <div id="screen">
-      <div id="mobile_menu">
-        <div id="menu-bundle">
-          <a href="{% url 'index' %}">
-            <div class="submenu">STERUN</div>
-          </a>
-          {% if user.is_authenticated %}
-            <a href="{% url 'runres:recordview' user.pk %}">
-              <div class="submenu">Record</div>
-            </a>
-          {% endif %}
-          {% if user.is_authenticated %}
-            <a href="{% url 'bingo:bingo' user.pk %}">
-              <div class="submenu">Bingo</div>
-            </a>
-          {% endif %}
-          <a href="{% url 'article:index' %}">
-            <div class="submenu">Article</div>
-          </a>
-          {% if user.is_staff %}
-            <a href="{% url 'bingo:bingoupdate' user.pk %}">
-              <div class="submenu">Admin</div>
-            </a>
-          {% endif %}
-          <div class="mobile-login-box">
-            {% if user.is_authenticated %}
-              <a href="{% url 'users:logout' %}">
-                <div class="login-btn">{{ user.username }}
-                  님 로그아웃</div>
-              </a>
-            {% else %}
-              <a href="{% url 'users:login' %}">
-                <div class="login-btn">LOGIN</div>
-              </a>
-              <a href="{% url 'users:signup' %}">
-                <div class="login-btn">SIGN-UP</div>
-              </a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="j-nav-container">
       <div class="j-navbar-brand fade-in-up-3">
         <a href="">
-          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="auto" width="auto">
+          <img src="{% static "img/EASYRUN.png" %}" alt="logo-top" height="auto" width="auto">
         </a>
       </div>
       <div class="j-nav-items fade-in-up-5">
@@ -134,8 +91,65 @@
       <div>
         <img class="main-img fade-in-up-7" src="{% static "img/runner-shoes-b.jpg" %}" alt="main-img" height="auto," width="auto">
       </div>
+      <div class="login-box-mobile">
+        {% if user.is_authenticated %}
+          <a href="{% url 'users:logout' %}">
+            <div class="login-btn-mobile">{{ user.username }}
+              님 로그아웃</div>
+          </a>
+        {% else %}
+          <a href="{% url 'users:login' %}">
+            <div class="login-btn-mobile">LOGIN</div>
+          </a>
+          <a href="{% url 'users:signup' %}">
+            <div class="login-btn-mobile">SIGN-UP</div>
+          </a>
+        {% endif %}
+      </div>
       <div class="rights">
         <p>© JOOL CO., LTD. All Rights Reserved.</p>
+      </div>
+      <div class="nav-mobile">
+        <a class="flex-gw1" href="{% url 'index' %}">
+          <div class="nav-item-mobile">
+            <div class="menu-icon-mobile">
+              <i class="fa-solid fa-house"></i>
+            </div>
+            <div class="menu-title-mobile">HOME</div>
+          </div>
+        </a>
+        <a class="flex-gw1" href="{% url 'article:index' %}">
+          <div class="nav-item-mobile">
+            <div class="menu-icon-mobile">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="menu-title-mobile">ARTICLE</div>
+          </div>
+        </a>
+        <a class="flex-gw1" href="{% url 'article:index' %}">
+          <div class="nav-item-mobile">
+            <div class="menu-icon-mobile">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="menu-title-mobile">HOME</div>
+          </div>
+        </a>
+        <a class="flex-gw1" href="{% url 'article:index' %}">
+          <div class="nav-item-mobile">
+            <div class="menu-icon-mobile">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="menu-title-mobile">HOME</div>
+          </div>
+        </a>
+        <a class="flex-gw1" href="{% url 'article:index' %}">
+          <div class="nav-item-mobile">
+            <div class="menu-icon-mobile">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div class="menu-title-mobile">HOME</div>
+          </div>
+        </a>
       </div>
     </div>
   </body>
