@@ -472,6 +472,10 @@ footer {
   margin-top: -12px;
 }
 
+.nav-mobile {
+  display: none;
+}
+
 .j-nav-item a:hover:after {
   transform: scaleX(1);
 }
@@ -523,6 +527,9 @@ footer {
   border-radius: 50px;
   padding: 10px 20px 10px 20px;
   margin-left: 20px;
+}
+.login-btn-mobile {
+  display: none;
 }
 .run-submit-title {
   font-family: yangjin;
@@ -1214,6 +1221,7 @@ td {
     flex-direction: row;
   }
   .login-btn-mobile {
+    display: block;
     font-size: 0.7rem;
     color: var(--jlightgreen);
     font-weight: 700;
@@ -1221,9 +1229,6 @@ td {
     border-radius: 50px;
     padding: 10px 20px 10px 20px;
     margin: 0 10px 0 10px;
-  }
-  .rights {
-    display: none;
   }
   .nav-mobile {
     display: flex;
