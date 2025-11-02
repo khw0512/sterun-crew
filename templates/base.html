@@ -43,13 +43,13 @@
           <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="50px" width="auto">
         </a>
       </div>
-      <img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto">
+      <!--img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto"-->
       <div class="j-nav-items fade-in-up-short1">
         <div class="j-nav-item">
           <a href="{% url 'index' %}">STERUN</a>
         </div>
         <div class="j-nav-item">
-          <a href="{% url 'article:index' %}">Article</a>
+          <a href="{% url 'article:article' %}">Article</a>
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}
@@ -110,7 +110,7 @@
           <a href="{% url 'index' %}">
             <div class="submenu">STERUN</div>
           </a>
-          <a href="{% url 'article:index' %}">
+          <a href="{% url 'article:article' %}">
             <div class="submenu">Article</div>
           </a>
           {% if user.is_authenticated %}
@@ -168,19 +168,15 @@
       <a class="flex-gw1" href="{% url 'index' %}">
         <div class="nav-item-mobile">
           <div class="menu-icon-mobile">
-            {% if request.resolver_match.url_name == 'article' %}
-              <img src="{% static 'img/hmeo-black.png' %}" alt="" height="25px" width="25px">
-            {% else %}
-              <img src="{% static 'img/home-white.png' %}" alt="" height="25px" width="25px">
-            {% endif %}
+            <img src="{% static 'img/home-white.png' %}" alt="" height="25px" width="25px">
           </div>
           <div class="menu-title-mobile">HOME</div>
         </div>
       </a>
-      <a class="flex-gw1" href="{% url 'article:index' %}">
+      <a class="flex-gw1" href="{% url 'article:article' %}">
         <div class="nav-item-mobile">
           <div class="menu-icon-mobile">
-            {% if request.resolver_match.url_name == 'index' %}
+            {% if request.resolver_match.url_name == 'article' %}
               <img src="{% static 'img/doc-fill.png' %}" alt="" height="25px" width="25px">
             {% else %}
               <img src="{% static 'img/doc.png' %}" alt="" height="25px" width="25px">
@@ -239,7 +235,7 @@
                 <img src="{% static 'img/Book_check@2x.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
-            <div class="menu-title-mobile">Bingo</div>
+            <div class="menu-title-mobile">RECORD</div>
           </div>
         </a>
       {% endif %}
@@ -266,7 +262,7 @@
                 <img src="{% static 'img/Book_check@2x.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
-            <div class="menu-title-mobile">Bingo</div>
+            <div class="menu-title-mobile">SETTING</div>
           </div>
         </a>
       {% endif %}

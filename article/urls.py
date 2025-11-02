@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 app_name = 'article'
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.index, name="article"),
     path("<int:article_id>/", views.article, name="article"),
     path("search/", views.search, name="search"),
     path("alldata/", views.alldata, name="alldata"),
