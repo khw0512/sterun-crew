@@ -148,25 +148,52 @@
 
         if (user_matched == 1) {
           if (isChecked == false) {
-            bingo_img.style.display = 'none';
+
+            const ok = confirm("취소하시겠어요?");
+            if (ok) {
+              console.log("취소");
+              fetch("/bingo/update-public-status/" + "{{ user_id }}", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "X-CSRFToken": csrfToken
+                },
+                body: JSON.stringify({bingo_id: bingoId, is_checked: isChecked})
+              })
+                .then(response => response.json())
+                .then(data => {
+                  console.log("업데이트 결과:", data);
+                })
+                .catch(err => console.error("에러:", err));
+              bingo_img.style.display = 'none';
+            } else {
+              console.log("취소안함");
+            }
           } else {
-            bingo_img.style.display = 'block';
+
+            const ok = confirm("완료하시겠어요?");
+            if (ok) {
+              console.log("완료");
+              fetch("/bingo/update-public-status/" + "{{ user_id }}", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "X-CSRFToken": csrfToken
+                },
+                body: JSON.stringify({bingo_id: bingoId, is_checked: isChecked})
+              })
+                .then(response => response.json())
+                .then(data => {
+                  console.log("업데이트 결과:", data);
+                })
+                .catch(err => console.error("에러:", err));
+              bingo_img.style.display = 'block';
+            } else {
+              console.log("완료안함");
+            }
           }
         }
 
-        fetch("/bingo/update-public-status/" + "{{ user_id }}", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-CSRFToken": csrfToken
-          },
-          body: JSON.stringify({bingo_id: bingoId, is_checked: isChecked})
-        })
-          .then(response => response.json())
-          .then(data => {
-            console.log("업데이트 결과:", data);
-          })
-          .catch(err => console.error("에러:", err));
       });
     }
   </script>
