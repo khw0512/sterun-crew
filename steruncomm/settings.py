@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'attendance',
     'shoes',
     'article',
+    'marathon',
     'django_summernote',
     'django.contrib.admin',
     'django.contrib.auth',

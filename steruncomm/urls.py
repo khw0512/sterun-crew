@@ -11,6 +11,7 @@ urlpatterns = [
     path("runres/", include("record.urls")),
     path("bingo/", include("bingo.urls")),
     path("article/", include("article.urls")),
+    path("marathon/", include("marathon.urls")),
     path('summernote/', include('django_summernote.urls')),  # summernote URL 추가
 ]
 

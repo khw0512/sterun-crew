@@ -148,8 +148,7 @@
 
         if (user_matched == 1) {
           if (isChecked == false) {
-
-            const ok = confirm("취소하시겠어요?");
+            const ok = confirm("취소 하시겠어요?");
             if (ok) {
               console.log("취소");
               fetch("/bingo/update-public-status/" + "{{ user_id }}", {
@@ -168,10 +167,10 @@
               bingo_img.style.display = 'none';
             } else {
               console.log("취소안함");
+              location.reload(true);
             }
           } else {
-
-            const ok = confirm("완료하시겠어요?");
+            const ok = confirm("완료 하시겠어요?");
             if (ok) {
               console.log("완료");
               fetch("/bingo/update-public-status/" + "{{ user_id }}", {
@@ -190,6 +189,7 @@
               bingo_img.style.display = 'block';
             } else {
               console.log("완료안함");
+              location.reload(true);
             }
           }
         }

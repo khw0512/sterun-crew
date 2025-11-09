@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+  {% csrf_token %}
+  {% for k in marathon %}
+    {{ k.marathon.title }}
+  {% endfor %}
+{% endblock content %}
