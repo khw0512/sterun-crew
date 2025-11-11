@@ -4,6 +4,7 @@
 
   {% csrf_token %}
   {% for k in marathon %}
-    {{ k.marathon.title }}
+    <p>{{ k.marathon.title }}
+      {{ k.user }}</p>
   {% endfor %}
 {% endblock content %}
