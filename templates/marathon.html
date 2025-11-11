@@ -3,6 +3,7 @@
 {% block content %}
 
   {% csrf_token %}
+  {{ group }}
   {% for k in marathon %}
     <p>{{ k.marathon.title }}
       {{ k.user }}</p>

@@ -1,3 +1,5 @@
+from collections import defaultdict
+import json
 from django.shortcuts import render
 from django.http.response import HttpResponse, JsonResponse 
 from django.core import serializers
@@ -9,6 +11,17 @@ from marathon.models import *
 
 def marathon_list(request):
     marathon = MarathonReg.objects.select_related("marathon").order_by("marathon_id")
-    print(marathon)
-    context = {'marathon': marathon}
+
+    grouped = defaultdict(list)
+    for item in marathon.values("id", "marathon__title", "user__username"):
+        print(item)
+        key = item["marathon__title"]
+        print(key)
+        grouped[key].append({k: v for k, v in item.items() if k != "marathon__title"})
+    
+    # JSON 변환
+    json_result = json.dumps(grouped, ensure_ascii=False)
+    print(json_result)
+    
+    context = {'marathon': marathon, 'group':json_result}
     return render(request, 'marathon.html', context)
