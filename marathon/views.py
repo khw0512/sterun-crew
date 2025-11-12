@@ -14,14 +14,12 @@ def marathon_list(request):
 
     grouped = defaultdict(list)
     for item in marathon.values("id", "marathon__title", "user__username"):
-        print(item)
         key = item["marathon__title"]
-        print(key)
         grouped[key].append({k: v for k, v in item.items() if k != "marathon__title"})
     
     # JSON 변환
-    json_result = json.dumps(grouped, ensure_ascii=False)
-    print(json_result)
+    json_result = json.dumps(grouped, ensure_ascii=False, indent=2)
+    marathon = json.loads(json_result)
+    print(marathon)
     
-    context = {'marathon': marathon, 'group':json_result}
-    return render(request, 'marathon.html', context)
+    return render(request, 'marathon.html', {'group':marathon})

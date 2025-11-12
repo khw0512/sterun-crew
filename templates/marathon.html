@@ -3,9 +3,9 @@
 {% block content %}
 
   {% csrf_token %}
-  {{ group }}
-  {% for k in marathon %}
-    <p>{{ k.marathon.title }}
-      {{ k.user }}</p>
+  {% for key, value in group.items %}
+    <p>{{ key }}
+      :
+      {{ value }}</p>
   {% endfor %}
 {% endblock content %}
