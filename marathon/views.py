@@ -20,6 +20,5 @@ def marathon_list(request):
     # JSON 변환
     json_result = json.dumps(grouped, ensure_ascii=False, indent=2)
     marathon = json.loads(json_result)
-    print(marathon)
     
     return render(request, 'marathon.html', {'group':marathon})
