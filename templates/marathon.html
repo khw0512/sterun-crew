@@ -4,8 +4,9 @@
 
   {% csrf_token %}
   {% for key, value in group.items %}
-    <p>{{ key }}
-      :
-      {{ value }}</p>
+    <p>{{ key }}</p>
+    {% for item in value %}
+      <p>{{ item.user__last_name }}{{ item.user__first_name }}</p>
+    {% endfor %}
   {% endfor %}
 {% endblock content %}
