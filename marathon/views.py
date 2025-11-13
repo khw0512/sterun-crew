@@ -13,7 +13,7 @@ def marathon_list(request):
     marathon = MarathonReg.objects.select_related("marathon").order_by("marathon_id")
 
     grouped = defaultdict(list)
-    for item in marathon.values("id", "marathon__title", "user__username", "user__first_name", "user__last_name"):
+    for item in marathon.values("id", "marathon__title", "user__username", "user__first_name", "user__last_name", "distance"):
         key = item["marathon__title"]
         grouped[key].append({k: v for k, v in item.items() if k != "marathon__title"})
     

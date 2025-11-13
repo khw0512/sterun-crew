@@ -215,7 +215,12 @@ button {
   text-align: center;
   font-family: SejonghospitalBold;
   color: var(--jlightgreen);
+  font-size: 1.3rem;
+}
+
+.marathon-parti{
   font-size: 1rem;
+  color: var(--white);
 }
 
 .pagenation-container {

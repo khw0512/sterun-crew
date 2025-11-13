@@ -11,9 +11,10 @@
       {% csrf_token %}
       {% for key, value in group.items %}
         <p class="marathon-title">{{ key }}</p>
-        <p>참여자</p>
         {% for item in value %}
-          <p class="marathon-parti">{{ item.user__last_name }}{{ item.user__first_name }}</p>
+          <div>
+            <p class="marathon-parti">{{ item.user__last_name }}{{ item.user__first_name }}{{item.distance}}</p>
+          </div>
         {% endfor %}
       {% endfor %}
     </div>
