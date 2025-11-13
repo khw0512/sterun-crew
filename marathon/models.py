@@ -6,7 +6,8 @@ from multiselectfield import MultiSelectField
 class MarathonEvent(models.Model):
     marathon_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100, blank=False, null=False)
-    date_time = models.DateTimeField()
+    date = models.DateField()
+    time = models.TimeField()
     location_city = models.CharField(max_length=50)
     location_cource = models.CharField(max_length=50)
     url = models.URLField()

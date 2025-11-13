@@ -12,21 +12,42 @@
 
       {% for key, value in group.items %}
         <p class="marathon-title">{{ value.0.marathon__title }}</p>
+        <div class="flex-row">
+          <p class="flex-row-item">날짜 :
+            {{ value.0.marathon__date }}</p>
+          <p class="flex-row-item">시간 :
+            {{ value.0.marathon__time|slice:":5" }}</p>
+        </div>
+        <p class="city">{{ value.0.marathon__location_city }}
+          |
+          {{ value.0.marathon__location_cource }}</p>
+
+        <div class="space-h30"></div>
         {% for item in value %}
           <div>
-            <p class="marathon-parti">{{ item.user__last_name }}{{ item.user__first_name }}{{item.distance}}</p>
+            <div class="flex-row">
+              <p class="marathon-parti">{{ item.user__last_name }}{{ item.user__first_name }}
+                <p class="marathon-dist">{{ item.distance }}</p>
+              </p>
+              {% if request.user.id == item.user__id %}
+                <p class="flex-row-item">me</p>
+              {% endif %}
+            </div>
           </div>
         {% endfor %}
-        <form method="post" action="{% url 'marathon:parti_me' key %}">
-          {% csrf_token %}
-          <select name="distance" class="month-filter">
-            <option value="full">Full</option>
-            <option value="half">Half</option>
-            <option value="10">10Km</option>
-            <option value="5">5Km</option>
-          </select>
-          <input type="submit" value="Submit">
-        </form>
+        {% if user.is_authenticated %}
+          <form method="post" action="{% url 'marathon:parti_me' key %}">
+            {% csrf_token %}
+            <select name="distance" class="month-filter">
+              <option value="full">Full</option>
+              <option value="half">Half</option>
+              <option value="10">10Km</option>
+              <option value="5">5Km</option>
+            </select>
+            <input type="submit" value="Submit">
+          </form>
+        {% endif %}
+        <div class="line-1"></div>
       {% endfor %}
     </div>
   </div>

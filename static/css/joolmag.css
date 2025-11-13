@@ -195,32 +195,72 @@ button {
   margin: 5px 0 5px 0;
 }
 
-.page-title{
+.page-title {
   text-align: center;
   font-family: SejonghospitalBold;
   color: var(--jlightgreen);
   font-size: 2rem;
 }
 
-.marathon-page{
+.marathon-page {
   display: flex;
   justify-content: center;
 }
 
-.marathon-list{
+.marathon-list {
   max-width: 800px;
 }
 
-.marathon-title{
+.marathon-title {
   text-align: center;
   font-family: SejonghospitalBold;
   color: var(--white);
   font-size: 1.3rem;
 }
 
-.marathon-parti{
+.marathon-parti {
   font-size: 1rem;
   color: var(--white);
+  width: 80px;
+}
+
+.marathon-dist {
+  font-size: 1rem;
+  color: var(--white);
+  height: 1rem;
+  line-height: 1rem;
+  border: solid 1px var(--j-pink);
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-row-item {
+  flex-grow: 1;
+  color: var(--white);
+}
+
+.city {
+  color: var(--white);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.cource {
+  color: var(--white);
+  font-size: 0.8rem;
+}
+
+.body-1 {
+  color: var(--white);
+  font-size: 1.2rem;
+}
+
+.line-1 {
+  width: 100%;
+  height: 10px;
+  border-bottom: solid 1px var(--j-pink);
 }
 
 .pagenation-container {
