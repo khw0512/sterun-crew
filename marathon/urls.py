@@ -5,5 +5,6 @@ from . import views
 app_name = "marathon"
 
 urlpatterns = [
-    path("", views.marathon_list, name="marathon"),
+    path("", views.marathon_list, name="marathon_list"),
+    path('parti-me/<str:key>', views.parti_me, name='parti_me'),
 ]

@@ -9,13 +9,24 @@
       </div>
 
       {% csrf_token %}
+
       {% for key, value in group.items %}
-        <p class="marathon-title">{{ key }}</p>
+        <p class="marathon-title">{{ value.0.marathon__title }}</p>
         {% for item in value %}
           <div>
             <p class="marathon-parti">{{ item.user__last_name }}{{ item.user__first_name }}{{item.distance}}</p>
           </div>
         {% endfor %}
+        <form method="post" action="{% url 'marathon:parti_me' key %}">
+          {% csrf_token %}
+          <select name="distance" class="month-filter">
+            <option value="full">Full</option>
+            <option value="half">Half</option>
+            <option value="10">10Km</option>
+            <option value="5">5Km</option>
+          </select>
+          <input type="submit" value="Submit">
+        </form>
       {% endfor %}
     </div>
   </div>
