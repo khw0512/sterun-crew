@@ -195,6 +195,29 @@ button {
   margin: 5px 0 5px 0;
 }
 
+.page-title{
+  text-align: center;
+  font-family: SejonghospitalBold;
+  color: var(--jlightgreen);
+  font-size: 2rem;
+}
+
+.marathon-page{
+  display: flex;
+  justify-content: center;
+}
+
+.marathon-list{
+  max-width: 800px;
+}
+
+.marathon-title{
+  text-align: center;
+  font-family: SejonghospitalBold;
+  color: var(--jlightgreen);
+  font-size: 1rem;
+}
+
 .pagenation-container {
   display: flex;
   justify-content: center;

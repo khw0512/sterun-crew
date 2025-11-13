@@ -1,12 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+  <div class="article-top-space"></div>
+  <div class="marathon-page">
+    <div class="marathon-list">
+      <div>
+        <p class="page-title">마라톤 참여 리스트</p>
+      </div>
 
-  {% csrf_token %}
-  {% for key, value in group.items %}
-    <p class="marathon-title">{{ key }}</p>
-    {% for item in value %}
-      <p class="marathon-parti">{{ item.user__last_name }}{{ item.user__first_name }}</p>
-    {% endfor %}
-  {% endfor %}
+      {% csrf_token %}
+      {% for key, value in group.items %}
+        <p class="marathon-title">{{ key }}</p>
+        <p>참여자</p>
+        {% for item in value %}
+          <p class="marathon-parti">{{ item.user__last_name }}{{ item.user__first_name }}</p>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
 {% endblock content %}
