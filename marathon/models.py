@@ -17,6 +17,7 @@ class MarathonEvent(models.Model):
     
 
 class MarathonReg(models.Model):
+    regis_id = models.AutoField(primary_key=True)
     marathon = models.ForeignKey(MarathonEvent, on_delete=models.CASCADE)
     distance = models.CharField(max_length=10, blank=False, null=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

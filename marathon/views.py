@@ -14,7 +14,7 @@ def marathon_list(request):
     marathon = MarathonReg.objects.select_related("marathon").order_by("marathon_id")
 
     grouped = defaultdict(list)
-    for item in marathon.values("id","marathon","marathon__marathon_id","marathon__title","marathon__date","marathon__time","marathon__location_city","marathon__location_cource","marathon__url","user__username","user__id","user__first_name","user__last_name","distance"):
+    for item in marathon.values("marathon","marathon__marathon_id","marathon__title","marathon__date","marathon__time","marathon__location_city","marathon__location_cource","marathon__url","user__username","user__id","user__first_name","user__last_name","distance"):
         key = item["marathon"]
         grouped[key].append({k: v for k, v in item.items() if k != "marathon"})
     
@@ -36,3 +36,8 @@ def parti_me(request, key):
     else:
         return render(request, "marathon.html")
     
+'''
+def del_parti(request, id):
+    if request.method == "POST":
+        marathon = MarathonReg.objects.get(record_id=id)
+'''
