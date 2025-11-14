@@ -10,4 +10,5 @@ urlpatterns = [
     path("update-public-status/<str:pk>", views.update_public_status, name="update_public_status"),
     path("bingoupdate/<str:pk>", views.bingoupdate, name="bingoupdate"),
     path("bingores/<str:pk>", views.bingores, name="bingores"),
+    path("bingoreset/", views.bingoreset, name="bingoreset"),
 ]

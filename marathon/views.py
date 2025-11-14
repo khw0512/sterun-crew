@@ -15,7 +15,7 @@ def marathon_list(request):
     events = MarathonEvent.objects.prefetch_related(
         'marathonreg_set__user'   # 역참조 + user까지 미리 가져오기
     )
-
+    print(events)
     context = {
         'events': events,
     }

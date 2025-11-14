@@ -87,3 +87,23 @@ def bingores(request, pk):
         return render(request, "index.html")
     else:
         return render(request, "index.html")
+    
+def bingoreset(request):
+
+    if request.method == "POST":
+
+        items = BingoItem()
+
+        i=1
+        while i < 6:
+            k=1
+            while k < 6:
+                items.content = str(i)+str(k)
+                items.row = i
+                items.col = k
+                items.save()
+                k+=1
+            i+=1
+        return render(request, "index.html")
+    
+    return render(request, "index.html")

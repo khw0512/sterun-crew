@@ -195,7 +195,12 @@ button {
   margin: 5px 0 5px 0;
 }
 
-.indent-5{
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+.indent-5 {
   padding-left: 15px;
 }
 
@@ -228,7 +233,7 @@ button {
   width: 80px;
 }
 
-.marathon-desc{
+.marathon-desc {
   font-size: 1rem;
   color: var(--white);
 }
@@ -241,7 +246,7 @@ button {
   border: solid 1px var(--j-pink);
 }
 
-.card-1{
+.card-1 {
   padding: 20px 20px 20px 20px;
   border: solid 1px var(--j-pink);
   background-color: #03114e;
@@ -249,8 +254,8 @@ button {
   margin-bottom: 20px;
 }
 
-.parti-sec{
-  margin:30px 0 0 0;
+.parti-sec {
+  margin: 30px 0 0 0;
 }
 
 .flex-row {
