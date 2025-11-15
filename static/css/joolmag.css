@@ -211,6 +211,23 @@ button {
   font-size: 2rem;
 }
 
+.text-white {
+  font-family: LeeSeoyun;
+  color: antiquewhite;
+}
+
+.text-aqua {
+  font-family: LeeSeoyun;
+  color: rgb(0, 102, 102);
+}
+
+.text-black {
+  font-family: LeeSeoyun;
+  font-size: 1.3rem;
+  padding: 0 10px 0 10px;
+  color: var(--black);
+}
+
 .marathon-page {
   display: flex;
   justify-content: center;
@@ -221,35 +238,61 @@ button {
 }
 
 .marathon-title {
+  padding: 15px 10px 20px 10px;
+  background-color: var(--jlightgreen);
+  border-radius: 20px 20px 0 0;
   text-align: center;
-  font-family: SejonghospitalBold;
-  color: var(--white);
-  font-size: 1.3rem;
+  font-family: LeeSeoyun;
+  color: var(--black);
+  font-size: 1.5rem;
 }
 
 .marathon-parti {
+  font-family: LeeSeoyun;
   font-size: 1rem;
-  color: var(--white);
+  color: var(--black);
   width: 80px;
 }
 
 .marathon-desc {
-  font-size: 1rem;
-  color: var(--white);
+  font-family: LeeSeoyun;
+  padding: 0 10px 0 10px;
+  font-size: 1.2rem;
+  color: var(--black);
 }
 
 .marathon-dist {
+  font-family: LeeSeoyun;
   font-size: 1rem;
-  color: var(--white);
+  color: var(--black);
   height: 1rem;
   line-height: 1rem;
   border: solid 1px var(--j-pink);
 }
 
+.empty-parti {
+  color: darkred;
+  font-family: LeeSeoyun;
+  padding: 0 0 0 20px;
+}
+
+.marathon-form {
+  padding: 0 10px 15px 10px;
+}
+
+.marathon-btn {
+  font-family: LeeSeoyun;
+  color: var(--jlightgreen);
+  border: var(--jlightgreen);
+  background-color: var(--jblue);
+  padding: 5px 15px 5px 15px;
+  border-radius: 30px;
+}
+
 .card-1 {
-  padding: 20px 20px 20px 20px;
+  font-family: LeeSeoyun;
   border: solid 1px var(--j-pink);
-  background-color: #03114e;
+  background-color: antiquewhite;
   border-radius: 20px;
   margin-bottom: 20px;
 }
@@ -259,27 +302,31 @@ button {
 }
 
 .flex-row {
+  font-family: LeeSeoyun;
   display: flex;
+  width: 100%;
 }
 
 .flex-row-item {
+  font-family: LeeSeoyun;
+  font-size: 1.2rem;
   flex-grow: 1;
-  color: var(--white);
+  color: var(--black);
 }
 
 .city {
-  color: var(--white);
+  color: var(--black);
   font-size: 0.8rem;
   margin: 0;
 }
 
 .cource {
-  color: var(--white);
+  color: var(--black);
   font-size: 0.8rem;
 }
 
 .body-1 {
-  color: var(--white);
+  color: var(--black);
   font-size: 1.2rem;
 }
 
@@ -858,6 +905,14 @@ footer {
   font-weight: 700;
   background-color: transparent;
   border: var(--jlightgreen) 2px dotted;
+}
+.dist-filter {
+  border-radius: 0.5rem;
+  width: 50px;
+  color: var(--jblue);
+  font-weight: 700;
+  background-color: transparent;
+  border: var(--jblue) 2px dotted;
 }
 .filter-line {
   display: flex;
