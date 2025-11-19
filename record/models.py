@@ -16,6 +16,7 @@ class Record(models.Model):
     distance = models.DecimalField(max_digits=6, decimal_places=2, blank=False, null=False)
     pace_m = models.IntegerField(null=True, blank=True)
     pace_s = models.IntegerField(null=True, blank=True)
+    time_h = models.IntegerField(null=True, blank=True)
     time_m = models.IntegerField(null=True, blank=True)
     time_s = models.IntegerField(null=True, blank=True)
     desc = models.TextField(blank=True)
