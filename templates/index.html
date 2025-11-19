@@ -69,7 +69,11 @@
           <a href="{% url 'article:article' %}">Article</a>
         </div>
         <div class="j-nav-item">
-          <a href="{% url 'marathon:marathon_list' %}">Marathon</a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'marathon:marathon_list' %}">Marathon</a>
+          {% else %}
+            <a href="{% url 'users:login' %}">Marathon</a>
+          {% endif %}
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}
@@ -91,8 +95,8 @@
           </div>
         {% endif %}
       </div>
-      <div>
-        <img class="main-img fade-in-up-7" src="{% static "img/runner-shoes-b.jpg" %}" alt="main-img" height="auto," width="auto">
+      <div class="main-img-container">
+        <img class="main-img fade-in-up-7" src="{% static "img/easyrun-main.png" %}" alt="main-img" height="auto," width="auto">
       </div>
       <div class="login-box-mobile">
         {% if user.is_authenticated %}

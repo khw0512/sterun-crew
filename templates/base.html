@@ -40,7 +40,7 @@
     <div class="info-container">
       <div class="sterun-logo-m">
         <a href={% url "index" %}>
-          <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="50px" width="auto">
+          <img src="{% static "img/easyrun-logo2.png" %}" alt="logo-top" height="auto" width="auto">
         </a>
       </div>
       <!--img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto"-->
@@ -50,6 +50,13 @@
         </div>
         <div class="j-nav-item">
           <a href="{% url 'article:article' %}">Article</a>
+        </div>
+        <div class="j-nav-item">
+          {% if user.is_authenticated %}
+            <a href="{% url 'marathon:marathon_list' %}">Marathon</a>
+          {% else %}
+            <a href="{% url 'users:login' %}">Marathon</a>
+          {% endif %}
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}

@@ -444,6 +444,10 @@ footer {
   padding: 20px 0 0 20px;
 }
 
+.sterun-logo-m > a > img{
+  width: 200px;
+}
+
 .login-page {
   display: flex;
   justify-content: center;
@@ -620,10 +624,13 @@ footer {
 .j-nav-item a:hover:after {
   transform: scaleX(1);
 }
-
+.main-img-container{
+  display: flex;
+  justify-content: center;
+}
 .main-img {
   margin: 20px 0 20px 0;
-  width: 400px;
+  width: 700px;
 }
 
 .about-img {
@@ -1165,6 +1172,14 @@ td {
       opacity: 0;
     }
   }
+  .main-img-container{
+    display: flex;
+    justify-content: center;
+  }
+  .main-img {
+    margin: 20px 0 20px 0;
+    width: 90%;
+  }
 
   .loadingImg {
     position: relative;
@@ -1209,7 +1224,7 @@ td {
   }
 
   .sterun-logo-m > a > img {
-    height: 40px;
+    width: 200px;
     padding: 10px 0 0 0;
   }
 
@@ -1349,6 +1364,11 @@ td {
     display: flex;
     margin: auto;
     width: 80%;
+  }
+
+  .main-img-container{
+    display: flex;
+    justify-content: center;
   }
   .main-img {
     width: 100%;
