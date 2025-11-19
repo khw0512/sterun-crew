@@ -38,5 +38,5 @@ def parti_me(request, key):
 '''
 def del_parti(request, id):
     if request.method == "POST":
-        marathon = MarathonReg.objects.get(record_id=id)
+        marathon = MarathonReg.objects.get(regit_id=id)
 '''

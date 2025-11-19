@@ -40,14 +40,16 @@
             <button class="check-submit-btn">Article Upload</button>
           </div>
         </a>
-        <div class="flex">
-          <div>
-            <form method="post" action="{% url "bingo:bingoreset" %}">
-              {% csrf_token %}
-              <button type="submit" class="check-submit-btn">Bingo Reset</button>
-            </form>
+        {% if cnt_items == 0 %}
+          <div class="flex">
+            <div>
+              <form method="post" action="{% url "bingo:bingoreset" %}">
+                {% csrf_token %}
+                <button type="submit" class="check-submit-btn">Bingo Reset</button>
+              </form>
+            </div>
           </div>
-        </div>
+        {% endif %}
 
       </div>
 

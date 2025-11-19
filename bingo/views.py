@@ -72,8 +72,9 @@ def update_public_status(request,pk):
 def bingoupdate(request,pk):
 
     bingoitem = BingoItem.objects.all()
+    cnt_items = bingoitem.count()
     
-    return render(request, "bingo_res.html", {"bingoitem":bingoitem})
+    return render(request, "bingo_res.html", {"bingoitem":bingoitem, "cnt_items":cnt_items})
 
 def bingores(request, pk):
 
@@ -93,6 +94,7 @@ def bingoreset(request):
     if request.method == "POST":
 
         items = BingoItem()
+        cnt_items = BingoItem.objects.all().conut()
 
         i=1
         while i < 6:
@@ -106,4 +108,4 @@ def bingoreset(request):
             i+=1
         return render(request, "index.html")
     
-    return render(request, "index.html")
+    return render(request, "index.html", {"cnt_items":cnt_items})
