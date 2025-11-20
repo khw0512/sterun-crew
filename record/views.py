@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.db.models import Sum
 from django.core.paginator import Paginator
 
-from record.models import Record
+from record.models import *
 
 # Create your views here.
 
@@ -107,3 +107,15 @@ def recordDelete(request,id):
         record.confirmed = False
         record.delete()
     return redirect("runres:recordCheck")
+
+def pbRank(request):
+    try:
+        ranking_tenk = PersonalRecord.objects.filter(category='10K').order_by('record')
+        ranking_hm = PersonalRecord.objects.filter(category='HM').order_by('record')
+        ranking_fm = PersonalRecord.objects.filter(category='FM').order_by('record')
+        print(ranking_hm)
+    except:
+        ranking_tenk = None 
+        ranking_hm = None
+        ranking_fm = None   
+    return render(request,"run_pb.html", {"ranking_tenk":ranking_tenk, "ranking_hm":ranking_hm, "ranking_fm ":ranking_fm})

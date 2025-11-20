@@ -15,4 +15,5 @@ urlpatterns = [
     path('recordConfirm/<str:id>', views.recordConfirm, name="recordConfirm"),
     path('recordReject/<str:id>', views.recordReject, name="recordReject"),
     path('recordDelete/<str:id>', views.recordDelete, name="recordDelete"),
+    path('pbrank/', views.pbRank, name="pbRank"),
 ]

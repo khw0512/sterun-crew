@@ -26,33 +26,26 @@ class Record(models.Model):
         return str(self.confirmed)+ "_" + str(self.user) + "_" + str(self.record_date) + "_" + (str(self.title))
 
 
-class RaceCategory(models.Model):
-    CATEGORY_CHOICES = [
-        ('10K', '10km'),
-        ('HM', 'Half Marathon'),
-        ('FM', 'Full Marathon'),
-    ]
-
-    code = models.CharField(max_length=5, choices=CATEGORY_CHOICES, unique=True)
-
-    def __str__(self):
-        return self.get_code_display()
-
 class PersonalRecord(models.Model):
     STATUS_CHOICES = [
         ('pending', '심사 중'),
         ('verified', '인증됨'),
         ('rejected', '반려됨'),
     ]
-    runner = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    category = models.ForeignKey(RaceCategory, on_delete=models.CASCADE)
+    CATEGORY_CHOICES = [
+        ('10K', '10km'),
+        ('HM', 'Half Marathon'),
+        ('FM', 'Full Marathon'),
+    ]
+    runner = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    category = models.CharField(max_length=5, choices=CATEGORY_CHOICES)
     record = models.DurationField()  # 시간 기록
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,
         default='pending'
     )
-    vidence_url = ResizedImageField(size=[500,500], upload_to="record", blank=False)
+    evidence_url = ResizedImageField(size=[500,500], upload_to="record", blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
