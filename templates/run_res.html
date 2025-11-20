@@ -85,14 +85,28 @@
             </div>
             <textarea class="run-input" id="inputMessage" name="desc" placeholder="Enter Message" data-parsley-pattern="^[a-zA-Z0-9\s.:,!?']+$"></textarea>
           </div>
-          <div class="btn-control">
-            <button type="submit" name="submit" id="submit-form-btn" class="submit-btn">
-              Submit
-            </button>
-          </div>
+          <!--div class="btn-control"> <button type="submit" name="submit" id="submit-form-btn" class="submit-btn"> Submit </button> </div-->
+          <button type="submit" name="submit" id="submit-form-btn" class="submit-btn">
+            <p class="btn-text">Submit</p>
+            <span class="spinner-login"></span>
+          </button>
         </form>
       </div>
+      <script>
+        const btn = document.getElementById('submit-form-btn');
+        btn.addEventListener('click', () => {
+          btn
+            .classList
+            .add('loading-login');
 
+          // 로그인 처리 시뮬레이션 (예: 2초 후 완료)
+          setTimeout(() => {
+            btn
+              .classList
+              .remove('loading-login');
+          }, 20000);
+        });
+      </script>
     </body>
   {% else %}
 

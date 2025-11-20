@@ -177,6 +177,17 @@ button {
   }
 }
 
+.flex-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-400{
+  width: 400px;
+  margin:auto;
+}
+
 .text-border {
   z-index: 0;
   position: relative;
@@ -942,8 +953,6 @@ footer {
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
-  margin: auto;
-  margin-top: 50px;
 }
 .bingo-board {
   display: flex;

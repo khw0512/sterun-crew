@@ -3,8 +3,12 @@
 {% block content %}
 
   {% csrf_token %}
-
-  <div class="bingo-title">{{ user_name }}님의 빙고 :)</div>
+  <div class="record-top-space"></div>
+  <div class="flex-container container-400">
+    <div class="bingo-title">{{ user.last_name }}{{ user.first_name }}
+      님의 빙고</div>
+    <div>&#x1F604</div>
+  </div>
 
   <div class="bingo-board fade-in-up-short">
     <div class="bingo-row">

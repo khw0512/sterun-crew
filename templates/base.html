@@ -177,7 +177,6 @@
           <div class="menu-icon-mobile">
             <img src="{% static 'img/home-white.png' %}" alt="" height="25px" width="25px">
           </div>
-          <div class="menu-title-mobile">HOME</div>
         </div>
       </a>
       <a class="flex-gw1" href="{% url 'article:article' %}">
@@ -189,7 +188,6 @@
               <img src="{% static 'img/doc.png' %}" alt="" height="25px" width="25px">
             {% endif %}
           </div>
-          <div class="menu-title-mobile">ARTICLE</div>
         </div>
       </a>
       {% if user.is_authenticated %}
@@ -202,7 +200,6 @@
                 <img src="{% static 'img/puzzle-white.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
-            <div class="menu-title-mobile">Bingo</div>
           </div>
         </a>
       {% else %}
@@ -215,7 +212,6 @@
                 <img src="{% static 'img/puzzle-white.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
-            <div class="menu-title-mobile">Bingo</div>
           </div>
         </a>
       {% endif %}
@@ -229,7 +225,6 @@
                 <img src="{% static 'img/trophy-white.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
-            <div class="menu-title-mobile">RECORD</div>
           </div>
         </a>
       {% else %}
@@ -242,7 +237,6 @@
                 <img src="{% static 'img/trophy-white.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
-            <div class="menu-title-mobile">RECORD</div>
           </div>
         </a>
       {% endif %}
@@ -256,7 +250,6 @@
                 <img src="{% static 'img/finish-line.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
-            <div class="menu-title-mobile">MARATHON</div>
           </div>
         </a>
       {% else %}
@@ -269,7 +262,6 @@
                 <img src="{% static 'img/finish-line.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
-            <div class="menu-title-mobile">MARATHON</div>
           </div>
         </a>
       {% endif %}
