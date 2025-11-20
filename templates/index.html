@@ -5,9 +5,9 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <meta name="description" content="sterun"/>
-    <meta name="keywords" content="sterun"/>
-    <title>STERUN</title>
+    <meta name="description" content="EASYRUN"/>
+    <meta name="keywords" content="EASYRUN"/>
+    <title>EASYRUN</title>
     <link rel="shortcut icon" href="#"/>
     <!-- FONT -->
     <style>
@@ -63,35 +63,35 @@
       </div>
       <div class="j-nav-items fade-in-up-5">
         <div class="j-nav-item">
-          <a href="{% url 'index' %}">STERUN</a>
+          <a href="{% url 'index' %}">이지런</a>
         </div>
         <div class="j-nav-item">
-          <a href="{% url 'article:article' %}">Article</a>
+          <a href="{% url 'article:article' %}">공지</a>
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}
-            <a href="{% url 'marathon:marathon_list' %}">Marathon</a>
+            <a href="{% url 'marathon:marathon_list' %}">마라톤</a>
           {% else %}
-            <a href="{% url 'users:login' %}">Marathon</a>
+            <a href="{% url 'users:login' %}">마라톤</a>
           {% endif %}
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}
-            <a href="{% url 'bingo:bingo' user.pk %}">Bingo</a>
+            <a href="{% url 'bingo:bingo' user.pk %}">빙고</a>
           {% else %}
-            <a href="{% url 'users:login' %}">Bingo</a>
+            <a href="{% url 'users:login' %}">빙고</a>
           {% endif %}
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}
-            <a href="{% url 'runres:recordview' user.pk %}">Record</a>
+            <a href="{% url 'runres:recordview' user.pk %}">기록</a>
           {% else %}
-            <a href="{% url 'users:login' %}">Record</a>
+            <a href="{% url 'users:login' %}">기록</a>
           {% endif %}
         </div>
         {% if user.is_staff %}
           <div class="j-nav-item">
-            <a href="{% url 'bingo:bingoupdate' user.pk %}">Admin</a>
+            <a href="{% url 'bingo:bingoupdate' user.pk %}">관리</a>
           </div>
         {% endif %}
       </div>
@@ -106,10 +106,10 @@
           </a>
         {% else %}
           <a href="{% url 'users:login' %}">
-            <div class="login-btn-mobile">LOGIN</div>
+            <div class="login-btn-mobile">로그인</div>
           </a>
           <a href="{% url 'users:signup' %}">
-            <div class="login-btn-mobile">SIGN-UP</div>
+            <div class="login-btn-mobile">회원가입</div>
           </a>
         {% endif %}
       </div>
@@ -123,7 +123,7 @@
               <div class="menu-icon-mobile">
                 <img src="{% static 'img/home-black.png' %}" alt="" height="25px" width="25px">
               </div>
-              <div class="menu-title-mobile">HOME</div>
+              <div class="menu-title-mobile">홈</div>
             </div>
           </a>
           <a class="flex-gw1" href="{% url 'article:article' %}">
@@ -131,7 +131,7 @@
               <div class="menu-icon-mobile">
                 <img src="{% static 'img/doc.png' %}" alt="" height="25px" width="25px">
               </div>
-              <div class="menu-title-mobile">ARTICLE</div>
+              <div class="menu-title-mobile">공지</div>
             </div>
           </a>
           {% if user.is_authenticated %}
@@ -144,7 +144,7 @@
                     <img src="{% static 'img/puzzle-white.png' %}" alt="" height="25px" width="25px">
                   {% endif %}
                 </div>
-                <div class="menu-title-mobile">Bingo</div>
+                <div class="menu-title-mobile">빙고</div>
               </div>
             </a>
           {% else %}
@@ -157,7 +157,7 @@
                     <img src="{% static 'img/Book_check@2x.png' %}" alt="" height="25px" width="25px">
                   {% endif %}
                 </div>
-                <div class="menu-title-mobile">Bingo</div>
+                <div class="menu-title-mobile">빙고</div>
               </div>
             </a>
           {% endif %}
@@ -171,7 +171,7 @@
                     <img src="{% static 'img/trophy-white.png' %}" alt="" height="25px" width="25px">
                   {% endif %}
                 </div>
-                <div class="menu-title-mobile">RECORD</div>
+                <div class="menu-title-mobile">기록</div>
               </div>
             </a>
           {% else %}
@@ -184,7 +184,7 @@
                     <img src="{% static 'img/Book_check@2x.png' %}" alt="" height="25px" width="25px">
                   {% endif %}
                 </div>
-                <div class="menu-title-mobile">RECORD</div>
+                <div class="menu-title-mobile">기록</div>
               </div>
             </a>
           {% endif %}
@@ -198,7 +198,7 @@
                     <img src="{% static 'img/finish-line.png' %}" alt="" height="25px" width="25px">
                   {% endif %}
                 </div>
-                <div class="menu-title-mobile">MARATHON</div>
+                <div class="menu-title-mobile">마라톤</div>
               </div>
             </a>
           {% else %}
@@ -211,7 +211,7 @@
                     <img src="{% static 'img/finish-line.png' %}" alt="" height="25px" width="25px">
                   {% endif %}
                 </div>
-                <div class="menu-title-mobile">MARATHON</div>
+                <div class="menu-title-mobile">마라톤</div>
               </div>
             </a>
           {% endif %}

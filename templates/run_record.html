@@ -80,9 +80,21 @@
                 <div class="record-part-box">
                   <div class="distance-txt">Time</div>
                   {% if data.time_s < 10 %}
-                    <div class="record-time">{{ data.time_m }}:0{{ data.time_s }}</div>
+                    {% if data.time_h is not None %}
+                      <div class="record-time">
+                        {{ data.time_h }}:{{ data.time_m }}:0{{ data.time_s }}</div>
+                    {% else %}
+                      <div class="record-time">
+                        {{ data.time_m }}:0{{ data.time_s }}</div>
+                    {% endif %}
                   {% else %}
-                    <div class="record-time">{{ data.time_m }}:{{ data.time_s }}</div>
+                    {% if data.time_h is not None %}
+                      <div class="record-time">
+                        {{ data.time_h }}:{{ data.time_m }}:{{ data.time_s }}</div>
+                    {% else %}
+                      <div class="record-time">
+                        {{ data.time_m }}:{{ data.time_s }}</div>
+                    {% endif %}
                   {% endif %}
                 </div>
               </div>
