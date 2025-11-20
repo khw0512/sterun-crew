@@ -473,6 +473,7 @@ footer {
 .login-container {
   display: flex;
   flex-direction: column;
+  width: 400px;
 }
 
 .login-page-top-margin {
@@ -605,7 +606,7 @@ footer {
 
 .j-navbar-brand {
   display: flex;
-  margin: 20px 0 20px 0;
+  margin: auto;
 }
 
 .j-nav-item {
@@ -1206,6 +1207,13 @@ td {
 
   .login-sns-box {
     display: none;
+  }
+
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin:auto;
   }
 
   .info-icons {
