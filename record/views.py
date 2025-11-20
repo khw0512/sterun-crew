@@ -113,9 +113,9 @@ def pbRank(request):
         ranking_tenk = PersonalRecord.objects.filter(category='10K').order_by('record')
         ranking_hm = PersonalRecord.objects.filter(category='HM').order_by('record')
         ranking_fm = PersonalRecord.objects.filter(category='FM').order_by('record')
-        print(ranking_hm)
+        print(ranking_fm)
     except:
         ranking_tenk = None 
         ranking_hm = None
         ranking_fm = None   
-    return render(request,"run_pb.html", {"ranking_tenk":ranking_tenk, "ranking_hm":ranking_hm, "ranking_fm ":ranking_fm})
+    return render(request,"run_pb.html", {"ranking_tenk":ranking_tenk, "ranking_hm":ranking_hm, "ranking_fm":ranking_fm})

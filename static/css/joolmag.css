@@ -177,15 +177,20 @@ button {
   }
 }
 
-.flex-container{
+.flex-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.container-400{
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.container-400 {
   width: 400px;
-  margin:auto;
+  margin: auto;
 }
 
 .text-border {
@@ -455,7 +460,7 @@ footer {
   padding: 20px 0 0 20px;
 }
 
-.sterun-logo-m > a > img{
+.sterun-logo-m > a > img {
   width: 200px;
 }
 
@@ -636,7 +641,7 @@ footer {
 .j-nav-item a:hover:after {
   transform: scaleX(1);
 }
-.main-img-container{
+.main-img-container {
   display: flex;
   justify-content: center;
 }
@@ -1182,7 +1187,7 @@ td {
       opacity: 0;
     }
   }
-  .main-img-container{
+  .main-img-container {
     display: flex;
     justify-content: center;
   }
@@ -1213,7 +1218,7 @@ td {
     display: flex;
     flex-direction: column;
     width: 95%;
-    margin:auto;
+    margin: auto;
   }
 
   .info-icons {
@@ -1383,7 +1388,7 @@ td {
     width: 80%;
   }
 
-  .main-img-container{
+  .main-img-container {
     display: flex;
     justify-content: center;
   }

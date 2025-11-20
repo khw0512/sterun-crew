@@ -1,11 +1,31 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-  <div class="main-view">
+  <div class="main-view flex-center">
     <div class="record-top-space"></div>
-    {{ ranking_tenk }}
-    {{ ranking_hm }}
-    {{ ranking_fm }}
+    <div>
+      <div>
+        Full PB 순위
+        {% for record in ranking_fm %}
+          <div>{{ record.runner.last_name }}{{ record.runner.first_name }}</div>
+          <div>{{ record.record }}</div>
+        {% endfor %}
+      </div>
+      <div>
+        Half PB 순위
+        {% for record in ranking_hm %}
+          <div>{{ record.runner.last_name }}{{ record.runner.first_name }}</div>
+          <div>{{ record.record }}</div>
+        {% endfor %}
+      </div>
+      <div>
+        10Km PB 순위
+        {% for record in ranking_tenk %}
+          <div>{{ record.runner.last_name }}{{ record.runner.first_name }}</div>
+          <div>{{ record.record }}</div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
   <script>
     // 페이지가 모두 로드되면 호출
