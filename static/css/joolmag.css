@@ -193,6 +193,10 @@ button {
   margin: auto;
 }
 
+.container-w500{
+  width: 500px;
+}
+
 .text-border {
   z-index: 0;
   position: relative;
@@ -242,6 +246,26 @@ button {
   font-size: 1.3rem;
   padding: 0 10px 0 10px;
   color: var(--black);
+}
+
+.title-pb{
+  font-family: LeeSeoyun;
+  font-size: 1.5rem;
+  color:var(--white);
+  font-weight: 700;
+  margin: 10px 0 10px 0;
+}
+
+.rank-counter{
+  width: 40px;
+}
+.rank-runner{
+  width: 80px;
+  align-content: center;
+}
+.rank-record{
+  width: 80px;
+  align-content: center;
 }
 
 .marathon-page {
@@ -802,8 +826,8 @@ footer {
   margin: 20px 0 20px 0;
 }
 .submit-btn {
-  width: 150px;
   height: 50px;
+  padding: 0 20px 0 20px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: var(--blue);
   font-size: 2rem;

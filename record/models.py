@@ -28,7 +28,7 @@ class Record(models.Model):
 
 class PersonalRecord(models.Model):
     STATUS_CHOICES = [
-        ('pending', '심사 중'),
+        ('pending', '심사중'),
         ('verified', '인증됨'),
         ('rejected', '반려됨'),
     ]
@@ -37,6 +37,7 @@ class PersonalRecord(models.Model):
         ('HM', 'Half Marathon'),
         ('FM', 'Full Marathon'),
     ]
+    event_name = models.CharField(max_length=50)
     runner = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     category = models.CharField(max_length=5, choices=CATEGORY_CHOICES)
     record = models.DurationField()  # 시간 기록

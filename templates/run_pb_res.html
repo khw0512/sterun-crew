@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="description" content="sterun"/>
+    <meta name="keywords" content="sterun"/>
+    <title>STERUN</title>
+    <link rel="shortcut icon" href="#"/>
+    <!-- FONT -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Tektur:wght@500;600&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;400;600&display=swap");
+    </style>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+    <!-- CSS only -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/joolmag.css' %}"/>
+    <!--google icon-->
+    <script src="https://kit.fontawesome.com/2f3227cf14.js" crossorigin="anonymous"></script>
+    <!--js-->
+    <script defer="defer" src="{% static 'js/main.js' %}"></script>
+  </head>
+
+  {% if user.is_authenticated %}
+
+    <body class="mainbg">
+      <div class="sterun-logo-m">
+        <a href={% url "index" %}>
+          <img src="{% static "img/easyrun-logo2.png" %}" alt="logo-top" height="auto" ,="," width="200px">
+        </a>
+      </div>
+      <div class="run-submit-title">
+        <div class="sub-title">PB 업데이트하기</div>
+      </div>
+      <div class="run-submit-prev">
+        <div class="previous-btn">
+          <a href="{{ request.META.HTTP_REFERER }}">
+            <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
+        </div>
+      </div>
+      <div class="run-form-container">
+        <form method="post" id="contactForm" class="run-sm-form" name="contactForm" action="{% url 'runres:recordres' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-control">
+            <div class="form-label">Title
+            </div><input class="run-input" id="title" name="title" placeholder="title" type="text" required=""/>
+          </div>
+          <div class="form-control">
+            <div class="form-label">Date
+            </div><input class="run-input" type="date" name="record_date" required="" id="record_date">
+          </div>
+          <div class="form-control">
+            <div class="form-label">Image
+            </div><input class="run-input" type="file" name="image" required="" id="image">
+          </div>
+          <div class="form-control">
+            <div class="form-label">Distance (Km)
+            </div><input class="run-input" type="text" name="distance" required="" id="distance">
+          </div>
+          <div class="form-control">
+            <div class="form-label">Avg.pace
+            </div>
+            <div class="ms-row">
+              <input class="run-input-t" type="number" name="pace_m" required="" id="pace_m">
+              <div class="ms-txt">분</div>
+              <input class="run-input-t" type="number" name="pace_s" required="" id="pace_s">
+              <div class="ms-txt">초</div>
+            </div>
+          </div>
+          <div class="form-control">
+            <div class="form-label">Time
+            </div>
+            <div class="ms-row">
+              <input class="run-input-t" type="number" name="time_h" required="" id="time_h">
+              <div class="ms-txt">시</div>
+              <input class="run-input-t" type="number" name="time_m" required="" id="time_m">
+              <div class="ms-txt">분</div>
+              <input class="run-input-t" type="number" name="time_s" required="" id="time_s">
+              <div class="ms-txt">초</div>
+            </div>
+          </div>
+          <div class="form-control">
+            <div class="form-label">Description
+            </div>
+            <textarea class="run-input" id="inputMessage" name="desc" placeholder="Enter Message" data-parsley-pattern="^[a-zA-Z0-9\s.:,!?']+$"></textarea>
+          </div>
+          <!--div class="btn-control"> <button type="submit" name="submit" id="submit-form-btn" class="submit-btn"> Submit </button> </div-->
+          <button type="submit" name="submit" id="submit-form-btn" class="submit-btn">
+            <p class="btn-text">Submit</p>
+            <span class="spinner-login"></span>
+          </button>
+        </form>
+      </div>
+      <script>
+        const btn = document.getElementById('submit-form-btn');
+        btn.addEventListener('click', () => {
+          btn
+            .classList
+            .add('loading-login');
+
+          // 로그인 처리 시뮬레이션 (예: 2초 후 완료)
+          setTimeout(() => {
+            btn
+              .classList
+              .remove('loading-login');
+          }, 20000);
+        });
+      </script>
+    </body>
+  {% else %}
+
+    <body class="login-page">
+      <div class="login-container">
+        <div class="login-page-top-margin"></div>
+        <div class="j-navbar-brand">
+          <a href="{% url 'index' %}">
+            <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="auto," width="auto">
+          </a>
+        </div>
+        <div>
+          <div class="login-container">
+            <form method="post" action="{% url 'users:login' %}" class="form-container">
+              {% csrf_token %}
+              {% include "users/form_errors.html" %}
+              <div>
+                <input type="text" name="username" id="username" class="id" placeholder="아이디">
+              </div>
+              <div>
+                <input type="text" name="password" id="password" class="pw" placeholder="비밀번호">
+              </div>
+              <div>
+                <button type="submit" class="login-submit">로그인</button>
+              </div>
+              <a href="{% url 'users:signup' %}">
+                <span class="signup-btn">회원가입</span></a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </body>
+  {% endif %}
+
+</html>
