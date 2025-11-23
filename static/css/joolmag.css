@@ -234,7 +234,6 @@ button {
   font-size: 1.5rem;
   font-weight: 700;
   margin: auto;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 .loading-login .btn-text {
@@ -296,7 +295,7 @@ button {
 
 .page-title {
   text-align: center;
-  font-family: SejonghospitalBold;
+  font-weight: 900;
   color: var(--jlightgreen);
   font-size: 2rem;
 }
@@ -661,7 +660,6 @@ footer {
   align-items: center;
   color: var(--white);
   font-size: 1rem;
-  font-family: yangjin;
 }
 
 .signup-input {
@@ -824,8 +822,8 @@ footer {
   display: none;
 }
 .run-submit-title {
-  font-family: yangjin;
   font-size: 1.5rem;
+  font-weight: 700;
   display: flex;
   justify-content: center;
   width: 400px;
@@ -847,8 +845,8 @@ footer {
   margin-top: 1rem;
 }
 .sub-title {
-  font-family: yangjin;
   font-size: 1.5rem;
+  font-weight: 500;
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -863,8 +861,8 @@ footer {
   margin-bottom: 10px;
 }
 .article-submit-title {
-  font-family: yangjin;
   font-size: 1.5rem;
+  font-weight: 500;
   display: flex;
   justify-content: center;
   width: 800px;
@@ -893,7 +891,6 @@ footer {
 }
 .form-label {
   width: 200px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-weight: 500;
   margin: 0 0 5px 0;
   color: var(--jlightgreen);
@@ -931,9 +928,8 @@ footer {
 .submit-btn {
   height: 50px;
   padding: 0 20px 0 20px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: var(--blue);
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 700;
   background-color: var(--jlightgreen);
   border-radius: 5rem;
@@ -942,10 +938,9 @@ footer {
 .check-submit-btn {
   width: 200px;
   height: 50px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: var(--blue);
   font-size: 1.3rem;
-  font-weight: 300;
+  font-weight: 700;
   background-color: var(--jlightgreen);
   border-radius: 5rem;
   border: var(--white) 2px solid;
@@ -992,11 +987,10 @@ footer {
   border: var(--jlightgreen) solid 2px;
 }
 .upload-txt {
-  font-family: "yangjin";
   font-size: 1.2rem;
+  font-weight: 700;
   margin: auto;
   margin-left: 5px;
-  font-weight: 300;
 }
 .record-img {
   object-fit: cover;
@@ -1055,7 +1049,6 @@ footer {
   border-bottom: solid 2px var(--jlightgreen);
 }
 .distance-sum {
-  font-family: Yangjin;
   font-size: 1.5rem;
   color: var(--jlightgreen);
 }
@@ -1370,6 +1363,7 @@ td {
   }
   .run-submit-title {
     width: 90%;
+    font-weight: 700;
   }
   .run-submit-prev {
     width: 80%;
@@ -1394,7 +1388,6 @@ td {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: yangjin;
     font-size: 5vh;
     font-weight: 200;
     border-bottom: #f2f2f2 solid 1px;

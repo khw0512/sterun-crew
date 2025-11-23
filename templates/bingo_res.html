@@ -14,30 +14,30 @@
 
           {% for item in bingoitem %}
             <div class="form-control">
-              <div class="form-label">Content{{ item.item_id }}
+              <div class="form-label">아이템{{ item.item_id }}
               </div><input class="run-input" id="content{{ item.item_id }}" name="content{{ item.item_id }}" value="{{ item.content }}" type="text" required=""/>
             </div>
           {% endfor %}
 
           <div class="btn-control">
             <button type="submit" name="submit" id="submit-form-btn" class="submit-btn">
-              Update
+              수정하기
             </button>
           </div>
         </form>
         <a href="{% url "admin:index" %}">
           <div class="btn-control">
-            <button class="check-submit-btn">Go Admin</button>
+            <button class="check-submit-btn">관리자 페이지</button>
           </div>
         </a>
         <a href="{% url "runres:recordCheck" %}">
           <div class="btn-control">
-            <button class="check-submit-btn">Record Check</button>
+            <button class="check-submit-btn">기록 인증하기</button>
           </div>
         </a>
         <a href="{% url "article:articleres" %}">
           <div class="btn-control">
-            <button class="check-submit-btn">Article Upload</button>
+            <button class="check-submit-btn">공지 작성하기</button>
           </div>
         </a>
         {% if cnt_items == 0 %}
