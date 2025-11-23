@@ -34,12 +34,13 @@ class PersonalRecord(models.Model):
     ]
     CATEGORY_CHOICES = [
         ('10K', '10km'),
-        ('HM', 'Half Marathon'),
-        ('FM', 'Full Marathon'),
+        ('HM', '하프마라톤'),
+        ('FM', '풀마라톤'),
     ]
     event_name = models.CharField(max_length=50)
     runner = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     category = models.CharField(max_length=5, choices=CATEGORY_CHOICES)
+    date = models.DateField(blank=True, null=True)
     record = models.DurationField()  # 시간 기록
     status = models.CharField(
         max_length=10,
@@ -48,6 +49,7 @@ class PersonalRecord(models.Model):
     )
     evidence_url = ResizedImageField(size=[500,500], upload_to="record", blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    desc = models.TextField(blank=True)
 
     class Meta:
         unique_together = ('runner', 'category')  # 한 종목에 1개 PR

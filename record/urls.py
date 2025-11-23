@@ -16,4 +16,9 @@ urlpatterns = [
     path('recordReject/<str:id>', views.recordReject, name="recordReject"),
     path('recordDelete/<str:id>', views.recordDelete, name="recordDelete"),
     path('pbrank/', views.pbRank, name="pbRank"),
+    path('pbview/<str:pk>/', views.pbView, name="pbView"),
+    path('pbresPage/<str:pk>/<str:category>/', views.pbresPage, name="pbresPage"),
+    path('pbRes/<str:pk>/<str:category>/', views.pbRes, name="pbRes"),
+    path('pbUpdateView/<str:pk>/<str:category>/', views.pbUpdateView, name="pbUpdateView"),
+    path('pbUpdate/<str:pk>/<str:category>/', views.pbUpdate, name="pbUpdate"),
 ]

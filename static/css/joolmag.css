@@ -24,6 +24,78 @@
 }
 
 @font-face {
+  font-family: "Escoredream";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-1Thin.woff")
+    format("woff");
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Escoredream";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff")
+    format("woff");
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Escoredream";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
+    format("woff");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Escoredream";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Escoredream";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff")
+    format("woff");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Escoredream";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff")
+    format("woff");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Escoredream";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff")
+    format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Escoredream";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff")
+    format("woff");
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Escoredream";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff")
+    format("woff");
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "SejonghospitalBold";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2")
     format("woff2");
@@ -31,16 +103,9 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: "Orbit-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2")
-    format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-
 * {
-  font-family: "NanumSquareNeo";
+  font-family: "Escoredream";
+  font-weight: 300;
 }
 
 a {
@@ -90,6 +155,11 @@ button {
   height: 30px;
 }
 .divider-line {
+  width: 100%;
+  border-top: var(--jlightgreen) 3px dotted;
+  margin: 10px 0 10px 0;
+}
+.divider-line-1 {
   width: 100%;
   border-top: var(--jlightgreen) 1px dotted;
   margin: 10px 0 10px 0;
@@ -162,7 +232,7 @@ button {
 
 .btn-text {
   font-size: 1.5rem;
-  font-weight: normal;
+  font-weight: 700;
   margin: auto;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
@@ -193,7 +263,7 @@ button {
   margin: auto;
 }
 
-.container-w500{
+.container-w500 {
   width: 500px;
 }
 
@@ -232,38 +302,81 @@ button {
 }
 
 .text-white {
-  font-family: LeeSeoyun;
   color: antiquewhite;
 }
 
 .text-aqua {
-  font-family: LeeSeoyun;
   color: rgb(0, 102, 102);
 }
 
 .text-black {
-  font-family: LeeSeoyun;
   font-size: 1.3rem;
   padding: 0 10px 0 10px;
   color: var(--black);
 }
 
-.title-pb{
-  font-family: LeeSeoyun;
+.title-pb {
   font-size: 1.5rem;
-  color:var(--white);
+  color: var(--white);
   font-weight: 700;
   margin: 10px 0 10px 0;
 }
 
-.rank-counter{
+.pb-event {
+  color: var(--white);
+  font-size: 1rem;
+  margin-bottom: 10px;
+  line-height: 1.4rem;
+}
+
+.pb-status-verified {
+  margin: 10px 0 10px 5px;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--jlightgreen);
+  border: dotted 1px var(--jlightgreen);
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 0 10px 0 10px;
+}
+
+.pb-status-pending {
+  margin: 10px 0 10px 5px;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--j-pink);
+  border: dotted 1px var(--j-pink);
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 0 10px 0 10px;
+}
+
+.pb-status-rejected {
+  margin: 10px 0 10px 5px;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  font-size: 0.8rem;
+  color: grey;
+  border: dotted 1px grey;
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 0 10px 0 10px;
+}
+
+.no-record {
+  color: var(--j-pink);
+}
+
+.rank-counter {
   width: 40px;
 }
-.rank-runner{
+.rank-runner {
   width: 80px;
   align-content: center;
 }
-.rank-record{
+.rank-record {
   width: 80px;
   align-content: center;
 }
@@ -282,27 +395,23 @@ button {
   background-color: var(--jlightgreen);
   border-radius: 20px 20px 0 0;
   text-align: center;
-  font-family: LeeSeoyun;
   color: var(--black);
   font-size: 1.5rem;
 }
 
 .marathon-parti {
-  font-family: LeeSeoyun;
   font-size: 1rem;
   color: var(--black);
   width: 80px;
 }
 
 .marathon-desc {
-  font-family: LeeSeoyun;
   padding: 0 10px 0 10px;
   font-size: 1.2rem;
   color: var(--black);
 }
 
 .marathon-dist {
-  font-family: LeeSeoyun;
   font-size: 1rem;
   color: var(--black);
   height: 1rem;
@@ -312,7 +421,6 @@ button {
 
 .empty-parti {
   color: darkred;
-  font-family: LeeSeoyun;
   padding: 0 0 0 20px;
 }
 
@@ -321,7 +429,6 @@ button {
 }
 
 .marathon-btn {
-  font-family: LeeSeoyun;
   color: var(--jlightgreen);
   border: var(--jlightgreen);
   background-color: var(--jblue);
@@ -330,7 +437,6 @@ button {
 }
 
 .card-1 {
-  font-family: LeeSeoyun;
   border: solid 1px var(--j-pink);
   background-color: antiquewhite;
   border-radius: 20px;
@@ -342,13 +448,11 @@ button {
 }
 
 .flex-row {
-  font-family: LeeSeoyun;
   display: flex;
   width: 100%;
 }
 
 .flex-row-item {
-  font-family: LeeSeoyun;
   font-size: 1.2rem;
   flex-grow: 1;
   color: var(--black);
@@ -536,7 +640,6 @@ footer {
   background-color: var(--jlightgreen);
   font-size: 1.2rem;
   font-weight: 700;
-  font-family: leeseoyun;
   align-items: center;
   width: 100%;
   height: 3rem;
@@ -572,6 +675,7 @@ footer {
 }
 
 .signup-btn {
+  font-weight: 700;
   cursor: pointer;
   font-size: 0.8rem;
   color: var(--white);
@@ -646,7 +750,6 @@ footer {
 
 .j-nav-item a {
   font-weight: 600;
-  font-family: LeeSeoyun;
 }
 
 .j-nav-item a:after {
@@ -831,7 +934,7 @@ footer {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: var(--blue);
   font-size: 2rem;
-  font-weight: 300;
+  font-weight: 700;
   background-color: var(--jlightgreen);
   border-radius: 5rem;
   border: var(--white) 2px solid;
@@ -846,6 +949,16 @@ footer {
   background-color: var(--jlightgreen);
   border-radius: 5rem;
   border: var(--white) 2px solid;
+}
+.btn-kor {
+  height: 40px;
+  padding: 0 20px 0 20px;
+  color: var(--blue);
+  font-size: 1.3rem;
+  font-weight: 700;
+  background-color: var(--jlightgreen);
+  border-radius: 5rem;
+  border: var(--jlightgreen) 1px solid;
 }
 
 .record-top-space {
@@ -979,7 +1092,6 @@ footer {
 }
 .bingo-title {
   color: var(--white);
-  font-family: leeseoyun;
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
@@ -1018,10 +1130,10 @@ footer {
   height: 100px;
 }
 .create-bingo-btn {
-  font-family: LeeSeoyun;
   font-size: 1.2rem;
   color: var(--white);
   text-align: center;
+  font-weight: 700;
   margin: auto;
   margin-top: 20px;
   padding: 10px 0 10px 0;
@@ -1038,6 +1150,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 700;
   background-color: #fee500;
   font-size: 1.2rem;
   color: var(--black);
@@ -1050,7 +1163,6 @@ footer {
   width: 160px;
 }
 #kakao-share-btn > div {
-  font-family: LeeSeoyun;
   padding-left: 5px;
 }
 
@@ -1313,6 +1425,7 @@ td {
   }
   .login-btn {
     color: var(--jblue);
+    font-weight: 700;
     margin-left: 0px;
     text-align: center;
     border: 0px;

@@ -1,3 +1,4 @@
+from datetime import timedelta
 from django.shortcuts import redirect, render
 from django.db.models import Sum
 from django.core.paginator import Paginator
@@ -119,3 +120,61 @@ def pbRank(request):
         ranking_hm = None
         ranking_fm = None   
     return render(request,"run_pb.html", {"ranking_tenk":ranking_tenk, "ranking_hm":ranking_hm, "ranking_fm":ranking_fm})
+
+def pbView(request,pk):
+    pb_tenk = PersonalRecord.objects.filter(runner=pk).filter(category='10K').first()
+    pb_hm = PersonalRecord.objects.filter(runner=pk).filter(category='HM').first()
+    pb_fm = PersonalRecord.objects.filter(runner=pk).filter(category='FM').first()
+
+    return render(request,"run_mypb.html", {"pb_tenk":pb_tenk, "pb_hm":pb_hm, "pb_fm":pb_fm})
+
+def pbresPage(request,pk,category):
+    return render(request,"run_pb_res.html",{"category":category})
+
+def pbRes(request, pk, category):
+    if request.method == "POST":
+        mypb = PersonalRecord()
+        if request.POST["time_h"] == "":
+            h = 0
+        else:
+            h = int(request.POST["time_h"])
+        m = int(request.POST["time_m"])
+        s = int(request.POST["time_s"])
+        mypb.event_name = request.POST["title"]
+        mypb.runner = request.user
+        mypb.date = request.POST["date"]
+        mypb.evidence_url = request.FILES["image"]
+        mypb.category = category
+        mypb.record = timedelta(hours=h, minutes=m, seconds=s)
+        mypb.desc = request.POST["desc"]
+        mypb.save()
+        return redirect("runres:pbView", pk)
+    else:
+        return redirect("runres:pbView", pk)
+
+def pbUpdateView(request,pk,category):
+    record = PersonalRecord.objects.filter(runner=pk).filter(category=category).first()
+    return render(request,"run_pb_update.html", {"record":record})
+
+def pbUpdate(request,pk,category):
+
+    record = PersonalRecord.objects.filter(user=pk).get(category=category)
+
+    if request.method == "POST":
+        if request.POST["time_h"] == "":
+            h = 0
+        else:
+            h = int(request.POST["time_h"])
+        m = int(request.POST["time_m"])
+        s = int(request.POST["time_s"])
+        record.event_name = request.POST["title"]
+        record.runner = request.user
+        record.date = request.POST["date"]
+        record.evidence_url = request.FILES["image"]
+        record.category = category
+        record.record = timedelta(hours=h, minutes=m, seconds=s)
+        record.desc = request.POST["desc"]
+        record.save()
+        return redirect("runres:recordview",pk=pk)
+    else:
+        return redirect("runres:recordview",pk=pk)

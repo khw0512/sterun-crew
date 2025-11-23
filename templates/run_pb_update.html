@@ -34,18 +34,11 @@
       </div>
       <div class="run-submit-title">
         <div>
-          {% if category == "10K" %}
-            <div class="sub-title">10Km-
-            </div>
-          {% elif category == "HM" %}
-            <div class="sub-title">하프마라톤-
-            </div>
-          {% elif category == "FM" %}
-            <div class="sub-title">풀마라톤-
-            </div>
-          {% endif %}
+          <div class="sub-title">{{ record.get_category_display }}
+            -
+          </div>
         </div>
-        <div class="sub-title">PB 입력하기</div>
+        <div class="sub-title">PB 갱신하기</div>
       </div>
       <div class="run-submit-prev">
         <div class="previous-btn">
@@ -54,11 +47,11 @@
         </div>
       </div>
       <div class="run-form-container">
-        <form method="post" id="contactForm" class="run-sm-form" name="contactForm" action="{% url 'runres:pbRes' user.pk category %}" enctype="multipart/form-data">
+        <form method="post" id="contactForm" class="run-sm-form" name="contactForm" action="{% url 'runres:pbUpdate' user.pk record.category %}" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="form-control">
             <div class="form-label">대회명
-            </div><input class="run-input" id="title" name="title" placeholder="대회명" type="text" required="required"/>
+            </div><input class="run-input" id="title" name="title" placeholder="새로운 대회명을 입력해 주세요" type="text" required="required"/>
           </div>
           <div class="form-control">
             <div class="form-label">날짜

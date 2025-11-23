@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <div class="main-view flex-center">
+    <div class="record-top-space"></div>
+    <div class="container-w500">
+      <div>
+        <p class="page-title">나의 PB</p>
+      </div>
+      <div class="divider-line"></div>
+      <div class="space-h30"></div>
+      <div>
+        {% if pb_fm == None %}
+          <div class="title-pb">나의 Full PB</div>
+          <div class="no-record">기록이 없어요. 등록해 주세요.</div>
+          <div class="btn-control">
+            <a href="{% url "runres:pbresPage" user.pk "FM" %}">
+              <button class="btn-kor">PB등록하기</button>
+            </a>
+          </div>
+        {% else %}
+          <div class="flex-row">
+            <div class="title-pb">나의 Full PB</div>
+            <div class="{% if pb_fm.status == 'verified' %}pb-status-verified
+            {% elif pb_fm.status == 'pending' %}pb-status-pending
+            {% else %}pb-status-rejected{% endif %}">{{ pb_fm.get_status_display }}</div>
+          </div>
+          <div class="pb-event">
+            <div>기록 :
+              {{ pb_fm.record }}</div>
+            <div>대회명 :
+              {{ pb_fm.event_name }}</div>
+          </div>
+          <img class="card-main-img" src="/media/{{ pb_fm.evidence_url }}" alt="" height="auto" width="auto"/>
+          <div class="btn-control">
+            <a href="{% url "runres:pbUpdateView" user.pk "FM" %}">
+              <button class="btn-kor">PB 갱신하기</button>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+      <div class="space-h30"></div>
+      <div class="divider-line-1"></div>
+      <div>
+        {% if pb_hm == None %}
+          <div class="title-pb">나의 Hlaf PB</div>
+          <div class="no-record">기록이 없어요. 등록해 주세요.</div>
+          <div class="btn-control">
+            <a href="{% url "runres:pbresPage" user.pk "HM" %}">
+              <button class="btn-kor">PB등록하기</button>
+            </a>
+          </div>
+          <button>기록 업로드</button>
+        {% else %}
+          <div class="flex-row">
+            <div class="title-pb">나의 Hlaf PB</div>
+            <div class="{% if pb_hm.status == 'verified' %}pb-status-verified
+            {% elif pb_hm.status == 'pending' %}pb-status-pending
+            {% else %}pb-status-rejected{% endif %}">{{ pb_hm.get_status_display }}</div>
+          </div>
+          <div class="pb-event">
+            <div>기록 :
+              {{ pb_hm.record }}</div>
+            <div>대회명 :
+              {{ pb_hm.event_name }}</div>
+          </div>
+          <img class="card-main-img" src="/media/{{ pb_hm.evidence_url }}" alt="" height="auto" width="auto"/>
+          <div class="btn-control">
+            <a href="{% url "runres:pbUpdateView" user.pk "HM" %}">
+              <button class="btn-kor">PB 갱신하기</button>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+      <div class="space-h30"></div>
+      <div class="divider-line-1"></div>
+      <div>
+        {% if pb_tenk == None %}
+          <div class="title-pb">나의 10Km PB</div>
+          <div class="no-record">기록이 없어요. 등록해 주세요.</div>
+          <div class="btn-control">
+            <a href="{% url "runres:pbresPage" user.pk "10K" %}">
+              <button class="btn-kor">PB등록하기</button>
+            </a>
+          </div>
+        {% else %}
+          <div class="flex-row">
+            <div class="title-pb">나의 10Km PB</div>
+            <div class="{% if pb_tenk.status == 'verified' %}pb-status-verified
+            {% elif pb_tenk.status == 'pending' %}pb-status-pending
+            {% else %}pb-status-rejected{% endif %}">{{ pb_tenk.get_status_display }}</div>
+          </div>
+          <div class="pb-event">
+            <div>기록 :
+              {{ pb_tenk.record }}</div>
+            <div>대회명 :
+              {{ pb_tenk.event_name }}</div>
+          </div>
+          <img class="card-main-img" src="/media/{{ pb_tenk.evidence_url }}" alt="" height="auto" width="auto"/>
+          <div class="btn-control">
+            <a href="{% url "runres:pbUpdateView" user.pk "10K" %}">
+              <button class="btn-kor">PB 갱신하기</button>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <script>
+    // 페이지가 모두 로드되면 호출
+    window.addEventListener('load', function () {
+      const loader = document.getElementById('loader');
+      const content = document.getElementById('content');
+      // 로딩 화면 숨기기
+      loader.style.display = 'none';
+      // 콘텐츠 보여주기
+      content.style.display = 'block';
+    });
+  </script>
+{% endblock content %}
