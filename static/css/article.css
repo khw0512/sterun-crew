@@ -61,7 +61,6 @@ html {
 }
 
 .j-nav-items > div > a{
-    font-family: LeeSeoyun;
     font-size: 1.2rem;
     font-weight: 700;
 }
@@ -146,7 +145,6 @@ html {
 }
 
 .title {
-    font-family: LeeSeoyun;
     color: var(--black);
     font-size: 2rem;
     font-weight: 700;

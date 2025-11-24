@@ -158,7 +158,7 @@ def pbUpdateView(request,pk,category):
 
 def pbUpdate(request,pk,category):
 
-    record = PersonalRecord.objects.filter(user=pk).get(category=category)
+    record = PersonalRecord.objects.filter(runner=pk).get(category=category)
 
     if request.method == "POST":
         if request.POST["time_h"] == "":
@@ -170,11 +170,12 @@ def pbUpdate(request,pk,category):
         record.event_name = request.POST["title"]
         record.runner = request.user
         record.date = request.POST["date"]
+        record.status = "pending"
         record.evidence_url = request.FILES["image"]
         record.category = category
         record.record = timedelta(hours=h, minutes=m, seconds=s)
         record.desc = request.POST["desc"]
         record.save()
-        return redirect("runres:recordview",pk=pk)
+        return redirect("runres:pbView", pk)
     else:
-        return redirect("runres:recordview",pk=pk)
+        return redirect("runres:pbView", pk)
