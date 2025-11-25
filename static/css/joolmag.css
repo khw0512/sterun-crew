@@ -386,6 +386,7 @@ button {
 }
 
 .rank-counter {
+  text-align: center;
   width: 40px;
 }
 .rank-runner {
