@@ -365,7 +365,7 @@ button {
 }
 
 .pb-btn-container {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
 }
@@ -1401,6 +1401,12 @@ td {
   .run-form-container {
     width: 80%;
   }
+
+  .pb-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   .submenu {
     height: 10vh;
     display: flex;
@@ -1590,5 +1596,10 @@ td {
   }
   .flex-gw1 {
     flex-grow: 1;
+  }
+  .pb-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
