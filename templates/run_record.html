@@ -131,21 +131,22 @@
       {% endif %}
 
     </div>
-    <a href="{% url "runres:recordRank" %}">
-      <div class="btn-control">
+    <div class="btn-control">
+      <a href="{% url "runres:recordRank" %}">
         <button class="submit-btn">거리 랭킹</button>
-      </div>
-    </a>
-    <a href="{% url "runres:pbRank" %}">
-      <div class="btn-control">
+      </a>
+    </div>
+
+    <div class="btn-control">
+      <a href="{% url "runres:pbRank" %}">
         <button class="submit-btn">PB 랭킹</button>
-      </div>
-    </a>
-    <a href="{% url "runres:pbView" user.pk %}">
-      <div class="btn-control">
+      </a>
+    </div>
+    <div class="btn-control">
+      <a href="{% url "runres:pbView" user.pk %}">
         <button class="submit-btn">나의 PB</button>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
   <script>
     // 페이지가 모두 로드되면 호출

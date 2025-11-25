@@ -93,6 +93,11 @@
             <i class="fa-brands fa-youtube"></i>
           </div>
         </div>
+        <div class="btn-control">
+          <a href="{% url "runres:pbView" user.pk %}">
+            <button class="submit-btn">나의 PB</button>
+          </a>
+        </div>
         <div class="login-box">
           {% if user.is_authenticated %}
             <a href="{% url 'users:logout' %}">

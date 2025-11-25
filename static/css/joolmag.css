@@ -822,7 +822,7 @@ footer {
   display: none;
 }
 .run-submit-title {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   display: flex;
   justify-content: center;
@@ -927,9 +927,10 @@ footer {
 }
 .submit-btn {
   height: 50px;
+  width: 200px;
   padding: 0 20px 0 20px;
   color: var(--blue);
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   font-weight: 700;
   background-color: var(--jlightgreen);
   border-radius: 5rem;
