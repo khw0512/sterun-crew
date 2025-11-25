@@ -364,6 +364,23 @@ button {
   padding: 0 10px 0 10px;
 }
 
+.pb-btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pb-btn {
+  width: 150px;
+  padding: 10px 10px 10px 10px;
+  color: var(--blue);
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: var(--jlightgreen);
+  border-radius: 5rem;
+  border: var(--white) 2px solid;
+}
+
 .no-record {
   color: var(--j-pink);
 }
