@@ -3,19 +3,12 @@
 {% block content %}
   <div class="main-view">
     <div class="record-top-space"></div>
-    <div class="btn-container">
-      <a href="{% url 'runres:runres' %}">
-        <div class="upload-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" viewbox="0 0 24 24" width="24">
-            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-              <path d="m4.75 14.75v1.5c0 1.6569 1.34315 3 3 3h8.5c1.6569 0 3-1.3431 3-3v-1.5"/>
-              <path d="m12 14.25v-9.25"/>
-              <path d="m8.75 8.25 3.25-3.5 3.25 3.5"/>
-            </g>
-          </svg>
-          <div class="upload-txt">기록 업로드</div>
-        </div>
-      </a>
+    <div>
+      <p class="page-title">나의 마일리지</p>
+    </div>
+    <div class="width500">
+      <div class="divider-line"></div>
+      <div class="space-h30"></div>
     </div>
     <div class="search-sum">
       <div class="filter-line">
@@ -131,24 +124,25 @@
       {% endif %}
 
     </div>
+    <div class="btn-container">
+      <a href="{% url 'runres:runres' %}">
+        <div class="upload-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="24" viewbox="0 0 24 24" width="24">
+            <g stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+              <path d="m4.75 14.75v1.5c0 1.6569 1.34315 3 3 3h8.5c1.6569 0 3-1.3431 3-3v-1.5"/>
+              <path d="m12 14.25v-9.25"/>
+              <path d="m8.75 8.25 3.25-3.5 3.25 3.5"/>
+            </g>
+          </svg>
+          <div class="upload-txt">마일리지 업로드</div>
+        </div>
+      </a>
+    </div>
     <div class="btn-control">
       <a href="{% url "runres:recordRank" %}">
-        <button class="submit-btn">거리 랭킹</button>
+        <button class="submit-btn">마일리지 랭킹</button>
       </a>
     </div>
-
-    <div class="btn-control">
-      <a href="{% url "runres:pbRank" %}">
-        <button class="submit-btn">PB 랭킹</button>
-      </a>
-    </div>
-    <div class="space-h30"></div>
-    <div class="btn-control">
-      <a href="{% url "runres:pbView" user.pk %}">
-        <button class="submit-btn">나의 PB</button>
-      </a>
-    </div>
-
   </div>
   <script>
     // 페이지가 모두 로드되면 호출

@@ -189,6 +189,33 @@
             </a>
           {% endif %}
           {% if user.is_authenticated %}
+            <a class="flex-gw1" href="{% url 'runres:pbRank' %}">
+              <div class="nav-item-mobile">
+                <div class="menu-icon-mobile">
+                  {% if request.resolver_match.url_name == 'pbRank' %}
+                    <img src="{% static 'img/diamond-filled.png' %}" alt="" height="25px" width="25px">
+                  {% else %}
+                    <img src="{% static 'img/diamond.png' %}" alt="" height="25px" width="25px">
+                  {% endif %}
+                </div>
+                <div class="menu-title-mobile">PB</div>
+              </div>
+            </a>
+          {% else %}
+            <a class="flex-gw1" href="{% url 'users:login' %}">
+              <div class="nav-item-mobile">
+                <div class="menu-icon-mobile">
+                  {% if request.resolver_match.url_name == 'pbRank' %}
+                    <img src="{% static 'img/diamond-filled.png' %}" alt="" height="25px" width="25px">
+                  {% else %}
+                    <img src="{% static 'img/diamond.png' %}" alt="" height="25px" width="25px">
+                  {% endif %}
+                </div>
+                <div class="menu-title-mobile">PB</div>
+              </div>
+            </a>
+          {% endif %}
+          {% if user.is_authenticated %}
             <a class="flex-gw1" href="{% url 'marathon:marathon_list' %}">
               <div class="nav-item-mobile">
                 <div class="menu-icon-mobile">

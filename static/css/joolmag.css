@@ -284,6 +284,11 @@ button {
   margin: 5px 0 5px 0;
 }
 
+.width500{
+  width: 500px;
+  margin:auto;
+}
+
 .flex {
   display: flex;
   justify-content: center;

@@ -67,9 +67,16 @@
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}
-            <a href="{% url 'runres:recordview' user.pk %}">기록</a>
+            <a href="{% url 'runres:recordview' user.pk %}">마일리지</a>
           {% else %}
-            <a href="{% url 'users:login' %}">기록</a>
+            <a href="{% url 'users:login' %}">마일리지</a>
+          {% endif %}
+        </div>
+        <div class="j-nav-item">
+          {% if user.is_authenticated %}
+            <a href="{% url 'runres:pbRank' %}">PB</a>
+          {% else %}
+            <a href="{% url 'users:login' %}">PB</a>
           {% endif %}
         </div>
         {% if user.is_staff %}
@@ -182,6 +189,7 @@
           <div class="menu-icon-mobile">
             <img src="{% static 'img/home-white.png' %}" alt="" height="25px" width="25px">
           </div>
+          <div class="menu-title-mobile">홈</div>
         </div>
       </a>
       <a class="flex-gw1" href="{% url 'article:article' %}">
@@ -193,6 +201,7 @@
               <img src="{% static 'img/doc.png' %}" alt="" height="25px" width="25px">
             {% endif %}
           </div>
+          <div class="menu-title-mobile">공지</div>
         </div>
       </a>
       {% if user.is_authenticated %}
@@ -205,6 +214,7 @@
                 <img src="{% static 'img/puzzle-white.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
+            <div class="menu-title-mobile">빙고</div>
           </div>
         </a>
       {% else %}
@@ -217,6 +227,7 @@
                 <img src="{% static 'img/puzzle-white.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
+            <div class="menu-title-mobile">빙고</div>
           </div>
         </a>
       {% endif %}
@@ -230,6 +241,7 @@
                 <img src="{% static 'img/trophy-white.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
+            <div class="menu-title-mobile">마일리지</div>
           </div>
         </a>
       {% else %}
@@ -242,6 +254,34 @@
                 <img src="{% static 'img/trophy-white.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
+            <div class="menu-title-mobile">마일리지</div>
+          </div>
+        </a>
+      {% endif %}
+      {% if user.is_authenticated %}
+        <a class="flex-gw1" href="{% url 'runres:pbRank' %}">
+          <div class="nav-item-mobile">
+            <div class="menu-icon-mobile">
+              {% if request.resolver_match.url_name == 'pbRank' %}
+                <img src="{% static 'img/diamond-filled.png' %}" alt="" height="25px" width="25px">
+              {% else %}
+                <img src="{% static 'img/diamond.png' %}" alt="" height="25px" width="25px">
+              {% endif %}
+            </div>
+            <div class="menu-title-mobile">PB</div>
+          </div>
+        </a>
+      {% else %}
+        <a class="flex-gw1" href="{% url 'users:login' %}">
+          <div class="nav-item-mobile">
+            <div class="menu-icon-mobile">
+              {% if request.resolver_match.url_name == 'pbRank' %}
+                <img src="{% static 'img/diamond-filled.png' %}" alt="" height="25px" width="25px">
+              {% else %}
+                <img src="{% static 'img/diamond.png' %}" alt="" height="25px" width="25px">
+              {% endif %}
+            </div>
+            <div class="menu-title-mobile">PB</div>
           </div>
         </a>
       {% endif %}
@@ -255,6 +295,7 @@
                 <img src="{% static 'img/finish-line.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
+            <div class="menu-title-mobile">마라톤</div>
           </div>
         </a>
       {% else %}
@@ -267,6 +308,7 @@
                 <img src="{% static 'img/finish-line.png' %}" alt="" height="25px" width="25px">
               {% endif %}
             </div>
+            <div class="menu-title-mobile">마라톤</div>
           </div>
         </a>
       {% endif %}

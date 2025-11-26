@@ -7,9 +7,14 @@
   {% if month == "0" or month == None %}
     <div class="run-submit-title">마일리지 랭킹</div>
   {% else %}
-    <div class="run-submit-title">{{ month }}월 달리기 거리 랭킹</div>
+    <div class="run-submit-title">{{ month }}월 마일리지 랭킹</div>
   {% endif %}
-
+  <div class="run-submit-prev">
+    <div class="previous-btn">
+      <a href="{{ request.META.HTTP_REFERER }}">
+        <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
+    </div>
+  </div>
   <div class="rank-container">
     <div class="filter-line">
       <div>
