@@ -84,9 +84,16 @@
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}
-            <a href="{% url 'runres:recordview' user.pk %}">기록</a>
+            <a href="{% url 'runres:recordview' user.pk %}">마일리지</a>
           {% else %}
-            <a href="{% url 'users:login' %}">기록</a>
+            <a href="{% url 'users:login' %}">마일리지</a>
+          {% endif %}
+        </div>
+        <div class="j-nav-item">
+          {% if user.is_authenticated %}
+            <a href="{% url 'runres:pbRank' %}">PB</a>
+          {% else %}
+            <a href="{% url 'users:login' %}">PB</a>
           {% endif %}
         </div>
         {% if user.is_staff %}
@@ -171,7 +178,7 @@
                     <img src="{% static 'img/trophy-white.png' %}" alt="" height="25px" width="25px">
                   {% endif %}
                 </div>
-                <div class="menu-title-mobile">기록</div>
+                <div class="menu-title-mobile">마일리지</div>
               </div>
             </a>
           {% else %}
@@ -184,7 +191,7 @@
                     <img src="{% static 'img/Book_check@2x.png' %}" alt="" height="25px" width="25px">
                   {% endif %}
                 </div>
-                <div class="menu-title-mobile">기록</div>
+                <div class="menu-title-mobile">마일리지</div>
               </div>
             </a>
           {% endif %}
