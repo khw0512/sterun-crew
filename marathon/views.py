@@ -1,6 +1,6 @@
 from collections import defaultdict
 import json
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponse, JsonResponse 
 from django.core import serializers
 from django.core.serializers.json import DjangoJSONEncoder
@@ -15,7 +15,6 @@ def marathon_list(request):
     events = MarathonEvent.objects.prefetch_related(
         'marathonreg_set__user'   # 역참조 + user까지 미리 가져오기
     )
-    print(events)
     context = {
         'events': events,
     }
@@ -25,18 +24,23 @@ def marathon_list(request):
 
 def parti_me(request, key):
     if request.method == "POST":
-        marathon_title = MarathonEvent.objects.get(marathon_id=key)
-        marathonreg = MarathonReg()
-        marathonreg.marathon = marathon_title
-        marathonreg.user = request.user
-        marathonreg.distance = request.POST["distance"]
-        marathonreg.save()
-        return redirect("marathon:marathon_list")
+        if MarathonReg.objects.filter(user=request.user).exists():
+            return redirect("marathon:marathon_list")
+        else:
+            MarathonEvent.objects.get(marathon_id=key)
+            marathon_title = MarathonEvent.objects.get(marathon_id=key)
+            marathonreg = MarathonReg()
+            marathonreg.marathon = marathon_title
+            marathonreg.user = request.user
+            marathonreg.distance = request.POST["distance"]
+            marathonreg.save()
+            return redirect("marathon:marathon_list")
     else:
-        return render(request, "marathon.html")
+        return redirect("marathon:marathon_list")
     
-'''
-def del_parti(request, id):
+
+def del_parti(request, key):
     if request.method == "POST":
-        marathon = MarathonReg.objects.get(regit_id=id)
-'''
+        marathon = get_object_or_404(MarathonReg,regis_id=key)
+        marathon.delete()
+    return redirect("marathon:marathon_list")
