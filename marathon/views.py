@@ -24,7 +24,8 @@ def marathon_list(request):
 
 def parti_me(request, key):
     if request.method == "POST":
-        if MarathonReg.objects.filter(user=request.user).exists():
+        if MarathonReg.objects.filter(user=request.user).filter(marathon=key).exists():
+            print(key)
             return redirect("marathon:marathon_list")
         else:
             MarathonEvent.objects.get(marathon_id=key)
