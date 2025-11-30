@@ -45,37 +45,27 @@
         <form method="post" id="contactForm" class="run-sm-form" name="contactForm" action="{% url 'runres:recordres' %}" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="form-control">
-            <div class="form-label">Title
+            <div class="form-label">마라톤 이름
             </div><input class="run-input" id="title" name="title" placeholder="title" type="text" required=""/>
           </div>
           <div class="form-control">
-            <div class="form-label">Date
+            <div class="form-label">날짜
             </div><input class="run-input" type="date" name="record_date" required="" id="record_date">
           </div>
           <div class="form-control">
-            <div class="form-label">Image
+            <div class="form-label">기록 화면
             </div><input class="run-input" type="file" name="image" required="" id="image">
           </div>
           <div class="form-control">
-            <div class="form-label">Distance (Km)
+            <div class="form-label">거리 (Km)
             </div><input class="run-input" type="text" name="distance" required="" id="distance">
           </div>
           <div class="form-control">
-            <div class="form-label">Avg.pace
-            </div>
-            <div class="ms-row">
-              <input class="run-input-t" type="number" name="pace_m" required="" id="pace_m">
-              <div class="ms-txt">분</div>
-              <input class="run-input-t" type="number" name="pace_s" required="" id="pace_s">
-              <div class="ms-txt">초</div>
-            </div>
-          </div>
-          <div class="form-control">
-            <div class="form-label">Time
+            <div class="form-label">시간
             </div>
             <div class="ms-row">
               <input class="run-input-t" type="number" name="time_h" id="time_h">
-              <div class="ms-txt">시</div>
+              <div class="ms-txt">시간</div>
               <input class="run-input-t" type="number" name="time_m" required="" id="time_m">
               <div class="ms-txt">분</div>
               <input class="run-input-t" type="number" name="time_s" required="" id="time_s">
@@ -83,64 +73,114 @@
             </div>
           </div>
           <div class="form-control">
+            <div class="form-label">페이스 (자동입력)
+            </div>
+            <div class="ms-row">
+              <input class="run-input-t" type="number" name="pace_m" required="" id="pace_m" readonly="readonly">
+              <div class="ms-txt">분</div>
+              <input class="run-input-t" type="number" name="pace_s" required="" id="pace_s" readonly="readonly">
+              <div class="ms-txt">초</div>
+            </div>
+          </div>
+
+          <div class="form-control">
             <div class="form-label">Description
             </div>
             <textarea class="run-input" id="inputMessage" name="desc" placeholder="Enter Message" data-parsley-pattern="^[a-zA-Z0-9\s.:,!?']+$"></textarea>
           </div>
-          <!--div class="btn-control"> <button type="submit" name="submit" id="submit-form-btn" class="submit-btn"> Submit </button> </div-->
-          <button type="submit" name="submit" id="submit-form-btn" class="submit-btn">
-            <p class="btn-text">Submit</p>
-            <span class="spinner-login"></span>
-          </button>
+          <div class="btn-control">
+            <button type="submit" name="submit" id="submit-form-btn" class="submit-btn">
+              <p class="btn-text">Submit</p>
+              <span class="spinner-login"></span>
+            </button>
+          </div>
         </form>
+      </div>
+      <div class="space-h30"></div>
 
-        <script>
-          const btn = document.getElementById('submit-form-btn');
-          btn.addEventListener('click', () => {
+      <script>
+        const btn = document.getElementById('submit-form-btn');
+        btn.addEventListener('click', () => {
+          btn
+            .classList
+            .add('loading-login');
+
+          // 로그인 처리 시뮬레이션 (예: 2초 후 완료)
+          setTimeout(() => {
             btn
               .classList
-              .add('loading-login');
+              .remove('loading-login');
+          }, 20000);
+        });
 
-            // 로그인 처리 시뮬레이션 (예: 2초 후 완료)
-            setTimeout(() => {
-              btn
-                .classList
-                .remove('loading-login');
-            }, 20000);
-          });
-        </script>
-      </body>
-    {% else %}
+        function calcValues() {
+          // 입력값 3개
+          let a = parseFloat(document.getElementById('time_h').value) || 0;
+          let b = parseFloat(document.getElementById('time_m').value) || 0;
+          let c = parseFloat(document.getElementById('time_s').value) || 0;
+          let d = parseFloat(document.getElementById('distance').value) || 0;
 
-      <body class="login-page">
-        <div class="login-container">
-          <div class="login-page-top-margin"></div>
-          <div class="j-navbar-brand">
-            <a href="{% url 'index' %}">
-              <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="auto," width="auto">
-            </a>
-          </div>
-          <div>
-            <div class="login-container">
-              <form method="post" action="{% url 'users:login' %}" class="form-container">
-                {% csrf_token %}
-                {% include "users/form_errors.html" %}
-                <div>
-                  <input type="text" name="username" id="username" class="id" placeholder="아이디">
-                </div>
-                <div>
-                  <input type="text" name="password" id="password" class="pw" placeholder="비밀번호">
-                </div>
-                <div>
-                  <button type="submit" class="login-submit">로그인</button>
-                </div>
-                <a href="{% url 'users:signup' %}">
-                  <span class="signup-btn">회원가입</span></a>
-              </form>
-            </div>
+          let r1 = (a * 60) + b + (c / 60);
+          let r2 = r1 / d;
+          let pm = parseInt(r2 / 1);
+          let ps = (r2 % 1) * 60;
+
+          console.log(pm);
+          console.log(ps);
+
+          document
+            .getElementById('pace_m')
+            .value = pm;
+          document
+            .getElementById('pace_s')
+            .value = ps.toFixed(0);
+        }
+
+        document
+          .getElementById('time_h')
+          .addEventListener('input', calcValues);
+        document
+          .getElementById('time_m')
+          .addEventListener('input', calcValues);
+        document
+          .getElementById('time_s')
+          .addEventListener('input', calcValues);
+        document
+          .getElementById('distance')
+          .addEventListener('input', calcValues);
+      </script>
+    </body>
+  {% else %}
+
+    <body class="login-page">
+      <div class="login-container">
+        <div class="login-page-top-margin"></div>
+        <div class="j-navbar-brand">
+          <a href="{% url 'index' %}">
+            <img src="{% static "img/logo2@.png" %}" alt="logo-top" height="auto," width="auto">
+          </a>
+        </div>
+        <div>
+          <div class="login-container">
+            <form method="post" action="{% url 'users:login' %}" class="form-container">
+              {% csrf_token %}
+              {% include "users/form_errors.html" %}
+              <div>
+                <input type="text" name="username" id="username" class="id" placeholder="아이디">
+              </div>
+              <div>
+                <input type="text" name="password" id="password" class="pw" placeholder="비밀번호">
+              </div>
+              <div>
+                <button type="submit" class="login-submit">로그인</button>
+              </div>
+              <a href="{% url 'users:signup' %}">
+                <span class="signup-btn">회원가입</span></a>
+            </form>
           </div>
         </div>
-      </body>
-    {% endif %}
+      </div>
+    </body>
+  {% endif %}
 
-  </html>
+</html>

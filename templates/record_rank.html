@@ -45,7 +45,7 @@
         {% if forloop.counter == 1 %}
           <div class="record-row">
             <img src="{% static 'img/01-Gold-Medal.png' %}" alt="hamb-btn" height="40px," width="40px">
-            {{ record.user__username }}
+            {{ record.user__last_name }}{{ record.user__first_name }}
             :
             {{ record.record_sum | floatformat:2 }}
             km
@@ -53,7 +53,7 @@
         {% elif forloop.counter == 2 %}
           <div class="record-row">
             <img src="{% static 'img/02-Silver-Medal.png' %}" alt="hamb-btn" height="40px," width="40px">
-            {{ record.user__username }}
+            {{ record.user__last_name }}{{ record.user__first_name }}
             :
             {{ record.record_sum | floatformat:2 }}
             km
@@ -61,7 +61,7 @@
         {% elif forloop.counter == 3 %}
           <div class="record-row">
             <img src="{% static 'img/03-Bronze-Medal.png' %}" alt="hamb-btn" height="40px," width="40px">
-            {{ record.user__username }}
+            {{ record.user__last_name }}{{ record.user__first_name }}
             :
             {{ record.record_sum | floatformat:2 }}
             km
@@ -70,7 +70,7 @@
           <div class="space-h30"></div>
           <div class="mg-left-10">
             {{ forloop.counter }}.
-            {{ record.user__username }}
+            {{ record.user__last_name }}{{ record.user__first_name }}
             :
             {{ record.record_sum | floatformat:2 }}
             km
@@ -78,7 +78,7 @@
         {% else %}
           <div class="mg-left-10">
             {{ forloop.counter }}.
-            {{ record.user__username }}
+            {{ record.user__last_name }}{{ record.user__first_name }}
             :
             {{ record.record_sum | floatformat:2 }}
             km
