@@ -50,19 +50,23 @@
             {% empty %}
             <p class="empty-parti">아직 참가자가 없습니다.</p>
           {% endfor %}
-          <div class="parti-sec">
-            <div class="text-black">참가자 등록하기</div>
-            <form method="post" action="{% url 'marathon:parti_me' event.marathon_id %}" class="marathon-form">
-              {% csrf_token %}
-              <select name="distance" class="dist-filter">
-                <option value="full">Full</option>
-                <option value="half">Half</option>
-                <option value="10km">10Km</option>
-                <option value="5km">5Km</option>
-              </select>
-              <button type="submit" class="marathon-btn">등록</button>
-            </form>
-          </div>
+          {% if user.is_authenticated %}
+            <div class="parti-sec">
+              <div class="text-black">참가자 등록하기</div>
+              <form method="post" action="{% url 'marathon:parti_me' event.marathon_id %}" class="marathon-form">
+                {% csrf_token %}
+                <select name="distance" class="dist-filter">
+                  <option value="full">Full</option>
+                  <option value="half">Half</option>
+                  <option value="10km">10Km</option>
+                  <option value="5km">5Km</option>
+                </select>
+                <button type="submit" class="marathon-btn">등록</button>
+              </form>
+            </div>
+          {% else %}
+            <div class="space-h30"></div>
+          {% endif %}
         </div>
       {% endfor %}
     </div>

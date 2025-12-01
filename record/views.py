@@ -2,6 +2,7 @@ from datetime import timedelta
 from django.shortcuts import redirect, render
 from django.db.models import Sum
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 from record.models import *
 
@@ -121,6 +122,7 @@ def pbRank(request):
         ranking_fm = None   
     return render(request,"run_pb.html", {"ranking_tenk":ranking_tenk, "ranking_hm":ranking_hm, "ranking_fm":ranking_fm})
 
+@login_required
 def pbView(request,pk):
     pb_tenk = PersonalRecord.objects.filter(runner=pk).filter(category='10K').first()
     pb_hm = PersonalRecord.objects.filter(runner=pk).filter(category='HM').first()
@@ -128,9 +130,11 @@ def pbView(request,pk):
 
     return render(request,"run_mypb.html", {"pb_tenk":pb_tenk, "pb_hm":pb_hm, "pb_fm":pb_fm})
 
+@login_required
 def pbresPage(request,pk,category):
     return render(request,"run_pb_res.html",{"category":category})
 
+@login_required
 def pbRes(request, pk, category):
     if request.method == "POST":
         mypb = PersonalRecord()
@@ -152,10 +156,12 @@ def pbRes(request, pk, category):
     else:
         return redirect("runres:pbView", pk)
 
+@login_required
 def pbUpdateView(request,pk,category):
     record = PersonalRecord.objects.filter(runner=pk).filter(category=category).first()
     return render(request,"run_pb_update.html", {"record":record})
 
+@login_required
 def pbUpdate(request,pk,category):
 
     record = PersonalRecord.objects.filter(runner=pk).get(category=category)
