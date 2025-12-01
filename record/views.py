@@ -22,7 +22,10 @@ def recordres(request):
         record.distance = request.POST["distance"]
         record.pace_m = request.POST["pace_m"]
         record.pace_s = request.POST["pace_s"]
-        record.time_h = request.POST["time_h"]
+        if request.POST["time_h"] == '':
+            record.time_h = None
+        else:
+            record.time_h = request.POST["time_h"]
         record.time_m = request.POST["time_m"]
         record.time_s = request.POST["time_s"]
         record.desc = request.POST["desc"]
@@ -67,7 +70,10 @@ def recordUpdate(request,pk,record_id):
         record.distance = request.POST["distance"]
         record.pace_m = request.POST["pace_m"]
         record.pace_s = request.POST["pace_s"]
-        record.time_h = request.POST["time_h"]
+        if request.POST["time_h"] == '':
+            record.time_h = None
+        else:
+            record.time_h = request.POST["time_h"]
         record.time_m = request.POST["time_m"]
         record.time_s = request.POST["time_s"]
         record.desc = request.POST["desc"]
