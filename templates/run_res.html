@@ -45,7 +45,7 @@
         <form method="post" id="contactForm" class="run-sm-form" name="contactForm" action="{% url 'runres:recordres' %}" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="form-control">
-            <div class="form-label">마라톤 이름
+            <div class="form-label">달리기 이름
             </div><input class="run-input" id="title" name="title" placeholder="title" type="text" required=""/>
           </div>
           <div class="form-control">

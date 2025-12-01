@@ -45,15 +45,15 @@
         <form method="post" id="contactForm" class="run-sm-form" name="contactForm" action="{% url 'runres:recordUpdate' user.pk record_id %}" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="form-control">
-            <div class="form-label">Title
+            <div class="form-label">달리기 이름
             </div><input class="run-input" id="title" name="title" value="{{ record.title }}" type="text" required=""/>
           </div>
           <div class="form-control">
-            <div class="form-label">Date
+            <div class="form-label">날짜
             </div><input class="run-input" id="record_date" type="date" name="record_date" value="{{ record.record_date|date:'Y-m-d' }}" required="">
           </div>
           <div class="form-control">
-            <div class="form-label">Image
+            <div class="form-label">기록 화면
             </div>
 
             {% if record.image %}
@@ -65,28 +65,28 @@
             <input class="run-input" type="file" name="image" id="image">
           </div>
           <div class="form-control">
-            <div class="form-label">Distance (Km)
+            <div class="form-label">거리 (Km)
             </div><input class="run-input" type="text" name="distance" value="{{ record.distance }}" required="" id="distance">
           </div>
           <div class="form-control">
-            <div class="form-label">Avg.pace
+            <div class="form-label">시간
             </div>
             <div class="ms-row">
-              <input class="run-input-t" type="number" name="pace_m" value="{{ record.pace_m }}" required="" id="pace_m">
+              <input class="run-input-t" type="number" name="time_h" value="{{ record.time_h }}" required="" id="time_h">
+              <div class="ms-txt">시간</div>
+              <input class="run-input-t" type="number" name="time_m" value="{{ record.time_m }}" required="" id="time_m">
               <div class="ms-txt">분</div>
-              <input class="run-input-t" type="number" name="pace_s" value="{{ record.pace_s }}" required="" id="pace_s">
+              <input class="run-input-t" type="number" name="time_s" value="{{ record.time_s }}" required="" id="time_s">
               <div class="ms-txt">초</div>
             </div>
           </div>
           <div class="form-control">
-            <div class="form-label">Time
+            <div class="form-label">페이스 (자동입력)
             </div>
             <div class="ms-row">
-              <input class="run-input-t" type="number" name="time_h" value="{{ record.time_h }}" required="" id="time_h">
-              <div class="ms-txt">시</div>
-              <input class="run-input-t" type="number" name="time_m" value="{{ record.time_m }}" required="" id="time_m">
+              <input class="run-input-t" type="number" name="pace_m" value="{{ record.pace_m }}" required="" id="pace_m" readonly="readonly">
               <div class="ms-txt">분</div>
-              <input class="run-input-t" type="number" name="time_s" value="{{ record.time_s }}" required="" id="time_s">
+              <input class="run-input-t" type="number" name="pace_s" value="{{ record.pace_s }}" required="" id="pace_s" readonly="readonly">
               <div class="ms-txt">초</div>
             </div>
           </div>
@@ -117,6 +117,42 @@
               .remove('loading-login');
           }, 20000);
         });
+
+        function calcValues() {
+          // 입력값 3개
+          let a = parseFloat(document.getElementById('time_h').value) || 0;
+          let b = parseFloat(document.getElementById('time_m').value) || 0;
+          let c = parseFloat(document.getElementById('time_s').value) || 0;
+          let d = parseFloat(document.getElementById('distance').value) || 0;
+
+          let r1 = (a * 60) + b + (c / 60);
+          let r2 = r1 / d;
+          let pm = parseInt(r2 / 1);
+          let ps = (r2 % 1) * 60;
+
+          console.log(pm);
+          console.log(ps);
+
+          document
+            .getElementById('pace_m')
+            .value = pm;
+          document
+            .getElementById('pace_s')
+            .value = ps.toFixed(0);
+        }
+
+        document
+          .getElementById('time_h')
+          .addEventListener('input', calcValues);
+        document
+          .getElementById('time_m')
+          .addEventListener('input', calcValues);
+        document
+          .getElementById('time_s')
+          .addEventListener('input', calcValues);
+        document
+          .getElementById('distance')
+          .addEventListener('input', calcValues);
       </script>
     </body>
   {% else %}
@@ -166,6 +202,42 @@
               .remove('loading-login');
           }, 20000);
         });
+
+        function calcValues() {
+          // 입력값 3개
+          let a = parseFloat(document.getElementById('time_h').value) || 0;
+          let b = parseFloat(document.getElementById('time_m').value) || 0;
+          let c = parseFloat(document.getElementById('time_s').value) || 0;
+          let d = parseFloat(document.getElementById('distance').value) || 0;
+
+          let r1 = (a * 60) + b + (c / 60);
+          let r2 = r1 / d;
+          let pm = parseInt(r2 / 1);
+          let ps = (r2 % 1) * 60;
+
+          console.log(pm);
+          console.log(ps);
+
+          document
+            .getElementById('pace_m')
+            .value = pm;
+          document
+            .getElementById('pace_s')
+            .value = ps.toFixed(0);
+        }
+
+        document
+          .getElementById('time_h')
+          .addEventListener('input', calcValues);
+        document
+          .getElementById('time_m')
+          .addEventListener('input', calcValues);
+        document
+          .getElementById('time_s')
+          .addEventListener('input', calcValues);
+        document
+          .getElementById('distance')
+          .addEventListener('input', calcValues);
       </script>
     </body>
   {% endif %}

@@ -12,7 +12,7 @@ def runres(request):
     return render(request,"run_res.html")
 
 def recordres(request):
-
+    pk = request.user.id
     if request.method == "POST":
         record = Record()
         record.title = request.POST["title"]
@@ -27,9 +27,9 @@ def recordres(request):
         record.time_s = request.POST["time_s"]
         record.desc = request.POST["desc"]
         record.save()
-        return render(request, "index.html")
+        return redirect("runres:recordview",pk=pk)
     else:
-        return render(request, "index.html")
+        return redirect("runres:recordview",pk=pk)
 
 def recordview(request,pk):
 
