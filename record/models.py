@@ -22,6 +22,13 @@ class Record(models.Model):
     desc = models.TextField(blank=True)
     confirmed = models.BooleanField(default=False)
 
+    def delete(self, *args, **kwargs):
+        # 실제 파일 삭제
+        if self.image:
+            self.image.delete(save=False)
+        # DB 데이터 삭제
+        super().delete(*args, **kwargs)
+
     def __str__(self):
         return str(self.confirmed)+ "_" + str(self.user) + "_" + str(self.record_date) + "_" + (str(self.title))
 
@@ -50,6 +57,13 @@ class PersonalRecord(models.Model):
     evidence_url = ResizedImageField(size=[500,500], upload_to="record", blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     desc = models.TextField(blank=True)
+
+    def delete(self, *args, **kwargs):
+        # 실제 파일 삭제
+        if self.evidence_url:
+            self.evidence_url.delete(save=False)
+        # DB 데이터 삭제
+        super().delete(*args, **kwargs)
 
     class Meta:
         unique_together = ('runner', 'category')  # 한 종목에 1개 PR

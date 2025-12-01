@@ -1292,6 +1292,31 @@ td {
   padding: 10px 10px 10px 10px;
 }
 
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal-box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 280px;
+}
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 @keyframes fadeInUp {
   to {
     opacity: 1;

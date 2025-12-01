@@ -52,15 +52,60 @@
             {% endif %}
           </td>
           <td>
-            <form action="{% url 'runres:recordDelete' data.record_id %}" method="post">
-              {% csrf_token %}
-              <button type="submit" class="yes-btn">Delete</button>
-            </form>
+            <!--form action="{% url 'runres:recordDelete' data.record_id %}" method="post"> {% csrf_token %} <button type="submit" class="yes-btn">Delete</button> </form-->
+            <button onclick="openDeleteModal('{{ data.record_id }}')" class="btn-delete">
+              삭제
+            </button>
           </td>
         </tr>
       </tbody>
 
     {% endfor %}
   </table>
+  <!-- 모달 오버레이 -->
+  <div id="deleteModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>삭제 확인</h3>
+      <p>정말 삭제하시겠습니까?</p>
 
+      <div class="modal-buttons">
+        <button type="button" onclick="closeDeleteModal()">취소</button>
+
+        <!-- 실제 삭제 form (동적으로 action 변경됨) -->
+        <form id="deleteForm" method="POST">
+          {% csrf_token %}
+          <button type="submit">삭제</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    function openDeleteModal(pk) {
+      const modal = document.getElementById("deleteModal");
+      const form = document.getElementById("deleteForm");
+
+      // Django URL 패턴에 맞게 action 설정
+      form.action = `/runres/recordDelete/${pk}`;
+
+      modal
+        .classList
+        .add("active");
+    }
+
+    function closeDeleteModal() {
+      document
+        .getElementById("deleteModal")
+        .classList
+        .remove("active");
+    }
+
+    // 오버레이 클릭시 닫기 (선택)
+    document
+      .getElementById("deleteModal")
+      .addEventListener("click", function (e) {
+        if (e.target === this) 
+          closeDeleteModal();
+        }
+      );
+  </script>
 {% endblock content %}
