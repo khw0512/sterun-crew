@@ -12,8 +12,8 @@
         </div>
         <div class="card-textsection">
           <p class="card-title">{{ recentatc.title }}</p>
-          <p class="card-img-artist">@Brand:
-            {{ recentatc.brand }}</p>
+          <p class="card-img-artist">@글쓴이:
+            {{ recentatc.author }}</p>
           <p class="card-music-artist">@Model:
             {{ recentatc.model }}</p>
           <div class="card-content">
@@ -38,7 +38,7 @@
             <svg width="30" height="30" viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M16.5 16.5L11.5 11.5M1.5 7.33333C1.5 8.09938 1.65088 8.85792 1.94404 9.56565C2.23719 10.2734 2.66687 10.9164 3.20854 11.4581C3.75022 11.9998 4.39328 12.4295 5.10101 12.7226C5.80875 13.0158 6.56729 13.1667 7.33333 13.1667C8.09938 13.1667 8.85792 13.0158 9.56565 12.7226C10.2734 12.4295 10.9164 11.9998 11.4581 11.4581C11.9998 10.9164 12.4295 10.2734 12.7226 9.56565C13.0158 8.85792 13.1667 8.09938 13.1667 7.33333C13.1667 6.56729 13.0158 5.80875 12.7226 5.10101C12.4295 4.39328 11.9998 3.75022 11.4581 3.20854C10.9164 2.66687 10.2734 2.23719 9.56565 1.94404C8.85792 1.65088 8.09938 1.5 7.33333 1.5C6.56729 1.5 5.80875 1.65088 5.10101 1.94404C4.39328 2.23719 3.75022 2.66687 3.20854 3.20854C2.66687 3.75022 2.23719 4.39328 1.94404 5.10101C1.65088 5.80875 1.5 6.56729 1.5 7.33333Z" stroke="#CDFF06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <input class="search-bar" type="search" placeholder="검색" name="searched" aria-label="Search">
+            <input class="search-bar" type="search" placeholder="검색어를 입력해 주세요" name="searched" aria-label="Search">
             <button class="search-button" type="submit">
               검색하기
             </button>
@@ -55,8 +55,8 @@
                 <img class="old-card-img" src="/media/{{ article.main_img }}" alt="" height="auto" width="auto"></div>
               <div class="old-card-text">
                 <p class="old-card-title">{{ article.title }}</p>
-                <p class="old-card-art">@Brand:
-                  {{ article.brand }}</p>
+                <p class="old-card-art">@글쓴이:
+                  {{ article.author }}</p>
                 <p class="old-card-music">@Model:
                   {{ article.model }}</p>
               </div>

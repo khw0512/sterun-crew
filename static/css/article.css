@@ -207,7 +207,7 @@ html {
 }
 
 .card-title {
-    font-weight: 900;
+    font-weight: 600;
     font-size: 2.2rem;
     margin: 20px 0 0 25px;
 }
@@ -215,13 +215,13 @@ html {
 .card-img-artist {
     margin: 0;
     margin: 20px 0 0 25px;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .card-music-artist {
     margin: 0;
     margin: 5px 0 0 25px;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .card-content p {
@@ -333,6 +333,14 @@ html {
     border-radius: 10px;
     color:var(--jlightgreen);
     width: 200px;
+    font-size: 0.8rem;
+    line-height: 1.4rem;
+}
+
+input::placeholder {
+    font-size: 0.8em;
+    color:var(--white);
+    font-weight: 300;
 }
 
 .divider{

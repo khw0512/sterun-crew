@@ -22,4 +22,8 @@ urlpatterns = [
     path('pbRes/<str:pk>/<str:category>/', views.pbRes, name="pbRes"),
     path('pbUpdateView/<str:pk>/<str:category>/', views.pbUpdateView, name="pbUpdateView"),
     path('pbUpdate/<str:pk>/<str:category>/', views.pbUpdate, name="pbUpdate"),
+    path('runPbCheck/', views.runPbCheck, name="runPbCheck"),
+    path('pbConfirm/<str:id>', views.pbConfirm, name="pbConfirm"),
+    path('pbReject/<str:id>', views.pbReject, name="pbReject"),
+    path('pbDelete/<str:id>', views.pbDelete, name="pbDelete"),
 ]

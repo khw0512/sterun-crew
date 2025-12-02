@@ -191,3 +191,27 @@ def pbUpdate(request,pk,category):
         return redirect("runres:pbView", pk)
     else:
         return redirect("runres:pbView", pk)
+
+def runPbCheck(request):
+    record = PersonalRecord.objects.order_by('-created_at')
+    return render(request,"run_pb_check.html", {"record":record})
+
+def pbConfirm(request,id):
+    if request.method == "POST":
+        record = PersonalRecord.objects.get(id=id)
+        record.status = 'verified'
+        record.save()
+    return redirect("runres:runPbCheck")
+
+def pbReject(request,id):
+    if request.method == "POST":
+        record = PersonalRecord.objects.get(id=id)
+        record.status = 'rejected'
+        record.save()
+    return redirect("runres:runPbCheck")
+
+def pbDelete(request,id):
+    if request.method == "POST":
+        record = PersonalRecord.objects.get(id=id)
+        record.delete()
+    return redirect("runres:runPbCheck")
