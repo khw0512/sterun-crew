@@ -101,7 +101,7 @@
     <div class="modal-box">
       <div class="flex-row-bt">
         <h3>취소하기</h3>
-        <button type="button" class="delmodal-btn" onclick="closeNoModal()">X</button>
+        <button type="button" class="delmodal-btn" id="closeNoModal">X</button>
       </div>
       <p>정말 취소하시겠습니까?</p>
       <div class="modal-buttons">
@@ -113,7 +113,7 @@
     <div class="modal-box">
       <div class="flex-row-bt">
         <h3>완료하기</h3>
-        <button type="button" class="delmodal-btn" onclick="closeYesModal()">X</button>
+        <button type="button" class="delmodal-btn" id="closeYesModal">X</button>
       </div>
       <p>정말 완료하시겠습니까?</p>
       <div class="modal-buttons">
@@ -218,8 +218,21 @@
               .getElementById("NoModal")
               .addEventListener("click", function (e) {
                 if (e.target === this) {
-                  closeNoModal();
+                  document
+                    .getElementById("NoModal")
+                    .classList
+                    .remove("active");
+                  checkbox.checked = true;
                 }
+              });
+            document
+              .getElementById("closeNoModal")
+              .addEventListener("click", function (e) {
+                document
+                  .getElementById("NoModal")
+                  .classList
+                  .remove("active");
+                checkbox.checked = true;
               });
           } else {
             yesmodal
@@ -248,8 +261,21 @@
               .getElementById("YesModal")
               .addEventListener("click", function (e) {
                 if (e.target === this) {
-                  closeYesModal();
+                  document
+                    .getElementById("YesModal")
+                    .classList
+                    .remove("active");
+                  checkbox.checked = false;
                 }
+              });
+            document
+              .getElementById("closeYesModal")
+              .addEventListener("click", function (e) {
+                document
+                  .getElementById("YesModal")
+                  .classList
+                  .remove("active");
+                checkbox.checked = false;
               });
           }
         }

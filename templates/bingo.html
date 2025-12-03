@@ -158,129 +158,169 @@
     const yesmodal = document.getElementById("YesModal");
 
     function closeYesModal() {
-      document
-        .getElementById("YesModal")
+      yesmodal
         .classList
         .remove("active");
-    };
+    }
 
     function closeNoModal() {
-      document
-        .getElementById("NoModal")
+      nomodal
         .classList
         .remove("active");
-    };
+    }
 
+    const csrfToken = document
+      .getElementById('csrf-token')
+      .value;
+    const user_matched = "{{ user_matched }}";
+    const user_id = "{{ user_id }}";
+
+    // 현재 어떤 체크박스를 처리 중인지 저장할 변수들
+    let currentCheckbox = null;
+    let currentBingoImg = null;
+    let currentBingoId = null;
+
+    // ✅ 공통으로 서버 업데이트하는 함수
+    function updateBingoStatus(isChecked) {
+      if (!currentBingoId) 
+        return;
+      
+      return fetch("/bingo/update-public-status/" + user_id, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrfToken
+        },
+        body: JSON.stringify({bingo_id: currentBingoId, is_checked: isChecked})
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("업데이트 결과:", data);
+        })
+        .catch(err => console.error("에러:", err));
+    }
+
+    // ✅ 체크박스 루프
     for (let i = 1; i < 26; i++) {
       const checkbox = document.getElementById(i);
       const bingo_img = document.getElementById('bingo-img' + i);
-      const user_matched = "{{ user_matched }}";
 
-      if (checkbox.checked) {
-        bingo_img.style.display = 'block';
-      } else {
-        bingo_img.style.display = 'none';
-      }
-
-      const csrfToken = document
-        .getElementById('csrf-token')
-        .value;
+      if (!checkbox || !bingo_img) 
+        continue;
+      
+      // 초기 상태에 따라 이미지 표시
+      bingo_img.style.display = checkbox.checked
+        ? 'block'
+        : 'none';
 
       checkbox.addEventListener('change', function () {
-        const bingoId = this.dataset.postId;
-        const isChecked = this.checked;
+        if (user_matched != 1) {
+          // user_matched 가 1이 아닌 경우 아무 것도 하지 않음
+          return;
+        }
 
-        if (user_matched == 1) {
-          if (isChecked == false) {
-            nomodal
-              .classList
-              .add("active");
-            document
-              .getElementById("bingo-no")
-              .addEventListener("click", function (e) {
-                fetch("/bingo/update-public-status/" + "{{ user_id }}", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRFToken": csrfToken
-                  },
-                  body: JSON.stringify({bingo_id: bingoId, is_checked: isChecked})
-                })
-                  .then(response => response.json())
-                  .then(data => {
-                    console.log("업데이트 결과:", data);
-                  })
-                  .catch(err => console.error("에러:", err));
-                bingo_img.style.display = 'none';
-                closeNoModal();
-              });
-            document
-              .getElementById("NoModal")
-              .addEventListener("click", function (e) {
-                if (e.target === this) {
-                  document
-                    .getElementById("NoModal")
-                    .classList
-                    .remove("active");
-                  checkbox.checked = true;
-                }
-              });
-            document
-              .getElementById("closeNoModal")
-              .addEventListener("click", function (e) {
-                document
-                  .getElementById("NoModal")
-                  .classList
-                  .remove("active");
-                checkbox.checked = true;
-              });
-          } else {
-            yesmodal
-              .classList
-              .add("active");
-            document
-              .getElementById("bingo-yes")
-              .addEventListener("click", function (e) {
-                fetch("/bingo/update-public-status/" + "{{ user_id }}", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRFToken": csrfToken
-                  },
-                  body: JSON.stringify({bingo_id: bingoId, is_checked: isChecked})
-                })
-                  .then(response => response.json())
-                  .then(data => {
-                    console.log("업데이트 결과:", data);
-                  })
-                  .catch(err => console.error("에러:", err));
-                bingo_img.style.display = 'block';
-                closeYesModal();
-              });
-            document
-              .getElementById("YesModal")
-              .addEventListener("click", function (e) {
-                if (e.target === this) {
-                  document
-                    .getElementById("YesModal")
-                    .classList
-                    .remove("active");
-                  checkbox.checked = false;
-                }
-              });
-            document
-              .getElementById("closeYesModal")
-              .addEventListener("click", function (e) {
-                document
-                  .getElementById("YesModal")
-                  .classList
-                  .remove("active");
-                checkbox.checked = false;
-              });
-          }
+        // 현재 클릭된 정보 저장
+        currentCheckbox = this;
+        currentBingoImg = bingo_img;
+        currentBingoId = this.dataset.postId;
+
+        if (this.checked === false) {
+          // ✅ 체크 해제 → NoModal 오픈
+          nomodal
+            .classList
+            .add("active");
+        } else {
+          // ✅ 체크 → YesModal 오픈
+          yesmodal
+            .classList
+            .add("active");
         }
       });
     }
+
+    /* ==========================
+       ❌ NoModal 이벤트 (한 번만 등록)
+       ========================== */
+
+    // "예, 비공개로 돌릴게요" 같은 버튼
+    document
+      .getElementById("bingo-no")
+      .addEventListener("click", function (e) {
+        if (!currentCheckbox || !currentBingoImg) 
+          return;
+        
+        updateBingoStatus(false).then(() => {
+          currentCheckbox.checked = false;
+          currentBingoImg.style.display = 'none';
+          closeNoModal();
+        });
+      });
+
+    // 모달 바깥 눌렀을 때 닫기 + 원상복구(취소)
+    nomodal.addEventListener("click", function (e) {
+      if (e.target === this) {
+        closeNoModal();
+        if (currentCheckbox) {
+          currentCheckbox.checked = true; // 해제 시도 취소 → 다시 체크
+          if (currentBingoImg) 
+            currentBingoImg.style.display = 'block';
+          }
+        }
+    });
+
+    // X 버튼 눌렀을 때 닫기 + 원상복구(취소)
+    document
+      .getElementById("closeNoModal")
+      .addEventListener("click", function (e) {
+        closeNoModal();
+        if (currentCheckbox) {
+          currentCheckbox.checked = true;
+          if (currentBingoImg) 
+            currentBingoImg.style.display = 'block';
+          }
+        });
+
+    /* ==========================
+       ✅ YesModal 이벤트 (한 번만 등록)
+       ========================== */
+
+    // "예, 공개로 할게요" 같은 버튼
+    document
+      .getElementById("bingo-yes")
+      .addEventListener("click", function (e) {
+        if (!currentCheckbox || !currentBingoImg) 
+          return;
+        
+        updateBingoStatus(true).then(() => {
+          currentCheckbox.checked = true;
+          currentBingoImg.style.display = 'block';
+          closeYesModal();
+        });
+      });
+
+    // 모달 바깥 눌렀을 때 닫기 + 원상복구(취소)
+    yesmodal.addEventListener("click", function (e) {
+      if (e.target === this) {
+        closeYesModal();
+        if (currentCheckbox) {
+          currentCheckbox.checked = false; // 체크 시도 취소 → 다시 해제
+          if (currentBingoImg) 
+            currentBingoImg.style.display = 'none';
+          }
+        }
+    });
+
+    // X 버튼 눌렀을 때 닫기 + 원상복구(취소)
+    document
+      .getElementById("closeYesModal")
+      .addEventListener("click", function (e) {
+        closeYesModal();
+        if (currentCheckbox) {
+          currentCheckbox.checked = false;
+          if (currentBingoImg) 
+            currentBingoImg.style.display = 'none';
+          }
+        });
   </script>
 
 {% endblock content %}
