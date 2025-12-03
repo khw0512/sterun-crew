@@ -46,7 +46,7 @@
           {% csrf_token %}
           <div class="form-control">
             <div class="form-label">달리기 이름
-            </div><input class="run-input" id="title" name="title" placeholder="title" type="text" required=""/>
+            </div><input class="run-input" id="title" name="title" placeholder="달리기 이름을 입력해 주세요" type="text" required=""/>
           </div>
           <div class="form-control">
             <div class="form-label">날짜
@@ -58,7 +58,7 @@
           </div>
           <div class="form-control">
             <div class="form-label">거리 (Km)
-            </div><input class="run-input" type="text" name="distance" required="" id="distance">
+            </div><input class="run-input" type="text" name="distance" placeholder="달린 거리를 km 단위로 입력해 주세요" id="distance">
           </div>
           <div class="form-control">
             <div class="form-label">시간
@@ -84,13 +84,13 @@
           </div>
 
           <div class="form-control">
-            <div class="form-label">Description
+            <div class="form-label">노트
             </div>
-            <textarea class="run-input" id="inputMessage" name="desc" placeholder="Enter Message" data-parsley-pattern="^[a-zA-Z0-9\s.:,!?']+$"></textarea>
+            <textarea class="run-input" id="inputMessage" name="desc" placeholder="노트를 남겨 주세요" data-parsley-pattern="^[a-zA-Z0-9\s.:,!?']+$"></textarea>
           </div>
           <div class="btn-control">
             <button type="submit" name="submit" id="submit-form-btn" class="submit-btn">
-              <p class="btn-text">Submit</p>
+              <p class="btn-text">등록하기</p>
               <span class="spinner-login"></span>
             </button>
           </div>

@@ -877,7 +877,7 @@ footer {
   justify-content: center;
   width: 400px;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 40px;
   color: var(--jlightgreen);
 }
 .run-submit-prev {
@@ -992,6 +992,17 @@ footer {
   color: var(--blue);
   font-size: 1.3rem;
   font-weight: 700;
+  background-color: var(--jlightgreen);
+  border-radius: 5rem;
+  border: var(--white) 2px solid;
+}
+.check-submit-btn-row {
+  width: 150px;
+  height: 50px;
+  color: var(--blue);
+  font-size: 1rem;
+  font-weight: 700;
+  margin:0 10px 0 10px;
   background-color: var(--jlightgreen);
   border-radius: 5rem;
   border: var(--white) 2px solid;
@@ -1450,6 +1461,7 @@ td {
   .run-submit-title {
     width: 90%;
     font-weight: 700;
+    margin-top : 20px;
   }
   .run-submit-prev {
     width: 80%;

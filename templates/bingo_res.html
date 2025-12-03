@@ -25,16 +25,20 @@
             </button>
           </div>
         </form>
-        <a href="{% url "admin:index" %}">
-          <div class="btn-control">
-            <button class="check-submit-btn">관리자 페이지</button>
-          </div>
-        </a>
-        <a href="{% url "runres:recordCheck" %}">
-          <div class="btn-control">
-            <button class="check-submit-btn">기록 인증하기</button>
-          </div>
-        </a>
+        <div class="divider-line"></div>
+        <!--a href="{% url "admin:index" %}"> <div class="btn-control"> <button class="check-submit-btn">관리자 페이지</button> </div> </a-->
+        <div class="flex-row-center">
+          <a href="{% url "runres:recordCheck" %}">
+            <div class="btn-control">
+              <button class="check-submit-btn-row">기록 인증하기</button>
+            </div>
+          </a>
+          <a href="{% url "runres:runPbCheck" %}">
+            <div class="btn-control">
+              <button class="check-submit-btn-row">PB 인증하기</button>
+            </div>
+          </a>
+        </div>
         <a href="{% url "article:articleres" %}">
           <div class="btn-control">
             <button class="check-submit-btn">공지 작성하기</button>

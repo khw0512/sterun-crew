@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+  <div class="space-h30"></div>
   <table class="record-check-table">
     <thead>
       <tr>
         <th>마라톤명</th>
         <th>러너</th>
-        <th>거리</th>
         <th>날짜</th>
+        <th>거리</th>
         <th>기록</th>
-        <th>상태</th>
         <th>이미지</th>
         <th>생성일</th>
         <th>설명</th>
+        <th>상태</th>
         <th>상태 변경</th>
         <th>삭제</th>
       </tr>
@@ -23,10 +24,9 @@
         <tr>
           <td>{{ data.event_name }}</td>
           <td>{{ data.runner }}</td>
-          <td>{{ data.category }}</td>
           <td>{{ data.date }}</td>
+          <td>{{ data.get_category_display }}</td>
           <td>{{ data.record }}</td>
-          <td>{{ data.status }}</td>
           <td>
             <a href="{{ data.evidence_url.url }}" target="_blank">
               <img src="/media/{{ data.evidence_url }}" alt="logo-top" height="100px" width="100px">
@@ -34,6 +34,7 @@
           </td>
           <td>{{ data.created_at }}</td>
           <td>{{ data.desc }}</td>
+          <td>{{ data.get_status_display }}</td>
           <td>
             {% if data.status == 'pending' %}
               <div class="flex-row-center">

@@ -58,7 +58,7 @@
           {% csrf_token %}
           <div class="form-control">
             <div class="form-label">대회명
-            </div><input class="run-input" id="title" name="title" placeholder="대회명" type="text" required="required"/>
+            </div><input class="run-input" id="title" name="title" placeholder="대회명을 입력해 주세요" type="text" required="required"/>
           </div>
           <div class="form-control">
             <div class="form-label">날짜
@@ -81,13 +81,13 @@
             </div>
           </div>
           <div class="form-control">
-            <div class="form-label">Description
+            <div class="form-label">메모
             </div>
-            <textarea class="run-input" id="inputMessage" name="desc" placeholder="메모" data-parsley-pattern="^[a-zA-Z0-9\s.:,!?']+$"></textarea>
+            <textarea class="run-input" id="inputMessage" name="desc" placeholder="메모를 입력해 주세요" data-parsley-pattern="^[a-zA-Z0-9\s.:,!?']+$"></textarea>
           </div>
           <div class="btn-control">
             <button type="submit" name="submit" id="submit-form-btn" class="submit-btn">
-              <p class="btn-text">Submit</p>
+              <p class="btn-text">등록하기</p>
               <span class="spinner-login"></span>
             </button>
           </div>
