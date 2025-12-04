@@ -331,7 +331,7 @@ button {
 }
 
 .text-black {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   padding: 0 10px 0 10px;
   color: var(--black);
 }
@@ -480,6 +480,7 @@ button {
   background-color: var(--jblue);
   padding: 5px 15px 5px 15px;
   border-radius: 30px;
+  font-size: 0.8rem;
 }
 .del-parti-btn {
   width: 50px;
@@ -489,6 +490,7 @@ button {
   border: solid 1px var(--blue);
   color: blue;
   cursor: pointer;
+  font-size: 0.8rem;
 }
 
 .card-1 {
@@ -522,7 +524,7 @@ button {
 }
 
 .flex-row-item {
-  font-size: 1.2rem;
+  font-size: 1rem;
   flex-grow: 1;
   color: var(--black);
 }
@@ -1151,7 +1153,9 @@ footer {
 }
 .month-filter {
   border-radius: 0.5rem;
-  width: 50px;
+  font-size: 0.8rem;
+  height:1.5rem;
+  width: 60px;
   color: var(--jlightgreen);
   font-weight: 700;
   background-color: transparent;
@@ -1159,7 +1163,9 @@ footer {
 }
 .dist-filter {
   border-radius: 0.5rem;
-  width: 50px;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  width: 70px;
   color: var(--jblue);
   font-weight: 700;
   background-color: transparent;
@@ -1204,15 +1210,16 @@ footer {
 }
 .bingo-col {
   display: flex;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 300;
   width: 100px;
   height: 100px;
   padding: 10px 5px 10px 5px;
   justify-content: center;
   align-items: center;
   border: solid var(--white) 1px;
+  background-color: var(--jdeepblue);
   color: var(--white);
-  font-weight: 700;
   word-break: keep-all;
   text-align: center;
 }
@@ -1220,7 +1227,7 @@ footer {
 .bingo-img {
   display: block;
   position: absolute;
-  z-index: -1;
+  z-index: 100;
 }
 .bingo-stamp {
   width: 100px;
@@ -1393,11 +1400,25 @@ td {
   justify-content: flex-end;
   gap: 15px;
 }
+.j-nav-items > div > a{
+  font-size: 1.2rem;
+  font-weight: 700;
+}
 
 @keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 1360px) {
+  .j-nav-item {
+    width: 50px;
+    padding: 0 10px 0 10px;
+  }
+  .j-nav-items > div > a {
+    font-size: 0.8rem;
   }
 }
 
@@ -1581,7 +1602,7 @@ td {
   }
 
   .record-list-container {
-    width: 90%;
+    width: 84%;
   }
   .title-date {
     padding-left: 10px;

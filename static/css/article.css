@@ -60,11 +60,6 @@ html {
     align-items: center;
 }
 
-.j-nav-items > div > a{
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
 .j-navbar-brand {
     display: flex;
     margin: 0;
