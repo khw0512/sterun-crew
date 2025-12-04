@@ -13,11 +13,10 @@
             <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
         </div>
       </div>
-      <div class="divider-line"></div>
       <div class="space-h30"></div>
-      <div>
+      <div class="pb-container">
         {% if pb_fm == None %}
-          <div class="title-pb">나의 Full PB</div>
+          <div class="title-pb">Full PB</div>
           <div class="no-record">기록이 없어요. 등록해 주세요.</div>
           <div class="btn-control">
             <a href="{% url "runres:pbresPage" user.pk "FM" %}">
@@ -26,18 +25,24 @@
           </div>
         {% else %}
           <div class="flex-row">
-            <div class="title-pb">나의 Full PB</div>
+            <div class="title-pb">Full PB</div>
             <div class="{% if pb_fm.status == 'verified' %}pb-status-verified
             {% elif pb_fm.status == 'pending' %}pb-status-pending
             {% else %}pb-status-rejected{% endif %}">{{ pb_fm.get_status_display }}</div>
           </div>
           <div class="pb-event">
-            <div>기록 :
+            <div>
+              <i class="fa-regular fa-clock"></i>
+              기록 :
               {{ pb_fm.record }}</div>
-            <div>대회명 :
+            <div>
+              <i class="fa-solid fa-trophy"></i>
+              대회명 :
               {{ pb_fm.event_name }}</div>
           </div>
-          <img class="card-main-img" src="/media/{{ pb_fm.evidence_url }}" alt="" height="auto" width="auto"/>
+          <div class="flex-center">
+            <img class="card-main-img" src="/media/{{ pb_fm.evidence_url }}" alt="" height="auto" width="auto"/>
+          </div>
           <div class="btn-control">
             <a href="{% url "runres:pbUpdateView" user.pk "FM" %}">
               <button class="btn-kor">PB 갱신하기</button>
@@ -46,10 +51,9 @@
         {% endif %}
       </div>
       <div class="space-h30"></div>
-      <div class="divider-line-1"></div>
-      <div>
+      <div class="pb-container">
         {% if pb_hm == None %}
-          <div class="title-pb">나의 Hlaf PB</div>
+          <div class="title-pb">Hlaf PB</div>
           <div class="no-record">기록이 없어요. 등록해 주세요.</div>
           <div class="btn-control">
             <a href="{% url "runres:pbresPage" user.pk "HM" %}">
@@ -58,18 +62,24 @@
           </div>
         {% else %}
           <div class="flex-row">
-            <div class="title-pb">나의 Hlaf PB</div>
+            <div class="title-pb">Hlaf PB</div>
             <div class="{% if pb_hm.status == 'verified' %}pb-status-verified
             {% elif pb_hm.status == 'pending' %}pb-status-pending
             {% else %}pb-status-rejected{% endif %}">{{ pb_hm.get_status_display }}</div>
           </div>
           <div class="pb-event">
-            <div>기록 :
+            <div>
+              <i class="fa-regular fa-clock"></i>
+              기록 :
               {{ pb_hm.record }}</div>
-            <div>대회명 :
+            <div>
+              <i class="fa-solid fa-trophy"></i>
+              대회명 :
               {{ pb_hm.event_name }}</div>
           </div>
-          <img class="card-main-img" src="/media/{{ pb_hm.evidence_url }}" alt="" height="auto" width="auto"/>
+          <div class="flex-center">
+            <img class="card-main-img" src="/media/{{ pb_hm.evidence_url }}" alt="" height="auto" width="auto"/>
+          </div>
           <div class="btn-control">
             <a href="{% url "runres:pbUpdateView" user.pk "HM" %}">
               <button class="btn-kor">PB 갱신하기</button>
@@ -78,10 +88,9 @@
         {% endif %}
       </div>
       <div class="space-h30"></div>
-      <div class="divider-line-1"></div>
-      <div>
+      <div class="pb-container">
         {% if pb_tenk == None %}
-          <div class="title-pb">나의 10Km PB</div>
+          <div class="title-pb">10Km PB</div>
           <div class="no-record">기록이 없어요. 등록해 주세요.</div>
           <div class="btn-control">
             <a href="{% url "runres:pbresPage" user.pk "10K" %}">
@@ -90,18 +99,24 @@
           </div>
         {% else %}
           <div class="flex-row">
-            <div class="title-pb">나의 10Km PB</div>
+            <div class="title-pb">10Km PB</div>
             <div class="{% if pb_tenk.status == 'verified' %}pb-status-verified
             {% elif pb_tenk.status == 'pending' %}pb-status-pending
             {% else %}pb-status-rejected{% endif %}">{{ pb_tenk.get_status_display }}</div>
           </div>
           <div class="pb-event">
-            <div>기록 :
+            <div>
+              <i class="fa-regular fa-clock"></i>
+              기록 :
               {{ pb_tenk.record }}</div>
-            <div>대회명 :
+            <div>
+              <i class="fa-solid fa-trophy"></i>
+              대회명 :
               {{ pb_tenk.event_name }}</div>
           </div>
-          <img class="card-main-img" src="/media/{{ pb_tenk.evidence_url }}" alt="" height="auto" width="auto"/>
+          <div class="flex-center">
+            <img class="card-main-img" src="/media/{{ pb_tenk.evidence_url }}" alt="" height="auto" width="auto"/>
+          </div>
           <div class="btn-control">
             <a href="{% url "runres:pbUpdateView" user.pk "10K" %}">
               <button class="btn-kor">PB 갱신하기</button>

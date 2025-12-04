@@ -7,9 +7,8 @@
       <div>
         <p class="page-title">PB 랭킹</p>
       </div>
-      <div class="divider-line"></div>
       <div class="space-h30"></div>
-      <div>
+      <div class="pb-container">
         <div class="title-pb">Full PB 순위</div>
         {% for record in ranking_fm %}
           <div class="flex-row text-white">
@@ -22,14 +21,13 @@
             {% else %}
               <div class="rank-counter">{{ forloop.counter }}</div>
             {% endif %}
-            <div class="rank-runner">{{ record.runner.last_name }}
-              {{ record.runner.first_name }}</div>
+            <div class="rank-runner">{{ record.runner.last_name }}{{ record.runner.first_name }}</div>
             <div class="rank-record">{{ record.record }}</div>
           </div>
         {% endfor %}
       </div>
       <div class="space-h30"></div>
-      <div>
+      <div class="pb-container">
         <div class="title-pb">Half PB 순위</div>
         {% for record in ranking_hm %}
           <div class="flex-row text-white">
@@ -42,14 +40,13 @@
             {% else %}
               <div class="rank-counter">{{ forloop.counter }}</div>
             {% endif %}
-            <div class="rank-runner">{{ record.runner.last_name }}
-              {{ record.runner.first_name }}</div>
+            <div class="rank-runner">{{ record.runner.last_name }}{{ record.runner.first_name }}</div>
             <div class="rank-record">{{ record.record }}</div>
           </div>
         {% endfor %}
       </div>
       <div class="space-h30"></div>
-      <div>
+      <div class="pb-container">
         <div class="title-pb">10Km PB 순위</div>
         {% for record in ranking_tenk %}
           <div class="flex-row text-white">
@@ -62,8 +59,7 @@
             {% else %}
               <div class="rank-counter">{{ forloop.counter }}</div>
             {% endif %}
-            <div class="rank-runner">{{ record.runner.last_name }}
-              {{ record.runner.first_name }}</div>
+            <div class="rank-runner">{{ record.runner.last_name }}{{ record.runner.first_name }}</div>
             <div class="rank-record">{{ record.record }}</div>
           </div>
         {% endfor %}

@@ -9,15 +9,18 @@
   {% else %}
     <div class="run-submit-title">{{ month }}월 마일리지 랭킹</div>
   {% endif %}
-  <div class="run-submit-prev">
-    <div class="previous-btn">
-      <a href="{{ request.META.HTTP_REFERER }}">
-        <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
+  <div class="space-h30"></div>
+  <div class="container-500">
+    <div class="run-submit-prev">
+      <div class="previous-btn">
+        <a href="{{ request.META.HTTP_REFERER }}">
+          <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
+      </div>
     </div>
   </div>
   <div class="rank-container">
     <div class="filter-line">
-      <div>
+      <div class="filter-card flex-row">
         <form action="{% url 'runres:recordRank' %}" method="get" id="month-filter">
           <select name="month" class="month-filter">
             <option value="0">all</option>
@@ -35,57 +38,58 @@
             <option value="12">12</option>
           </select>
         </form>
+        <div class="month-filter-txt">월</div>
       </div>
-      <div class="month-filter-txt">월</div>
     </div>
-    <div class="space-h30"></div>
-    <div class="divider-line"></div>
-    {% for record in record_rank %}
-      <div class="record-col">
-        {% if forloop.counter == 1 %}
-          <div class="record-row">
-            <img src="{% static 'img/01-Gold-Medal.png' %}" alt="hamb-btn" height="40px," width="40px">
-            {{ record.user__last_name }}{{ record.user__first_name }}
-            :
-            {{ record.record_sum | floatformat:2 }}
-            km
-          </div>
-        {% elif forloop.counter == 2 %}
-          <div class="record-row">
-            <img src="{% static 'img/02-Silver-Medal.png' %}" alt="hamb-btn" height="40px," width="40px">
-            {{ record.user__last_name }}{{ record.user__first_name }}
-            :
-            {{ record.record_sum | floatformat:2 }}
-            km
-          </div>
-        {% elif forloop.counter == 3 %}
-          <div class="record-row">
-            <img src="{% static 'img/03-Bronze-Medal.png' %}" alt="hamb-btn" height="40px," width="40px">
-            {{ record.user__last_name }}{{ record.user__first_name }}
-            :
-            {{ record.record_sum | floatformat:2 }}
-            km
-          </div>
-        {% elif forloop.counter == 4 %}
-          <div class="space-h30"></div>
-          <div class="mg-left-10">
-            {{ forloop.counter }}.
-            {{ record.user__last_name }}{{ record.user__first_name }}
-            :
-            {{ record.record_sum | floatformat:2 }}
-            km
-          </div>
-        {% else %}
-          <div class="mg-left-10">
-            {{ forloop.counter }}.
-            {{ record.user__last_name }}{{ record.user__first_name }}
-            :
-            {{ record.record_sum | floatformat:2 }}
-            km
-          </div>
-        {% endif %}
-      </div>
-    {% endfor %}
+    <div class="space-h10"></div>
+    <div class="record-rank-container">
+      {% for record in record_rank %}
+        <div class="record-col">
+          {% if forloop.counter == 1 %}
+            <div class="record-row">
+              <img src="{% static 'img/01-Gold-Medal.png' %}" alt="hamb-btn" height="40px," width="40px">
+              {{ record.user__last_name }}{{ record.user__first_name }}
+              :
+              {{ record.record_sum | floatformat:2 }}
+              km
+            </div>
+          {% elif forloop.counter == 2 %}
+            <div class="record-row">
+              <img src="{% static 'img/02-Silver-Medal.png' %}" alt="hamb-btn" height="40px," width="40px">
+              {{ record.user__last_name }}{{ record.user__first_name }}
+              :
+              {{ record.record_sum | floatformat:2 }}
+              km
+            </div>
+          {% elif forloop.counter == 3 %}
+            <div class="record-row">
+              <img src="{% static 'img/03-Bronze-Medal.png' %}" alt="hamb-btn" height="40px," width="40px">
+              {{ record.user__last_name }}{{ record.user__first_name }}
+              :
+              {{ record.record_sum | floatformat:2 }}
+              km
+            </div>
+          {% elif forloop.counter == 4 %}
+            <div class="space-h30"></div>
+            <div class="mg-left-10">
+              {{ forloop.counter }}.
+              {{ record.user__last_name }}{{ record.user__first_name }}
+              :
+              {{ record.record_sum | floatformat:2 }}
+              km
+            </div>
+          {% else %}
+            <div class="mg-left-10">
+              {{ forloop.counter }}.
+              {{ record.user__last_name }}{{ record.user__first_name }}
+              :
+              {{ record.record_sum | floatformat:2 }}
+              km
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
   </div>
   <script>
     // 페이지가 모두 로드되면 호출
