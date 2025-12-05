@@ -70,3 +70,23 @@ class PersonalRecord(models.Model):
 
     def __str__(self):
         return f"{self.runner} - {self.category}: {self.record}"
+
+class Team(models.Model):
+    STATUS_CHOICES = [
+        ('ready', '준비중'),
+        ('go', '운영중'),
+        ('stop', '완료'),
+    ]
+    team_id = models.AutoField(primary_key=True)
+    team_name = models.CharField(max_length=50, null=False, blank=False)
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='ready')
+    def __str__(self):
+        return str(self.team_name)
+
+class TeamMember(models.Model):
+    member_id = models.AutoField(primary_key=True)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    leader = models.BooleanField(default=False)
+    def __str__(self):
+        return str(self.team)+"_"+str(self.user)
