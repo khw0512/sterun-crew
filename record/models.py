@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django_resized import ResizedImageField
 from multiselectfield import MultiSelectField
+from django.db.models import UniqueConstraint
 
 # def image_upload_path(instance, filename):
 #    time = timezone.now()
@@ -66,7 +67,9 @@ class PersonalRecord(models.Model):
         super().delete(*args, **kwargs)
 
     class Meta:
-        unique_together = ('runner', 'category')  # 한 종목에 1개 PR
+        constraints = [
+            UniqueConstraint(fields=['runner', 'category'], name='unique_user_category')
+        ]
 
     def __str__(self):
         return f"{self.runner} - {self.category}: {self.record}"
@@ -88,5 +91,11 @@ class TeamMember(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     leader = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            UniqueConstraint(fields=['user', 'team'], name='unique_user_team')
+        ]
+
     def __str__(self):
         return str(self.team)+"_"+str(self.user)
