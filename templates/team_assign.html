@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>팀 멤버 구성</title>
+    <style>
+      .board {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .column {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        width: 220px;
+        min-height: 250px;
+        background: #f9f9f9;
+      }
+
+      .column-header {
+        font-weight: bold;
+        margin-bottom: 8px;
+        text-align: center;
+      }
+
+      .dropzone {
+        min-height: 200px;
+        padding: 5px;
+        border: 2px dashed #ddd;
+        border-radius: 6px;
+      }
+
+      .dropzone.dragover {
+        border-color: #007bff;
+        background: #eef5ff;
+      }
+
+      .member-card {
+        padding: 6px 8px;
+        margin: 4px 0;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: move;
+        font-size: 14px;
+      }
+
+      .member-card.dragging {
+        opacity: 0.5;
+      }
+
+      .submit-area {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>팀 별 멤버 구성</h1>
+
+    <form id="team-form" method="post">
+      {% csrf_token %}
+
+      <div class="board">
+        {# 미배정 멤버 영역 #}
+        <div class="column">
+          <div class="column-header">미배정 멤버</div>
+          <div class="dropzone" data-team-id="">
+            {% for member in members %}
+              {% if not member.current_team_id %}
+                <div class="member-card" draggable="true" data-member-id="{{ member.id }}" id="member-{{ member.id }}">
+                  {{ member.username }}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        {# 팀별 영역 #}
+        {% for team in teams %}
+          <div class="column">
+            <div class="column-header">{{ team.team_name }}</div>
+            <div class="dropzone" data-team-id="{{ team.id }}">
+              {% for member in members %}
+                {% if member.current_team_id == team.id %}
+                  <div class="member-card" draggable="true" data-member-id="{{ member.id }}" id="member-{{ member.id }}">
+                    {{ member.username }}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="submit-area">
+        <button type="submit">저장</button>
+      </div>
+    </form>
+
+    <script>
+      // 드래그 대상
+      let draggedCard = null;
+
+      // 멤버 카드 드래그 설정
+      document
+        .querySelectorAll('.member-card')
+        .forEach(card => {
+          card.addEventListener('dragstart', (e) => {
+            draggedCard = card;
+            card
+              .classList
+              .add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+          });
+
+          card.addEventListener('dragend', () => {
+            if (draggedCard) {
+              draggedCard
+                .classList
+                .remove('dragging');
+              draggedCard = null;
+            }
+          });
+        });
+
+      // 드랍존 설정
+      document
+        .querySelectorAll('.dropzone')
+        .forEach(zone => {
+          zone.addEventListener('dragover', (e) => {
+            e.preventDefault(); // drop 허용
+            e.dataTransfer.dropEffect = 'move';
+            zone
+              .classList
+              .add('dragover');
+          });
+
+          zone.addEventListener('dragleave', () => {
+            zone
+              .classList
+              .remove('dragover');
+          });
+
+          zone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            zone
+              .classList
+              .remove('dragover');
+            if (!draggedCard) 
+              return;
+            
+            // 카드 위치 이동
+            zone.appendChild(draggedCard);
+
+            // 드랍된 팀 id 가져오기
+            const teamId = zone.dataset.teamId || "";
+
+            // 멤버 hidden input 업데이트
+            const memberId = draggedCard.dataset.memberId;
+            const hiddenInput = document.getElementById('input-member-' + memberId);
+            if (hiddenInput) {
+              hiddenInput.value = teamId;
+            }
+          });
+        });
+    </script>
+  </body>
+
+</html>

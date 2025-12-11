@@ -26,4 +26,5 @@ urlpatterns = [
     path('pbConfirm/<str:id>', views.pbConfirm, name="pbConfirm"),
     path('pbReject/<str:id>', views.pbReject, name="pbReject"),
     path('pbDelete/<str:id>', views.pbDelete, name="pbDelete"),
+    path('teamassign/', views.team_assign_view, name="team_assign_view"),
 ]

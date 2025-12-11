@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.db.models import Sum
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from record.models import *
 
@@ -215,3 +216,20 @@ def pbDelete(request,id):
         record = PersonalRecord.objects.get(id=id)
         record.delete()
     return redirect("runres:runPbCheck")
+
+def team_assign_view(request):
+    teams = Team.objects.all()
+    users = User.objects.all()
+
+    # 현재 팀 배정 정보 맵핑
+    tm = TeamMember.objects.select_related('user', 'team')
+    current_map = {t.user_id: t.team_id for t in tm}
+
+    # users 에 current_team_id 속성을 임시로 붙이기
+    for u in users:
+        u.current_team_id = current_map.get(u.id)
+
+    return render(request, "team_assign.html", {
+        "teams": teams,
+        "members": users,  # 템플릿에서 members 로 사용
+    })

@@ -88,13 +88,13 @@ class Team(models.Model):
 
 class TeamMember(models.Model):
     member_id = models.AutoField(primary_key=True)
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     leader = models.BooleanField(default=False)
 
     class Meta:
         constraints = [
-            UniqueConstraint(fields=['user', 'team'], name='unique_user_team')
+            models.UniqueConstraint(fields=['user'], name='uunique_user_only_one_team')
         ]
 
     def __str__(self):
