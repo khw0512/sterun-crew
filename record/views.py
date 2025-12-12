@@ -220,10 +220,13 @@ def pbDelete(request,id):
 def team_assign_view(request):
     teams = Team.objects.all()
     users = User.objects.all()
+    team_member = TeamMember.objects.all()
 
     # 현재 팀 배정 정보 맵핑
     tm = TeamMember.objects.select_related('user', 'team')
     current_map = {t.user_id: t.team_id for t in tm}
+    current_map_d = {User.objects.filter(pk=t.user_id): Team.objects.filter(team_id=t.team_id) for t in tm}
+
 
     # users 에 current_team_id 속성을 임시로 붙이기
     for u in users:
@@ -231,5 +234,6 @@ def team_assign_view(request):
 
     return render(request, "team_assign.html", {
         "teams": teams,
-        "members": users,  # 템플릿에서 members 로 사용
+        "members": users,
+        "current_map": current_map_d,  # 템플릿에서 members 로 사용
     })
