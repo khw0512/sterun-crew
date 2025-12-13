@@ -19,27 +19,32 @@
     </div>
   </div>
   <div class="rank-container">
-    <div class="filter-line">
-      <div class="filter-card flex-row">
-        <form action="{% url 'runres:recordRank' %}" method="get" id="month-filter">
-          <select name="month" class="month-filter">
-            <option value="0">all</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-        </form>
-        <div class="month-filter-txt">월</div>
+    <div class="search-sum">
+      <div class="filter-line">
+        <div class="filter-card flex-row">
+          <form action="{% url 'runres:recordRank' %}" method="get" id="month-filter">
+            <select name="month" class="month-filter">
+              <option value="0">all</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </form>
+          <div class="month-filter-txt">월</div>
+        </div>
       </div>
+      <div class="distance-sum">총
+        {{ distance_sum.distance__sum|floatformat:2 }}
+        Km</div>
     </div>
     <div class="space-h10"></div>
     <div class="record-rank-container">

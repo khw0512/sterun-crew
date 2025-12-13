@@ -27,4 +27,5 @@ urlpatterns = [
     path('pbReject/<str:id>', views.pbReject, name="pbReject"),
     path('pbDelete/<str:id>', views.pbDelete, name="pbDelete"),
     path('teamassign/', views.team_assign_view, name="team_assign_view"),
+    path("teams/assign/save/", views.save_team_members, name="save_team_members"),
 ]

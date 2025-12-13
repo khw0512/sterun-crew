@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.db.models import Sum
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from django.contrib.auth.models import User
 
 from record.models import *
@@ -88,9 +89,11 @@ def recordRank(request):
     month = request.GET.get('month')
     if month =="0" or month == None:
         record = Record.objects.values('user__username','user__first_name','user__last_name').annotate(record_sum=Sum('distance')).order_by('-record_sum')
+        distance_sum = Record.objects.filter(confirmed=True).aggregate(Sum('distance'))
     else:
         record = Record.objects.filter(record_date__month=month).values('user__username','user__first_name','user__last_name').annotate(record_sum=Sum('distance')).order_by('-record_sum')
-    return render(request, "record_rank.html", {"record_rank":record, "month":month})
+        distance_sum = Record.objects.filter(confirmed=True).filter(record_date__month=month).aggregate(Sum('distance'))
+    return render(request, "record_rank.html", {"record_rank":record, "month":month, "distance_sum":distance_sum})
 
 def recordCheck(request):
     record = Record.objects.order_by('-record_date')
@@ -220,13 +223,10 @@ def pbDelete(request,id):
 def team_assign_view(request):
     teams = Team.objects.all()
     users = User.objects.all()
-    team_member = TeamMember.objects.all()
 
     # 현재 팀 배정 정보 맵핑
     tm = TeamMember.objects.select_related('user', 'team')
     current_map = {t.user_id: t.team_id for t in tm}
-    current_map_d = {User.objects.filter(pk=t.user_id): Team.objects.filter(team_id=t.team_id) for t in tm}
-
 
     # users 에 current_team_id 속성을 임시로 붙이기
     for u in users:
@@ -234,6 +234,34 @@ def team_assign_view(request):
 
     return render(request, "team_assign.html", {
         "teams": teams,
-        "members": users,
-        "current_map": current_map_d,  # 템플릿에서 members 로 사용
+        "members": users,  # 템플릿에서 members 로 사용
     })
+
+@require_POST
+def save_team_members(request):
+    for key, value in request.POST.items():
+        print(key)
+        print(value)
+        if not key.startswith("member_team_"):
+            continue
+
+        user_id = key.replace("member_team_", "")
+        team_id = value or None
+
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            continue
+
+        # 기존 팀 정보 제거
+        TeamMember.objects.filter(user=user).delete()
+
+        if team_id:
+            team = Team.objects.get(team_id=team_id)
+            TeamMember.objects.create(
+                user=user,
+                team=team,
+                leader=False,
+            )
+
+    return redirect("runres:team_assign_view")  # 팀 편집 페이지로 되돌아가기
