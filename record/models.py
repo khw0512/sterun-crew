@@ -8,10 +8,37 @@ from django.db.models import UniqueConstraint
 #    time = timezone.now()
 #    return f"{instance}/{time}+{filename}"
 
+class Team(models.Model):
+    STATUS_CHOICES = [
+        ('ready', '준비중'),
+        ('go', '운영중'),
+        ('stop', '완료'),
+    ]
+    team_id = models.AutoField(primary_key=True)
+    team_name = models.CharField(max_length=50, null=False, blank=False)
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='ready')
+    def __str__(self):
+        return str(self.team_name)
+    
+class TeamMember(models.Model):
+    member_id = models.AutoField(primary_key=True)
+    team = models.ForeignKey(Team, null=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    leader = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user'], name='uunique_user_only_one_team')
+        ]
+
+    def __str__(self):
+        return str(self.team)+"_"+str(self.user)
+
 class Record(models.Model):
     record_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, null=True, blank=True, on_delete=models.SET_NULL)
     record_date = models.DateField(blank=True, null=True)
     image = ResizedImageField(size=[500,500], upload_to="record", blank=False)
     distance = models.DecimalField(max_digits=6, decimal_places=2, blank=False, null=False)
@@ -74,28 +101,3 @@ class PersonalRecord(models.Model):
     def __str__(self):
         return f"{self.runner} - {self.category}: {self.record}"
 
-class Team(models.Model):
-    STATUS_CHOICES = [
-        ('ready', '준비중'),
-        ('go', '운영중'),
-        ('stop', '완료'),
-    ]
-    team_id = models.AutoField(primary_key=True)
-    team_name = models.CharField(max_length=50, null=False, blank=False)
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='ready')
-    def __str__(self):
-        return str(self.team_name)
-
-class TeamMember(models.Model):
-    member_id = models.AutoField(primary_key=True)
-    team = models.ForeignKey(Team, null=True, on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-    leader = models.BooleanField(default=False)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['user'], name='uunique_user_only_one_team')
-        ]
-
-    def __str__(self):
-        return str(self.team)+"_"+str(self.user)
