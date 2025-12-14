@@ -11,13 +11,17 @@ from record.models import *
 # Create your views here.
 
 def runres(request):
-    return render(request,"run_res.html")
+    pk = request.user.id
+    team_list = Team.objects.all()
+    my_team = TeamMember.objects.filter(user=pk)
+    return render(request,"run_res.html", {"team_list":team_list,"my_team":my_team})
 
 def recordres(request):
     pk = request.user.id
     if request.method == "POST":
         record = Record()
         record.title = request.POST["title"]
+        record.team = Team.objects.get(team_id=request.POST["team"])
         record.user = request.user
         record.record_date = request.POST["record_date"]
         record.image = request.FILES["image"]

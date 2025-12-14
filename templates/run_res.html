@@ -51,6 +51,20 @@
             </div><input class="run-input" id="title" name="title" placeholder="달리기 이름을 입력해 주세요" type="text" required=""/>
           </div>
           <div class="form-control">
+            <div class="form-label">팀 선택</div>
+            <div class="form-label">
+              {% for team in my_team %}
+                참고로, 지금 나의 팀은
+                {{ team.team }}
+              {% endfor %}
+            </div>
+            <select class="run-input" id="team" name="team">
+              {% for team in team_list %}
+                <option value="{{ team.team_id }}">{{ team.team_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-control">
             <div class="form-label">날짜
             </div><input class="run-input" type="date" name="record_date" required="" id="record_date">
           </div>
