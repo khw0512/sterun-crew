@@ -72,7 +72,7 @@
         <button type="button" onclick="closeDeleteModal()">취소</button>
 
         <!-- 실제 삭제 form (동적으로 action 변경됨) -->
-        <form id="deleteForm" method="POST">
+        <form id="deleteForm" method="post">
           {% csrf_token %}
           <button type="submit">삭제</button>
         </form>

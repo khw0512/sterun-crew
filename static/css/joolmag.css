@@ -1185,6 +1185,8 @@ footer {
   padding-left: 5px;
   font-size: 0.8rem;
   color: var(--jlightgreen);
+  line-height: 2.5rem;
+  padding-right: 30px;
 }
 
 .cf-check {

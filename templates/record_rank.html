@@ -5,7 +5,14 @@
   {% csrf_token %}
   <div class="space-h30"></div>
   {% if month == "0" or month == None %}
-    <div class="run-submit-title">마일리지 랭킹</div>
+    {% if team != None %}
+      <div class="run-submit-title">
+        {{ team }}
+        마일리지 랭킹</div>
+    {% else %}
+      <div class="run-submit-title">
+        마일리지 랭킹</div>
+    {% endif %}
   {% else %}
     <div class="run-submit-title">{{ month }}월 마일리지 랭킹</div>
   {% endif %}
@@ -24,7 +31,7 @@
         <div class="filter-card flex-row">
           <form action="{% url 'runres:recordRank' %}" method="get" id="month-filter">
             <select name="month" class="month-filter">
-              <option value="0">all</option>
+              <option value="0">ALL</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -39,8 +46,18 @@
               <option value="12">12</option>
             </select>
           </form>
-          <div class="month-filter-txt">월</div>
         </div>
+        <div class="month-filter-txt">월</div>
+        <div class="filter-card flex-row">
+          <form action="{% url 'runres:recordRank' %}" method="get" id="team-filter">
+            <select name="team" class="month-filter">
+              {% for team in team_list %}
+                <option value="{{ team.team_id }}">{{ team }}</option>
+              {% endfor %}
+            </select>
+          </form>
+        </div>
+        <div class="month-filter-txt">팀</div>
       </div>
       <div class="distance-sum">총
         {{ distance_sum.distance__sum|floatformat:2 }}

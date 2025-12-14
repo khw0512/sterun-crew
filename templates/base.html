@@ -175,6 +175,12 @@
           $("#month-filter").submit();
         });
       });
+      $(document).ready(function () {
+        $("select[name=team]").val("{{ team }}");
+        $("select[name=team]").change(function () {
+          $("#team-filter").submit();
+        });
+      });
     </script>
 
     <footer>

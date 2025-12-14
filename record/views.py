@@ -87,13 +87,20 @@ def recordUpdate(request,pk,record_id):
 
 def recordRank(request):
     month = request.GET.get('month')
-    if month =="0" or month == None:
+    team = request.GET.get('team')
+    team_list = Team.objects.all()
+
+    if (month =="0" or month == None) and team == None:
         record = Record.objects.values('user__username','user__first_name','user__last_name').annotate(record_sum=Sum('distance')).order_by('-record_sum')
         distance_sum = Record.objects.filter(confirmed=True).aggregate(Sum('distance'))
+    elif (month =="0" or month == None) and team != None:
+        record = Record.objects.values('user__username','user__first_name','user__last_name').annotate(record_sum=Sum('distance')).order_by('-record_sum').filter(user__teammember__team=team)
+        distance_sum = record.filter(confirmed=True).aggregate(Sum('distance'))
+        team = Team.objects.get(team_id = team)
     else:
         record = Record.objects.filter(record_date__month=month).values('user__username','user__first_name','user__last_name').annotate(record_sum=Sum('distance')).order_by('-record_sum')
         distance_sum = Record.objects.filter(confirmed=True).filter(record_date__month=month).aggregate(Sum('distance'))
-    return render(request, "record_rank.html", {"record_rank":record, "month":month, "distance_sum":distance_sum})
+    return render(request, "record_rank.html", {"record_rank":record, "month":month, "distance_sum":distance_sum, "team":team, "team_list":team_list})
 
 def recordCheck(request):
     record = Record.objects.order_by('-record_date')
