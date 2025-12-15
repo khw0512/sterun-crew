@@ -963,7 +963,15 @@ footer {
 }
 .form-label {
   width: 200px;
+  font-size: 1rem;
   font-weight: 500;
+  margin: 0 0 5px 0;
+  color: var(--jlightgreen);
+}
+.form-label-80 {
+  width: 200px;
+  font-size: 0.8rem;
+  font-weight: 300;
   margin: 0 0 5px 0;
   color: var(--jlightgreen);
 }
@@ -1476,6 +1484,13 @@ td {
     animation: fadeout 3s;
     animation-delay: 1s;
   }
+  .container-500{
+    width: 100%;
+  }
+
+  .record-col {
+    margin: 10px 10px 10px 10px;
+  }
 
   @keyframes fadeout {
     from {
@@ -1536,10 +1551,7 @@ td {
     margin-top: 20px;
   }
   .run-submit-prev {
-    width: 80%;
-  }
-  .article-submit-prev {
-    width: 100%;
+    width: 95%;
   }
   .article-previous-btn {
     margin-top: 1rem;
@@ -1606,8 +1618,14 @@ td {
   }
 
   .search-sum {
-    width: 80%;
-    padding: 0 20px 10px 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 10px 10px;
+  }
+
+  .distance-sum{
+    padding-top: 20px;
   }
 
   .record-list-container {
@@ -1652,6 +1670,10 @@ td {
   .marathon-list {
     min-width: none;
   }
+  .record-rank-container{
+    width: 100%;
+    padding:0 0 0 0;
+  }
 }
 
 @media (max-width: 405px) {
@@ -1673,6 +1695,13 @@ td {
     transition: 3s ease;
     animation: fadeout 3s;
     animation-delay: 1s;
+  }
+
+  .container-500{
+    width: 100%;
+  }
+  .record-col {
+    margin: 10px 10px 10px 10px;
   }
 
   @keyframes fadeout {
@@ -1706,7 +1735,7 @@ td {
   }
 
   .search-sum {
-    width: 80%;
+    width: 100%;
   }
   .pagenation-container {
     width: 100px;
