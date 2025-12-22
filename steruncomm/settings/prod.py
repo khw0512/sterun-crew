@@ -2,11 +2,9 @@ from .base import *
 
 # 원래는 DEBUG = False가 맞으나 이때 EC2 초반에 테스트 목적으로 True로 설정
 # DEBUG = False
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [ 
-	# 나중에 구매한 도메인, EC2의 퍼블릭 ip등을 명시 
-]
+ALLOWED_HOSTS = ['3.37.62.158']
 
 STATIC_URL = 'static/'
 

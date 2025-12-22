@@ -1,0 +1,184 @@
+@font-face {
+  font-family: "SejonghospitalBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Orbit-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+a {
+  text-decoration-line: none;
+  color: var(--text-color);
+}
+
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 200%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; /* 모멘텀 스크롤 */
+  background-color: var(--jblue);
+  z-index: 9999;
+  opacity: 1;
+  transition: 2s ease;
+  animation: fadeout 2s;
+  animation-delay: 1s;
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.loadingImg {
+  position: relative;
+  margin-left: 45%;
+  display: block;
+  top: 50vh;
+  transform: translateY(-50%);
+}
+
+.mainbg {
+  height: 100%;
+  background-color: #cdff06;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.centeritem {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 20px 40px 0 0;
+}
+
+.lan-switch {
+  color: #1c06ff;
+  margin: 0 5px 0 5px;
+  font-size: 13px;
+}
+
+.info-icon {
+  color: #1c06ff;
+  margin: 0 10px 0 10px;
+}
+
+.smallbox {
+  width: 20px;
+}
+
+.j-nav-container {
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  margin: 40px 0 0 0;
+  flex-direction: column;
+  align-items: center;
+}
+
+.j-nav-container-2 {
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  margin: 20px 0 0 0;
+  flex-direction: column;
+  align-items: center;
+}
+
+.j-nav-items {
+  display: flex;
+  color: #1c06ff;
+  margin: 20px 0 20px 0;
+}
+
+.j-navbar-brand {
+  display: flex;
+  margin: 20px 0 20px 0;
+}
+
+.j-nav-item {
+  font-size: 17px;
+  text-align: center;
+  padding: 0 30px 0 30px;
+}
+
+.j-nav-item a {
+  font-weight: 600;
+}
+
+.j-nav-item a:after {
+  display: block;
+  content: "";
+  border-bottom: solid 1px #1c06ff;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+  margin-top: -12px;
+}
+
+.j-nav-item a:hover:after {
+  transform: scaleX(1);
+}
+
+.main-img {
+  margin: 30px 0 20px 0;
+  width: 400px;
+}
+
+.about-img {
+  margin: 30px 0 0 0;
+  width: 500px;
+}
+
+.rights {
+  margin: 20px 0 0 0;
+  color: #1c06ff;
+  font-size: 13px;
+}
+
+.about-text {
+  margin: 10px 0 0 0;
+  width: 450px;
+  color: #1c06ff;
+}
+
+.j-nav-item-active {
+  font-size: 17px;
+  text-align: center;
+  padding: 0 30px 0 30px;
+}
+
+.j-nav-item-active::after {
+  display: block;
+  content: "";
+  border-bottom: solid 1px #1c06ff;
+  transition: transform 250ms ease-in-out;
+  margin-top: -12px;
+}
