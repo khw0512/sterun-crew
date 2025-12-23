@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <div class="main-view flex-center">
+    <div class="record-top-space"></div>
+    <div class="container-w500">
+      <div>
+        <p class="page-title">관리하기</p>
+      </div>
+      <div class="run-submit-prev">
+        <div class="previous-btn">
+          <a href="{{ request.META.HTTP_REFERER }}">
+            <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
+        </div>
+      </div>
+      <div class="space-h30"></div>
+      <div class="pb-container">
+        <div class="setting-title">1. 마일리지 거리 인증</div>
+        <div class="setting-body">크루원들의 마일리지를 확인하고 관리합니다</div>
+        <div class="flex-row-center">
+          <a href="{% url "runres:recordCheck" %}">
+            <div class="btn-control">
+              <button class="check-submit-btn-row">기록 인증하기</button>
+            </div>
+          </a>
+        </div>
+
+      </div>
+      <div class="space-h30"></div>
+      <div class="pb-container">
+        <div class="setting-title">2. PB 인증</div>
+        <div class="setting-body">크루원들의 PB를 확인하고 관리합니다</div>
+        <div class="flex-row-center">
+          <a href="{% url "runres:runPbCheck" %}">
+            <div class="btn-control">
+              <button class="check-submit-btn-row">PB 인증하기</button>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="space-h30"></div>
+      <div class="pb-container">
+        <div class="setting-title">3. 팀 구성</div>
+        <div class="setting-body">마일리지 누적 게임을 위한 팀을 구성합니다</div>
+        <div class="flex-row-center">
+          <a href="{% url "runres:team_assign_view" %}">
+            <div class="btn-control">
+              <button class="check-submit-btn-row">팀 구성하기</button>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="space-h30"></div>
+      <div class="pb-container">
+        <div class="setting-title">4. 공지 작성</div>
+        <div class="setting-body">공지사항을 작성합니다</div>
+        <div class="flex-row-center">
+          <a href="{% url "article:articleres" %}">
+            <div class="btn-control">
+              <button class="check-submit-btn-row">공지 작성하기</button>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="space-h30"></div>
+      <div class="pb-container">
+        <div class="setting-title">5. 빙고 아이템 수정</div>
+        <div class="setting-body">빙고게임의 아이템을 수정합니다</div>
+        <div class="flex-row-center">
+          <a href="{% url 'bingo:bingoupdate' user.pk %}">
+            <div class="btn-control">
+              <button class="check-submit-btn-row">아이템 수정하기</button>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="space-h30"></div>
+      <div class="pb-container">
+        <div class="setting-title">6. 관리자 페이지</div>
+        <div class="setting-body">Django 관리자 페이지로 이동합니다</div>
+        <div class="flex-row-center">
+          <a href="{% url "admin:index" %}">
+            <div class="btn-control">
+              <button class="check-submit-btn-row">관리자 페이지</button>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% if cnt_items == 0 %}
+        <div class="space-h30"></div>
+        <div class="flex">
+          <div>
+            <form method="post" action="{% url "bingo:bingoreset" %}">
+              {% csrf_token %}
+              <button type="submit" class="check-submit-btn-row">Bingo Reset</button>
+            </form>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <script>
+    // 페이지가 모두 로드되면 호출
+    window.addEventListener('load', function () {
+      const loader = document.getElementById('loader');
+      const content = document.getElementById('content');
+      // 로딩 화면 숨기기
+      loader.style.display = 'none';
+      // 콘텐츠 보여주기
+      content.style.display = 'block';
+    });
+  </script>
+{% endblock content %}

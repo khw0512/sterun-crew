@@ -7,6 +7,9 @@ from datetime import datetime
 from django.utils.dateformat import DateFormat
 import math
 
+from bingo.models import *
+from record.models import Record
+
 
 def index(request):
     return render(request,"index.html")
@@ -16,3 +19,8 @@ def go_back_view(request):
     previous_url = request.META.get('HTTP_REFERER', '/')
     print(previous_url)
     return redirect(previous_url)
+
+def setting_page(request):
+    bingoitem = BingoItem.objects.all() 
+    cnt_items = bingoitem.count()
+    return render(request,"setting.html",{"cnt_items":cnt_items} )

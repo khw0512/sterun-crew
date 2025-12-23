@@ -8,6 +8,16 @@
       <div class="run-submit-title">
         빙고 아이템 변경
       </div>
+      <div class="flex-center">
+        <div class="container-w500">
+          <div class="run-submit-prev">
+            <div class="previous-btn">
+              <a href="{{ request.META.HTTP_REFERER }}">
+                <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="run-form-container">
         <form method="post" id="contactForm" class="run-sm-form" name="contactForm" action="{% url 'bingo:bingores' user.pk %}" enctype="multipart/form-data">
           {% csrf_token %}
@@ -25,41 +35,6 @@
             </button>
           </div>
         </form>
-        <div class="divider-line"></div>
-        <!--a href="{% url "admin:index" %}"> <div class="btn-control"> <button class="check-submit-btn">관리자 페이지</button> </div> </a-->
-        <div class="flex-row-center">
-          <a href="{% url "runres:recordCheck" %}">
-            <div class="btn-control">
-              <button class="check-submit-btn-row">기록 인증하기</button>
-            </div>
-          </a>
-          <a href="{% url "runres:runPbCheck" %}">
-            <div class="btn-control">
-              <button class="check-submit-btn-row">PB 인증하기</button>
-            </div>
-          </a>
-        </div>
-        <a href="{% url "runres:team_assign_view" %}">
-          <div class="btn-control">
-            <button class="check-submit-btn">팀 구성하기</button>
-          </div>
-        </a>
-        <a href="{% url "article:articleres" %}">
-          <div class="btn-control">
-            <button class="check-submit-btn">공지 작성하기</button>
-          </div>
-        </a>
-        {% if cnt_items == 0 %}
-          <div class="flex">
-            <div>
-              <form method="post" action="{% url "bingo:bingoreset" %}">
-                {% csrf_token %}
-                <button type="submit" class="check-submit-btn">Bingo Reset</button>
-              </form>
-            </div>
-          </div>
-        {% endif %}
-
       </div>
 
     </body>

@@ -330,6 +330,17 @@ button {
   color: rgb(0, 102, 102);
 }
 
+.setting-title{
+  color:var(--white);
+  padding:0 0 10px 0;
+}
+
+.setting-body{
+  color:var(--white);
+  padding:0 0 10px 0;
+  font-size: 0.9rem;
+}
+
 .text-black {
   font-size: 1.1rem;
   padding: 0 10px 0 10px;
