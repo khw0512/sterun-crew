@@ -107,7 +107,7 @@
         <div class="login-box">
           {% if user.is_authenticated %}
             <a href="{% url 'users:logout' %}">
-              <div class="login-btn">{{ user.username }}
+              <div class="login-btn">{{ request.user.username }}
                 님 로그아웃</div>
             </a>
           {% else %}
@@ -142,7 +142,7 @@
             </a>
           {% endif %}
           {% if user.is_authenticated %}
-            <a href="{% url 'setting_page'%}">
+            <a href="{% url 'setting_page' %}">
               <div class="submenu">관리</div>
             </a>
           {% endif %}
