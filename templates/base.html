@@ -42,7 +42,6 @@
           <img src="{% static "img/easyrun-logo2.png" %}" alt="logo-top" height="auto" width="auto">
         </a>
       </div>
-      <!--img id="menu-button" data-menu="0" onclick="open_close()" src="{% static 'img/hamber_btn.svg' %}" alt="hamb-btn" height="auto," width="auto"-->
       <div class="j-nav-items fade-in-up-short1">
         <div class="j-nav-item">
           <a href="{% url 'index' %}">이지런</a>
@@ -99,11 +98,6 @@
             <i class="fa-brands fa-youtube"></i>
           </div>
         </div>
-        <div class="pb-btn-container">
-          <a href="{% url "runres:pbView" user.pk %}">
-            <button class="pb-btn">나의 PB</button>
-          </a>
-        </div>
         <div class="login-box">
           {% if user.is_authenticated %}
             <a href="{% url 'users:logout' %}">
@@ -118,50 +112,6 @@
               <div class="login-btn">회원가입</div>
             </a>
           {% endif %}
-        </div>
-      </div>
-    </div>
-
-    <div id="screen">
-      <div id="mobile_menu">
-        <div id="menu-bundle">
-          <a href="{% url 'index' %}">
-            <div class="submenu">이지런</div>
-          </a>
-          <a href="{% url 'article:article' %}">
-            <div class="submenu">공지</div>
-          </a>
-          {% if user.is_authenticated %}
-            <a href="{% url 'runres:recordview' user.pk %}">
-              <div class="submenu">기록</div>
-            </a>
-          {% endif %}
-          {% if user.is_authenticated %}
-            <a href="{% url 'bingo:bingo' user.pk %}">
-              <div class="submenu">빙고</div>
-            </a>
-          {% endif %}
-          {% if user.is_authenticated %}
-            <a href="{% url 'setting_page' %}">
-              <div class="submenu">관리</div>
-            </a>
-          {% endif %}
-
-          <div class="mobile-login-box">
-            {% if user.is_authenticated %}
-              <a href="{% url 'users:logout' %}">
-                <div class="login-btn">{{ user.username }}
-                  님 로그아웃</div>
-              </a>
-            {% else %}
-              <a href="{% url 'users:login' %}">
-                <div class="login-btn">로그인</div>
-              </a>
-              <a href="{% url 'users:signup' %}">
-                <div class="login-btn">회원가입</div>
-              </a>
-            {% endif %}
-          </div>
         </div>
       </div>
     </div>
