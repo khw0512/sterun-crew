@@ -58,7 +58,7 @@
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}
-            <a href="{% url 'bingo:bingo' user.pk %}">빙고</a>
+            <a href="{% url 'bingo:bingo' request.user.pk %}">빙고</a>
           {% else %}
             <a href="{% url 'users:login' %}">빙고</a>
           {% endif %}
