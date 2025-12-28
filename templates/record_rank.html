@@ -17,14 +17,6 @@
     <div class="run-submit-title">{{ month }}월 마일리지 랭킹</div>
   {% endif %}
   <div class="space-h30"></div>
-  <div class="container-500">
-    <div class="run-submit-prev">
-      <div class="previous-btn">
-        <a href="{{ request.META.HTTP_REFERER }}">
-          <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
-      </div>
-    </div>
-  </div>
   <div class="rank-container">
     <div class="search-sum">
       <div class="filter-line">
@@ -112,6 +104,11 @@
         </div>
       {% endfor %}
     </div>
+  </div>
+  <div class="btn-control">
+    <a href="{% url "runres:recordview" request.user.pk %}">
+      <button class="submit-btn">나의 마일리지</button>
+    </a>
   </div>
   <script>
     // 페이지가 모두 로드되면 호출

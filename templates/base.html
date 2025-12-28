@@ -65,7 +65,7 @@
         </div>
         <div class="j-nav-item">
           {% if user.is_authenticated %}
-            <a href="{% url 'runres:recordview' user.pk %}">마일리지</a>
+            <a href="{% url 'runres:recordRank' %}">마일리지</a>
           {% else %}
             <a href="{% url 'users:login' %}">마일리지</a>
           {% endif %}

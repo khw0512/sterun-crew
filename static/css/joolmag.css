@@ -330,14 +330,14 @@ button {
   color: rgb(0, 102, 102);
 }
 
-.setting-title{
-  color:var(--white);
-  padding:0 0 10px 0;
+.setting-title {
+  color: var(--white);
+  padding: 0 0 10px 0;
 }
 
-.setting-body{
-  color:var(--white);
-  padding:0 0 10px 0;
+.setting-body {
+  color: var(--white);
+  padding: 0 0 10px 0;
   font-size: 0.9rem;
 }
 
@@ -958,7 +958,7 @@ footer {
   margin: auto;
 }
 .article-form-container {
-  width: 800px;
+  max-width: 800px;
   margin: auto;
 }
 .run-form-container {
@@ -1131,6 +1131,7 @@ footer {
   flex-direction: column;
 }
 .distance-txt {
+  color: var(--white);
   font-size: 0.6rem;
   margin-bottom: 5px;
 }
@@ -1495,7 +1496,7 @@ td {
     animation: fadeout 3s;
     animation-delay: 1s;
   }
-  .container-500{
+  .container-500 {
     width: 100%;
   }
 
@@ -1555,6 +1556,22 @@ td {
 
   .sterun-logo-m {
     padding: 0 0 0 20px;
+  }
+  .article-submit-title {
+    width: 90%;
+    margin: auto;
+  }
+  .article-form-container {
+    width: 90%;
+    margin: auto;
+  }
+  .article-submit-prev {
+    width: 90%;
+    margin: auto;
+  }
+  .run-input {
+    width: 90%;
+    margin: auto;
   }
   .run-submit-title {
     width: 90%;
@@ -1635,7 +1652,7 @@ td {
     padding: 0 20px 10px 10px;
   }
 
-  .distance-sum{
+  .distance-sum {
     padding-top: 20px;
   }
 
@@ -1681,9 +1698,9 @@ td {
   .marathon-list {
     min-width: none;
   }
-  .record-rank-container{
+  .record-rank-container {
     width: 100%;
-    padding:0 0 0 0;
+    padding: 0 0 0 0;
   }
 }
 
@@ -1708,7 +1725,7 @@ td {
     animation-delay: 1s;
   }
 
-  .container-500{
+  .container-500 {
     width: 100%;
   }
   .record-col {

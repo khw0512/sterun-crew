@@ -18,10 +18,12 @@ def runres(request):
 
 def recordres(request):
     pk = request.user.id
+    team_id = request.POST.get("team")
+    print(team_id)
     if request.method == "POST":
         record = Record()
         record.title = request.POST["title"]
-        record.team = Team.objects.get(team_id=request.POST["team"])
+        record.team = Team.objects.filter(team_id=team_id).first() if team_id else None
         record.user = request.user
         record.record_date = request.POST["record_date"]
         record.image = request.FILES["image"]

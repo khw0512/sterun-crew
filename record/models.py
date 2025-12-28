@@ -58,7 +58,7 @@ class Record(models.Model):
         super().delete(*args, **kwargs)
 
     def __str__(self):
-        return str(self.confirmed)+ "_" + str(self.user) + "_" + str(self.record_date) + "_" + (str(self.title))
+        return str(self.team)+ "_" + str(self.confirmed)+ "_" + str(self.user) + "_" + str(self.record_date) + "_" + (str(self.title))
 
 
 class PersonalRecord(models.Model):

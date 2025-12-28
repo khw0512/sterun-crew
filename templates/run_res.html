@@ -59,6 +59,7 @@
               {% endfor %}
             </div>
             <select class="run-input" id="team" name="team">
+              <option value="" selected="selected">-</option>
               {% for team in team_list %}
                 <option value="{{ team.team_id }}">{{ team.team_name }}</option>
               {% endfor %}

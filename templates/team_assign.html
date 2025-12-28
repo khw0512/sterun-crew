@@ -17,7 +17,8 @@
               {# member.current_team_id 가 없거나 None 이면 미배정으로 가정 #}
               {% if not member.current_team_id %}
                 <div class="member-card" draggable="true" data-member-id="{{ member.id }}" id="member-{{ member.id }}">
-                  {{ member.username }}
+                  {{ member.last_name }}{{ member.first_name }}
+                  ({{ member.username }})
                 </div>
               {% endif %}
               <input type="hidden" name="member_team_{{ member.id }}" id="input-member-{{ member.id }}" value="{{ member.current_team_id|default_if_none:'' }}">
@@ -34,7 +35,8 @@
               {% for member in members %}
                 {% if member.current_team_id == team.team_id %}
                   <div class="member-card" draggable="true" data-member-id="{{ member.id }}" id="member-{{ member.id }}">
-                    {{ member.username }}
+                    {{ member.last_name }}{{ member.first_name }}
+                    ({{ member.username }})
                   </div>
                 {% endif %}
               {% endfor %}

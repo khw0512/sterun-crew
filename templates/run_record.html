@@ -6,6 +6,14 @@
     <div>
       <p class="page-title">나의 마일리지</p>
     </div>
+    <div class="container-500">
+      <div class="run-submit-prev">
+        <div class="previous-btn">
+          <a href="{{ request.META.HTTP_REFERER }}">
+            <img src="{% static "img/circle-arrow-down.png" %}" alt="logo-top" height="50px" ,="," width="auto"></a>
+        </div>
+      </div>
+    </div>
     <div class="width500">
       <div class="space-h30"></div>
     </div>
@@ -57,12 +65,12 @@
                 <div class="record-title">{{ data.title }}</div>
                 <div class="record-3">
                   <div class="record-part-box">
-                    <div class="distance-txt">Distance</div>
+                    <div class="distance-txt">거리</div>
                     <div class="record-distance">{{ data.distance }}
                       km</div>
                   </div>
                   <div class="record-part-box">
-                    <div class="distance-txt">Avg.pace</div>
+                    <div class="distance-txt">페이스</div>
                     {% if data.pace_s < 10 %}
                       <div class="record-pace">{{ data.pace_m }}' 0{{ data.pace_s }}''</div>
                     {% else %}
@@ -71,7 +79,7 @@
                     {% endif %}
                   </div>
                   <div class="record-part-box">
-                    <div class="distance-txt">Time</div>
+                    <div class="distance-txt">기록</div>
                     {% if data.time_s < 10 %}
                       {% if data.time_h is not None %}
                         <div class="record-time">
@@ -96,6 +104,10 @@
 
             </div>
           </a>
+          {% if data.team != None %}
+            <div class="distance-txt">* 팀 :
+              {{ data.team }}</div>
+          {% endif %}
           <div class="record-desc fade-in-up-short2">{{ data.desc }}</div>
         </div>
 
@@ -138,11 +150,6 @@
           </svg>
           <div class="upload-txt">마일리지 업로드</div>
         </div>
-      </a>
-    </div>
-    <div class="btn-control">
-      <a href="{% url "runres:recordRank" %}">
-        <button class="submit-btn">마일리지 랭킹</button>
       </a>
     </div>
   </div>
