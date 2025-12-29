@@ -43,6 +43,7 @@
         <div class="filter-card flex-row">
           <form action="{% url 'runres:recordRank' %}" method="get" id="team-filter">
             <select name="team" class="month-filter">
+              <option value="0">ALL</option>
               {% for team in team_list %}
                 <option value="{{ team.team_id }}">{{ team }}</option>
               {% endfor %}

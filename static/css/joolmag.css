@@ -1337,11 +1337,11 @@ footer {
 .rank-container {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 80%;
   max-width: 500px;
   margin: auto;
   margin-top: 10px;
-  margin-bottom: 3rem;
+  margin-bottom: 10px;
 }
 .record-col {
   display: flex;

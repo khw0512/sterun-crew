@@ -96,7 +96,7 @@ def recordRank(request):
     team = request.GET.get('team')
     team_list = Team.objects.all()
 
-    if (month =="0" or month == None) and team == None:
+    if (month =="0" or month == None) and (team == None or team =="0"):
         record = Record.objects.values('user__username','user__first_name','user__last_name').annotate(record_sum=Sum('distance')).order_by('-record_sum')
         distance_sum = Record.objects.filter(confirmed=True).aggregate(Sum('distance'))
     elif (month =="0" or month == None) and team != None:
