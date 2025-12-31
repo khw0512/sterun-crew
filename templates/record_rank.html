@@ -5,7 +5,7 @@
   {% csrf_token %}
   <div class="space-h30"></div>
   {% if month == "0" or month == None %}
-    {% if team != None %}
+    {% if team != None and team != "0" %}
       <div class="run-submit-title">
         {{ team }}
         마일리지 랭킹</div>

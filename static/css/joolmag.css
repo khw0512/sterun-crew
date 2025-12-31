@@ -147,6 +147,10 @@ button {
   background-color: var(--white) !important;
 }
 
+.main-view {
+  min-height: 100vh;
+}
+
 .w100 {
   width: 100%;
 }
