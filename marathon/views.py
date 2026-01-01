@@ -19,7 +19,7 @@ def marathon_list(request):
         'events': events,
     }
     
-    return render(request, 'marathon.html', context)
+    return render(request, 'marathon/marathon.html', context)
 
 
 def parti_me(request, key):

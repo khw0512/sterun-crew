@@ -160,6 +160,9 @@ button {
 .space-h30 {
   height: 30px;
 }
+.space-h60 {
+  height: 60px;
+}
 .divider-line {
   width: 100%;
   border-top: var(--jlightgreen) 3px dotted;
@@ -1062,10 +1065,6 @@ footer {
   background-color: var(--jlightgreen);
   border-radius: 5rem;
   border: var(--jlightgreen) 1px solid;
-}
-
-.record-top-space {
-  height: 50px;
 }
 .main-info-1 {
   display: flex;

@@ -3,14 +3,14 @@
 {% block content %}
 
   {% csrf_token %}
-  <div class="space-h30"></div>
+  <div class="space-h60"></div>
   {% if month == "0" or month == None %}
     {% if team != None and team != "0" %}
-      <div class="run-submit-title">
+      <div class="page-title">
         {{ team }}
         마일리지 랭킹</div>
     {% else %}
-      <div class="run-submit-title">
+      <div class="page-title">
         마일리지 랭킹</div>
     {% endif %}
   {% else %}

@@ -23,4 +23,4 @@ def go_back_view(request):
 def setting_page(request):
     bingoitem = BingoItem.objects.all() 
     cnt_items = bingoitem.count()
-    return render(request,"setting.html",{"cnt_items":cnt_items} )
+    return render(request,"admin/setting.html",{"cnt_items":cnt_items} )

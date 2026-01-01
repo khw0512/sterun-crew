@@ -14,7 +14,7 @@ def runres(request):
     pk = request.user.id
     team_list = Team.objects.all()
     my_team = TeamMember.objects.filter(user=pk)
-    return render(request,"run_res.html", {"team_list":team_list,"my_team":my_team})
+    return render(request,"record/run_res.html", {"team_list":team_list,"my_team":my_team})
 
 def recordres(request):
     pk = request.user.id
@@ -61,11 +61,11 @@ def recordview(request,pk):
     paginator = Paginator(record_list, 3) #한 페이지 당 몇개 씩 보여줄 지 지정
     record_list = paginator.get_page(page)
 
-    return render(request,"run_record.html", {"context":record_list, "distance_sum":distance_sum, "month": month, "distance_sum_not":distance_sum_not})
+    return render(request,"record/run_record.html", {"context":record_list, "distance_sum":distance_sum, "month": month, "distance_sum_not":distance_sum_not})
 
 def recordUpdateView(request,pk,record_id):
     record = Record.objects.filter(user=pk).get(record_id=record_id)
-    return render(request,"run_update.html", {"record_id":record_id, "record":record})
+    return render(request,"record/run_update.html", {"record_id":record_id, "record":record})
 
 def recordUpdate(request,pk,record_id):
     record = Record.objects.filter(user=pk).get(record_id=record_id)
@@ -106,11 +106,11 @@ def recordRank(request):
     else:
         record = Record.objects.filter(record_date__month=month).values('user__username','user__first_name','user__last_name').annotate(record_sum=Sum('distance')).order_by('-record_sum')
         distance_sum = Record.objects.filter(confirmed=True).filter(record_date__month=month).aggregate(Sum('distance'))
-    return render(request, "record_rank.html", {"record_rank":record, "month":month, "distance_sum":distance_sum, "team":team, "team_list":team_list})
+    return render(request, "record/record_rank.html", {"record_rank":record, "month":month, "distance_sum":distance_sum, "team":team, "team_list":team_list})
 
 def recordCheck(request):
     record = Record.objects.order_by('-record_date')
-    return render(request,"record_check.html", {"record":record})
+    return render(request,"admin/record_check.html", {"record":record})
 
 def recordConfirm(request,id):
     if request.method == "POST":
@@ -143,7 +143,7 @@ def pbRank(request):
         ranking_tenk = None 
         ranking_hm = None
         ranking_fm = None   
-    return render(request,"run_pb.html", {"ranking_tenk":ranking_tenk, "ranking_hm":ranking_hm, "ranking_fm":ranking_fm})
+    return render(request,"pb/run_pb.html", {"ranking_tenk":ranking_tenk, "ranking_hm":ranking_hm, "ranking_fm":ranking_fm})
 
 @login_required
 def pbView(request,pk):
@@ -151,11 +151,11 @@ def pbView(request,pk):
     pb_hm = PersonalRecord.objects.filter(runner=pk).filter(category='HM').first()
     pb_fm = PersonalRecord.objects.filter(runner=pk).filter(category='FM').first()
 
-    return render(request,"run_mypb.html", {"pb_tenk":pb_tenk, "pb_hm":pb_hm, "pb_fm":pb_fm})
+    return render(request,"pb/run_mypb.html", {"pb_tenk":pb_tenk, "pb_hm":pb_hm, "pb_fm":pb_fm})
 
 @login_required
 def pbresPage(request,pk,category):
-    return render(request,"run_pb_res.html",{"category":category})
+    return render(request,"pb/run_pb_res.html",{"category":category})
 
 @login_required
 def pbRes(request, pk, category):
@@ -182,7 +182,7 @@ def pbRes(request, pk, category):
 @login_required
 def pbUpdateView(request,pk,category):
     record = PersonalRecord.objects.filter(runner=pk).filter(category=category).first()
-    return render(request,"run_pb_update.html", {"record":record})
+    return render(request,"pb/run_pb_update.html", {"record":record})
 
 @login_required
 def pbUpdate(request,pk,category):
@@ -211,7 +211,7 @@ def pbUpdate(request,pk,category):
 
 def runPbCheck(request):
     record = PersonalRecord.objects.order_by('-created_at')
-    return render(request,"run_pb_check.html", {"record":record})
+    return render(request,"admin/run_pb_check.html", {"record":record})
 
 def pbConfirm(request,id):
     if request.method == "POST":
@@ -245,7 +245,7 @@ def team_assign_view(request):
     for u in users:
         u.current_team_id = current_map.get(u.id)
 
-    return render(request, "team_assign.html", {
+    return render(request, "admin/team_assign.html", {
         "teams": teams,
         "members": users,  # 템플릿에서 members 로 사용
     })

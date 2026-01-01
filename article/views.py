@@ -20,13 +20,13 @@ def index(request):
     #boards = paginator.get_page(page)
     context = {'articles': articles, 'recentatc': recentatc,
                'oldatc': oldatc}
-    return render(request, 'collabo_main.html', context)
+    return render(request, 'article/collabo_main.html', context)
 
 
 def article(request, article_id):
     article = Article.objects.get(id=article_id)
     context = {'article': article}
-    return render(request, 'collabo_article.html', context)
+    return render(request, 'article/collabo_article.html', context)
 
 
 def search(request):
@@ -45,9 +45,9 @@ def search(request):
         context = {'articles': articles,
                    'recentatc': recentatc, 'oldatc': oldatc, 'searched': searched, 'results': results}
         print(searched)
-        return render(request, 'searched.html', context)
+        return render(request, 'article/searched.html', context)
     else:
-        return render(request, 'searched.html', {'articles': articles, 'recentatc': recentatc, 'oldatc': oldatc, 'searched': False})
+        return render(request, 'article/searched.html', {'articles': articles, 'recentatc': recentatc, 'oldatc': oldatc, 'searched': False})
 
 
 def alldata(request):
@@ -85,7 +85,7 @@ def searchTitle(request):
     # return HttpResponse(json.dumps(dict), content_type='application/json')
 
 def articleRes(request):
-    return render(request, "collabo_article_res.html")
+    return render(request, "admin/collabo_article_res.html")
 
 def articleResFunc(request):
     if request.method == "POST":
