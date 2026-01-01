@@ -25,36 +25,33 @@
   </head>
 
   <body class="login-page">
+    <div class="login-page-top-margin"></div>
+    <div class="j-navbar-brand">
+      <a href="{% url 'index' %}">
+        <img src="{% static "img/index_logo.png" %}" alt="logo-top" height="auto," width="500px">
+      </a>
+    </div>
+    <div class="space-h60"></div>
     <div class="login-container">
-      <div class="login-page-top-margin"></div>
-      <div class="j-navbar-brand">
-        <a href="{% url 'index' %}">
-          <img src="{% static "img/EASYRUN.png" %}" alt="logo-top" height="auto," width="300px">
-        </a>
-      </div>
       <div class="record-top-space"></div>
-      <div>
-        <div class="login-container">
-          <form method="post" action="{% url 'users:login' %}" class="form-container">
-            {% csrf_token %}
-            {% include "users/form_errors.html" %}
-            <div>
-              <input type="text" name="username" id="username" class="id" placeholder="아이디">
-            </div>
-            <div>
-              <input type="text" name="password" id="password" class="pw" placeholder="비밀번호">
-            </div>
-            <div>
-              <button type="submit" class="login-submit" id="loginBtn">
-                <p class="btn-text">LOGIN</p>
-                <span class="spinner-login"></span>
-              </button>
-            </div>
-            <a href="{% url 'users:signup' %}">
-              <span class="signup-btn">회원가입</span></a>
-          </form>
+      <form method="post" action="{% url 'users:login' %}" class="form-container">
+        {% csrf_token %}
+        {% include "users/form_errors.html" %}
+        <div>
+          <input type="text" name="username" id="username" class="id" placeholder="아이디">
         </div>
-      </div>
+        <div>
+          <input type="text" name="password" id="password" class="pw" placeholder="비밀번호">
+        </div>
+        <div>
+          <button type="submit" class="login-submit" id="loginBtn">
+            <p class="btn-text">로그인</p>
+            <span class="spinner-login"></span>
+          </button>
+        </div>
+        <a href="{% url 'users:signup' %}">
+          <span class="signup-btn">회원가입</span></a>
+      </form>
     </div>
     <script>
       const btn = document.getElementById('loginBtn');

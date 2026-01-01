@@ -25,62 +25,61 @@
   </head>
 
   <body class="login-page">
+    <div class="login-page-top-margin"></div>
+    <div class="j-navbar-brand">
+      <a href="{% url 'index' %}">
+        <img src="{% static "img/index_logo.png" %}" alt="logo-top" height="auto," width="500px">
+      </a>
+    </div>
     <div class="login-container">
-      <div class="login-page-top-margin"></div>
-      <div class="j-navbar-brand">
-        <a href="{% url 'index' %}">
-          <img src="{% static "img/EASYRUN.png" %}" alt="logo-top" height="auto," width="300px">
-        </a>
-      </div>
-      <div class="record-top-space"></div>
-      <div>
-        <div class="login-container">
-          <form method="post" action="{% url 'users:signup' %}" class="form-container">
-            {% csrf_token %}
-            {% include "users/form_errors.html" %}
-            <div class="container">
-              <div class="signup-row">
-                <div class="signup-box">아이디</div>
-                <div class="w100">
-                  <input type="text" name="username" id="username" class="signup-input" placeholder="사용자 아이디">
-                </div>
-              </div>
-              <div class="signup-row">
-                <div class="signup-box">이메일</div>
-                <div class="w100">
-                  <input type="text" name="email" id="email" class="signup-input" placeholder="사용자 이메일">
-                </div>
-              </div>
-              <div class="signup-row">
-                <div class="signup-box">성</div>
-                <div class="w100">
-                  <input type="text" name="last_name" id="last_name" class="signup-input" placeholder="성">
-                </div>
-              </div>
-              <div class="signup-row">
-                <div class="signup-box">이름</div>
-                <div class="w100">
-                  <input type="text" name="first_name" id="first_name" class="signup-input" placeholder="사용자 이메일">
-                </div>
-              </div>
-              <div class="signup-row">
-                <div class="signup-box">비밀번호</div>
-                <div class="w100">
-                  <input type="password" name="password1" id="password" class="signup-input" placeholder="비밀번호">
-                </div>
-              </div>
-              <div class="signup-row">
-                <div class="signup-box">비밀번호 확인</div>
-                <div class="w100">
-                  <input type="password" name="password2" id="password2" class="signup-input" placeholder="비밀번호 재확인">
-                </div>
-              </div>
-              <div>
-                <button type="submit" class="login-submit">회원가입</button>
+      <div class="space-h30"></div>
+      <div class="login-container">
+        <form method="post" action="{% url 'users:signup' %}" class="form-container">
+          {% csrf_token %}
+          {% include "users/form_errors.html" %}
+          <div class="container">
+            <div class="signup-row">
+              <div class="signup-box">아이디</div>
+              <div class="w100">
+                <input type="text" name="username" id="username" class="signup-input" placeholder="아이디">
               </div>
             </div>
-          </form>
-        </div>
+            <div class="signup-row">
+              <div class="signup-box">이메일</div>
+              <div class="w100">
+                <input type="text" name="email" id="email" class="signup-input" placeholder="이메일">
+              </div>
+            </div>
+            <div class="signup-row">
+              <div class="signup-box">성</div>
+              <div class="w100">
+                <input type="text" name="last_name" id="last_name" class="signup-input" placeholder="성">
+              </div>
+            </div>
+            <div class="signup-row">
+              <div class="signup-box">이름</div>
+              <div class="w100">
+                <input type="text" name="first_name" id="first_name" class="signup-input" placeholder="이름">
+              </div>
+            </div>
+            <div class="signup-row">
+              <div class="signup-box">비밀번호</div>
+              <div class="w100">
+                <input type="password" name="password1" id="password" class="signup-input" placeholder="비밀번호">
+              </div>
+            </div>
+            <div class="signup-row">
+              <div class="signup-box">비밀번호 확인</div>
+              <div class="w100">
+                <input type="password" name="password2" id="password2" class="signup-input" placeholder="비밀번호 재확인">
+              </div>
+            </div>
+            <div class="space-h30"></div>
+            <button type="submit" class="login-submit">
+              <p class="btn-text">회원가입</p>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </body>
