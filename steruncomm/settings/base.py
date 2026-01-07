@@ -24,6 +24,10 @@ ALLOWED_HOSTS = [
 #SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 #SECURE_SSL_REDIRECT = True
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://joollab.com',
+    'https://www.joollab.com',
+]
 
 # Application definition
 
