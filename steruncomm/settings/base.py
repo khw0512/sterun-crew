@@ -14,7 +14,12 @@ SECRET_KEY = 'django-insecure-kb5oq8c&jl0rgift65)!77bamj@yr8=uzk5xkczmv+-=3z1w#h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+        'www.joollab.com',
+        'joollab.com',
+        '54.180.205.253',
+        '127.0.0.1',
+        'localhost']
 
 #SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 #SECURE_SSL_REDIRECT = True
