@@ -15,5 +15,5 @@ ALLOWED_HOSTS = [
 STATIC_URL = 'static/'
 
 # STATIC_ROOT를 써야 하지만 마찬가지로 테스트를 위해 STATICFILES_DIRS 사용
-# STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = [BASE_DIR / 'static',]
+STATIC_ROOT = BASE_DIR / 'static'
+# STATICFILES_DIRS = [BASE_DIR / 'static',]
