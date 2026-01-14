@@ -1,15 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+import uuid
 from django_summernote.fields import SummernoteTextField
 
 
 def image_upload_path(instance, filename):
-    return f'article/{instance}/{filename}'
+    return f'article/{instance.uuid}/{filename}'
 
 
 class Article(models.Model):
     id = models.BigAutoField(primary_key=True)
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     author = models.CharField(max_length=20)
     title = models.CharField(max_length=30)
     content = SummernoteTextField()

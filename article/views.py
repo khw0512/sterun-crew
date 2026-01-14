@@ -91,8 +91,8 @@ def articleResFunc(request):
     if request.method == "POST":
         article = Article()
         article.title = request.POST["title"]
-        article.title = request.POST["brand"]
-        article.title = request.POST["model"]
+        article.brand = request.POST["brand"]
+        article.model = request.POST["model"]
         article.author = request.user
         article.content = request.POST["content"]
         article.main_img = request.FILES["image"]
