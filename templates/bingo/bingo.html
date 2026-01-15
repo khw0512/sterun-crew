@@ -3,7 +3,7 @@
 {% block content %}
 
   {% csrf_token %}
-  <div class="record-top-space"></div>
+  <div class="space-h30"></div>
   <div class="flex-container container-400">
     <div class="bingo-title">{{ user.last_name }}{{ user.first_name }}
       님의 빙고</div>
@@ -135,18 +135,18 @@
             content: {
               title: "Running-Bingo",
               description: "{{ user.username }}님의 빙고를 확인해 보세요:)",
-              imageUrl: "http://54.211.153.71//static/img/logo2%40.png",
+              imageUrl: "https://joollab.com/static/img/logo2%40.png",
               link: {
-                mobileWebUrl: "http://54.211.153.71/bingo/" + "{{ user.pk }}",
-                webUrl: "http://54.211.153.71/bingo/" + "{{ user.pk }}"
+                mobileWebUrl: "https://joollab.com/bingo/" + "{{ user.pk }}",
+                webUrl: "https://joollab.com/bingo/" + "{{ user.pk }}"
               }
             },
             buttons: [
               {
                 title: '보러가기',
                 link: {
-                  mobileWebUrl: "http://54.211.153.71/bingo/" + "{{ user.pk }}",
-                  webUrl: "http://54.211.153.71/bingo/" + "{{ user.pk }}"
+                  mobileWebUrl: "https://joollab.com/bingo/" + "{{ user.pk }}",
+                  webUrl: "https://joollab.com/bingo/" + "{{ user.pk }}"
                 }
               }
             ]
